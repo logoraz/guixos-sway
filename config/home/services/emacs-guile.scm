@@ -6,6 +6,7 @@
   #:use-module (gnu packages guile)
   #:use-module (gnu packages guile-xyz)
   #:use-module (gnu packages sdl)
+  #:use-module (gnu packages lisp)
   #:use-module (gnu home services)
   #:use-module (gnu services)
   #:use-module (gnu services configuration)
@@ -50,13 +51,16 @@
          ;; Magit
          git
          (list git "send-email")
-         ;; Guile Integration
+         ;; Guile Scheme Integration
          guile-next
          guile-ares-rs
          guile-hoot
          guile-websocket
          guile-sdl2
-         sdl2))
+         sdl2
+         ;; Common Lisp Integration
+         sbcl
+         sbcl-slynk))
 
 (define home-emacs-config-service-type
   (service-type (name 'home-emacs-config)
