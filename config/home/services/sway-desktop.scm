@@ -57,6 +57,7 @@
   (list  swaybg
          swayidle
          wl-clipboard
+         wev
          fuzzel
          mako
          grimshot ;; grimshot --notify copy area
