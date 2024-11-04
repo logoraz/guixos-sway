@@ -7,7 +7,7 @@
   #:export (home-xdg-local-files-service-type))
 
 ;; TODO - Refactor, rename symbols accordingly!
-(define %home-path "/home/logoraz/.dotfiles/")
+(define %home-path "/home/loraz/.dotfiles/")
 
 (define (home-file dir filename)
   "Resolve local config file."

@@ -49,7 +49,7 @@
               "0j66nq1bxvbxf5n8q2py14sjbkn57my0mjwq7k1qm9ddghca7177")))
            %default-authorized-guix-keys))))
 
-(define guix-system-services
+(define %guix-system-services
   (cons*
    ;; Configure gdm-service for wayland -> move wayland to home?
    ;; https://guix.gnu.org/manual/en/html_node/X-Window.html
@@ -82,7 +82,7 @@
                      (substitutes->services config)))))
 
 
-(define user-name "logoraz")
+(define user-name "loraz")
 
 (define os-config
   (operating-system
@@ -99,12 +99,13 @@
 
    (bootloader (bootloader-configuration
                 (bootloader grub-efi-bootloader)
-                (targets '("/boot/efi"))))
+                (targets '("/boot/efi"))
+		(keyboard-layout %base-keyboard-layout)))
 
    (swap-devices (list (swap-space
                         (target
                          (uuid
-			  "b547f9c1-9a69-4c63-9c55-edc2736bf504")))))
+			  "72d71f71-bf44-4046-8d3d-f1fcfbe1cc42")))))
 
    ;; Use 'blkid' to find unique file system identifiers ("UUIDs").
    (file-systems (append
@@ -114,16 +115,16 @@
                          (type "vfat"))
                         (file-system
                          (mount-point "/")
-                         (device (uuid "c0ffc6f4-dab7-4efc-8cdd-3e9d727b91ab" 'ext4))
+                         (device (uuid "5ed31dd1-64d8-4efe-9bf6-9559e9c50493" 'ext4))
                          (type "ext4")))
 		  %base-file-systems))
 
    (users (append
            (list (user-account
                   (name user-name)
-                  (comment "Erik P. Almaraz")
+                  (comment "Erik P Almaraz")
                   (group "users")
-                  (home-directory "/home/logoraz")
+                  (home-directory (string-append "/home/" user-name ))
                   (supplementary-groups '("wheel" "netdev" "audio" "video" "lp"))))
            %base-user-accounts))
 
@@ -133,7 +134,7 @@
                     glibc-locales)
 	      %base-packages))
    
-   (services guix-system-services)
+   (services %guix-system-services)
 
    ;; Allow resolution of '.local' host names with mDNS.
    (name-service-switch %mdns-host-lookup-nss)))
