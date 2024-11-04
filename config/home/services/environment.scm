@@ -26,9 +26,8 @@
     ("QT_QPA_PLATFORM" . "wayland-egl")
 
     ;; Set XDG environment variables
-    ("XDG_DOWNLOAD_DIR" . "/home/logoraz/Downloads")
-    ("XDG_PICTURES_DIR" . "/home/logoraz/Pictures/Screenshots")
-    ("GUILE_WARN_DEPRECATED" . "detailed")))
+    ("XDG_DOWNLOAD_DIR" . "/home/loraz/Downloads")
+    ("XDG_PICTURES_DIR" . "/home/loraz/Pictures/Screenshots")))
 
 (define home-env-vars-configuration-service-type
   (service-type (name 'home-profile-env-vars-service)
