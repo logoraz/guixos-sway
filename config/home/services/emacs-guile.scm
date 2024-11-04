@@ -16,52 +16,57 @@
 
   #:export (home-emacs-config-service-type))
 
+;;; Package Transformations
+;; Keep for now as an example
+;; deploy in package list as (latest-sbcl sbcl)
+;; (define latest-sbcl
+;;   (options->transformation
+;;    '((with-latest . "sbcl"))))
 
 (define (home-emacs-config-profile-service config)
-  (list  ;; emacs-pgtk ;;|--> gnu packages emacs
-         emacs-diminish  ;;|--> gnu packages emacs-xyz
-         emacs-delight
-         emacs-nord-theme
-         emacs-doom-themes
-         emacs-nerd-icons
-         emacs-doom-modeline
-         emacs-ligature
-         emacs-no-littering
-         emacs-ws-butler
-         emacs-undo-tree
-         emacs-paredit
-         emacs-visual-fill-column
-         emacs-ace-window
-         emacs-mct
-         emacs-orderless
-         emacs-corfu
-         emacs-marginalia
-         emacs-beframe
-         emacs-denote
-         emacs-magit
-         emacs-vterm
-         emacs-guix
-         emacs-arei
-         emacs-sly
-         emacs-mbsync
-         emacs-org-superstar
-         emacs-org-appear
-         emacs-erc-hl-nicks
-         emacs-erc-image
-         emacs-emojify
-         ;; Magit
-         git
-         (list git "send-email")
-         ;; Guile Scheme Integration
-         guile-next
-         guile-ares-rs
-         guile-hoot
-         guile-websocket
-         guile-sdl2
-         sdl2
-         ;; Common Lisp Integration
-         sbcl
-         sbcl-slynk))
+  (list emacs-diminish       ;;|--> gnu packages emacs-xyz
+        emacs-delight
+        emacs-nord-theme
+        emacs-doom-themes
+        emacs-nerd-icons
+        emacs-doom-modeline
+        emacs-ligature
+        emacs-no-littering
+        emacs-ws-butler
+        emacs-undo-tree
+        emacs-paredit
+        emacs-visual-fill-column
+        emacs-ace-window
+        emacs-mct
+        emacs-orderless
+        emacs-corfu
+        emacs-marginalia
+        emacs-beframe
+        emacs-denote
+        emacs-magit
+        emacs-vterm
+        emacs-guix
+        emacs-arei
+        emacs-sly
+        emacs-mbsync
+        emacs-org-superstar
+        emacs-org-appear
+        emacs-erc-hl-nicks
+        emacs-erc-image
+        emacs-emojify
+        ;; Magit
+        git
+        (list git "send-email")
+        ;; Guile Scheme Integration
+        guile-next
+        guile-ares-rs
+        guile-hoot
+        guile-websocket
+        guile-sdl2
+        sdl2
+        ;; Common Lisp Integration
+        sbcl
+        sbcl-slynk))
 
 (define home-emacs-config-service-type
   (service-type (name 'home-emacs-config)
