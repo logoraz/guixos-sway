@@ -26,9 +26,12 @@
   #:use-module (gnu packages music)
   #:use-module (gnu packages video)
   #:use-module (gnu packages qt)
+  #:use-module (gnu packages python)
+  #:use-module (gnu packages python-crypto)
   #:use-module (gnu packages syncthing)
   #:use-module (gnu packages package-management)
   #:use-module (gnu packages password-utils)
+  #:use-module (gnu packages gnupg)
   #:use-module (gnu packages gnucash)
   #:use-module (gnu packages gimp)
   #:use-module (gnu packages inkscape)
@@ -91,10 +94,13 @@
          qutebrowser
          qtwayland
          ;; (specification->package "qtwayland@5")
+         python
+         python-pynacl
          icecat ;;staged for removal
 
          ;; Authentication
          keepassxc
+         gnupg
          password-store
 
          ;; Audio devices and media playback

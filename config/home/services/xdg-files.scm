@@ -25,8 +25,8 @@
     ("sway/config"
      ,(home-file "files/sway" "config"))
 
-    ("sway/bin/status.sh"
-     ,(home-file "files/sway/bin" "status.sh"))
+    ;; ("sway/bin/status.sh"
+    ;;  ,(home-file "files/sway/bin" "status.sh"))
 
     ;; ("sway/bin/toggle-display.sh"
     ;;  ,(home-file "files/sway/bin" "toggle-display.sh"))
@@ -39,15 +39,15 @@
     ("foot/foot.ini"
      ,(home-file "files/foot" "foot.ini"))
 
-    ;; qutebrowser Configuration Files
+    ;; Qutebrowser Configuration Files
     ("qutebrowser/config.py"
      ,(home-file "files/qutebrowser" "config.py"))
 
     ("qutebrowser/quteconfig.py"
      ,(home-file "files/qutebrowser" "quteconfig.py"))
 
-    ("qutebrowser/qutemacs.py"
-     ,(home-file "files/qutebrowser" "qutemacs.py"))))
+    ("qutebrowser/qute-keepassxc"
+     ,(home-file "files/qutebrowser" "qute-keepassxc"))))
 
 (define home-xdg-local-files-service-type
   (service-type (name 'home-xdg-files)
