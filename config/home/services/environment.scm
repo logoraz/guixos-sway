@@ -7,29 +7,34 @@
 
 
 (define (home-env-vars-configuration config)
-  '( ;; Sort hidden (dot) files first in ls listings
+  '(;; Sort hidden (dot) files first in ls listings
     ("LC_COLLATE" . "C")
+
     ;; Set Emacs as editor
     ("EDITOR" . "emacs")
     ("VISUAL" . "emacs")
-    ;; Set GnuPG Config Dir env
-    ("GNUPGHOME" . "$XDG_CONFIG_HOME/gnupg")
+
     ;; Set quotebrowser as the default
     ("BROWSER" . "qutebrowser")
+
+    ;; Set GnuPG Config Dir env
+    ("GNUPGHOME" . "$XDG_CONFIG_HOME/gnupg")
+
     ;; Set wayland-specific environment variables
     ("XDG_CURRENT_DESKTOP" . "sway")
-    ("XDG_SESSION_TYPE" . "wayland")
-    ("RTC_USE_PIPEWIRE" . "true")
-    ("SDL_VIDEODRIVER" . "wayland")
-    ("MOZ_ENABLE_WAYLAND" . "1")
-    ("CLUTTER_BACKEND" . "wayland")
-    ("ELM_ENGINE" . "wayland_egl")
-    ("ECORE_EVAS_ENGINE" . "wayland-egl")
-    ("QT_QPA_PLATFORM" . "wayland-egl")
+    ("XDG_SESSION_TYPE"    . "wayland")
+    ("RTC_USE_PIPEWIRE"    . "true")
+    ("SDL_VIDEODRIVER"     . "wayland")
+    ("MOZ_ENABLE_WAYLAND"  . "1")
+    ("CLUTTER_BACKEND"     . "wayland")
+    ("ELM_ENGINE"          . "wayland_egl")
+    ("ECORE_EVAS_ENGINE"   . "wayland-egl")
+    ("QT_QPA_PLATFORM"     . "wayland-egl")
 
     ;; Set XDG environment variables
     ("XDG_DOWNLOAD_DIR" . "/home/loraz/Downloads")
     ("XDG_PICTURES_DIR" . "/home/loraz/Pictures/Screenshots")))
+
 
 (define home-env-vars-configuration-service-type
   (service-type (name 'home-profile-env-vars-service)
