@@ -25,15 +25,16 @@
     ("sway/config"
      ,(home-file "files/sway" "config"))
 
-    ;; ("sway/bin/status.sh"
-    ;;  ,(home-file "files/sway/bin" "status.sh"))
-
     ;; ("sway/bin/toggle-display.sh"
     ;;  ,(home-file "files/sway/bin" "toggle-display.sh"))
 
     ;; GTK configuration
     ("gtk-3.0/settings.ini"
      ,(home-file "files/gtk-3.0" "settings.ini"))
+
+    ;; GnuPG Configuration
+    ("gnupg/gpg-agent.conf"
+     ,(home-file "files/gnupg" "gpg-agent.conf"))
 
     ;; Terminal configuration
     ("foot/foot.ini"

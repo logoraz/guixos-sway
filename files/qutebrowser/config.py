@@ -30,3 +30,15 @@ config.load_autoconfig()
 
 # Load qutemacs file (qutemacs.py) for Emacs Keybindings.
 #config.source('qutemacs.py')
+
+# Password Integration with KeepassXC
+# --> GPG key is needed for KeepassXC's keyfile... using GPG Key ID below
+# pinentry not working with gpg at least on wayland need to use
+# --pinentry-mode=loopback when invoking gpg --decrypt
+config.bind('<Alt-Shift-u>',
+            'spawn --userscript qute-keepassxc --key DBCAD6D0FE9E5C0E7',
+            mode='insert')
+
+config.bind('pw',
+            'spawn --userscript qute-keepassxc --key DBCAD6D0FE9E5C0E7',
+            mode='normal')

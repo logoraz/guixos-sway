@@ -2,7 +2,7 @@
   #:use-module (gnu home)
   #:use-module (gnu home services)
   ;; #:use-module (guix gexp)
-  #:use-module (gnu home services dotfiles)
+  ;; #:use-module (gnu home services dotfiles)
   #:export (home-env-vars-configuration-service-type))
 
 
@@ -12,6 +12,8 @@
     ;; Set Emacs as editor
     ("EDITOR" . "emacs")
     ("VISUAL" . "emacs")
+    ;; Set GnuPG Config Dir env
+    ("GNUPGHOME" . "$XDG_CONFIG_HOME/gnupg")
     ;; Set quotebrowser as the default
     ("BROWSER" . "qutebrowser")
     ;; Set wayland-specific environment variables

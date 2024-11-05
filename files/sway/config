@@ -183,7 +183,6 @@ exec wlsunset -l 34.1 -L -117.7
 # Update DBUS activation records to ensure Flatpak apps work
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
-
 #
 # Other
 #
@@ -195,5 +194,6 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. 
 # Toggle touchpad on or off
 # bindsym XF86TouchpadToggle input type:touchpad events toggle enabled disabled
 bindsym $mod+Shift+t input type:touchpad events toggle enabled disabled
+
 
 #include "~/.config/sway/after-config"

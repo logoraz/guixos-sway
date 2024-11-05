@@ -48,6 +48,8 @@
         emacs-guix
         emacs-arei
         emacs-sly
+        ;;https://packages.guix.gnu.org/packages/emacs-pinentry/0.1-1.dcc9ba0/
+        emacs-pinentry
         emacs-mbsync
         emacs-org-superstar
         emacs-org-appear

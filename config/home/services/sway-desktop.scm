@@ -57,7 +57,6 @@
   (list  swaybg
          swayidle
          wl-clipboard
-         wev
          fuzzel
          mako
          grimshot ;; grimshot --notify copy area
@@ -102,6 +101,7 @@
          ;; Authentication
          keepassxc
          gnupg
+         pinentry
          password-store
 
          ;; Audio devices and media playback
@@ -127,6 +127,7 @@
 
          ;; General utilities
          lm-sensors
+         wev
          blueman ;;|--> gnu packages networking
          bluez
          brightnessctl
