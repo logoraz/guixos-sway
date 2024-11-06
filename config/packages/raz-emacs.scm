@@ -1,4 +1,4 @@
-(define-module (config packages emacs)
+(define-module (config packages raz-emacs)
   #:use-module (guix download)
   #:use-module (guix git-download)
   #:use-module (guix packages)
@@ -18,11 +18,9 @@
             (method git-fetch)
             (uri (git-reference
                   (url "https://codeberg.org/loraz/raz-emacs.git")
-                  (commit "40f325bc0f94cc43270b64204fc2adfcef3793e5")))
+                  (commit "fcedf83babd629ee983bf98ab2dc4be19c3ccb87")))
             (hash
-             (content-hash
-              "0llhpay03azj7irrp2b184barkk6ra1w4hmzbvh0p7cfly9ijg5i"
-              sha256))))
+             (content-hash "0hx7dc0wk33ah6nfmag6zjn3l79sxr163a1y54jvvhv729crixn9"))))
    (build-system copy-build-system)
    (home-page "https://codeberg.org/loraz/raz-emacs")
    (synopsis "Raz Emacs")

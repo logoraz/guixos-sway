@@ -64,6 +64,7 @@
         guile-ares-rs
         guile-hoot
         guile-websocket
+        guile-hall
         guile-sdl2
         sdl2
         ;; Common Lisp Integration
