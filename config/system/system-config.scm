@@ -22,9 +22,6 @@
   #:use-module (nongnu packages linux)
   #:use-module (nongnu system linux-initrd))
 
-;; (use-system-modules keyboard)
-;; (use-service-modules cups ssh desktop guix xorg)
-;; (use-package-modules ssh cups certs suckless wm glib)
 
 (define %base-keyboard-layout
   (keyboard-layout "us"))
@@ -44,9 +41,8 @@
             (method url-fetch)
             (uri "https://substitutes.nonguix.org/signing-key.pub")
             (file-name "nonguix.pub")
-            (sha256
-             (base32
-              "0j66nq1bxvbxf5n8q2py14sjbkn57my0mjwq7k1qm9ddghca7177")))
+            (hash
+             (content-hash "0j66nq1bxvbxf5n8q2py14sjbkn57my0mjwq7k1qm9ddghca7177")))
            %default-authorized-guix-keys))))
 
 (define %guix-system-services
@@ -75,6 +71,7 @@
             (openssh-configuration
              (openssh openssh)
              (port-number 2222)))
+
    ;; See: https://guix.gnu.org/manual/en/html_node/Desktop-Services.html
    (modify-services %desktop-services
                     (guix-service-type
@@ -94,6 +91,7 @@
    (kernel linux)
    (firmware (list linux-firmware))
    ;; Fixes Xorg Lag - https://gitlab.com/nonguix/nonguix/-/issues/212
+   ;; Leave enabled for Wayland...
    (initrd microcode-initrd)
    (kernel-arguments (cons "i915.enable_psr=0" %default-kernel-arguments))
 
