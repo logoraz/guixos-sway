@@ -14,7 +14,8 @@
   (local-file (string-append
                %home-path
                dir "/"
-               filename)))
+               filename)
+              #:recursive? #t))
 
 (define (home-xdg-local-files-list-service config)
   `(;; Guix Configuration Channels
@@ -24,6 +25,9 @@
     ;; Sway configuration files
     ("sway/config"
      ,(home-file "files/sway" "config"))
+
+    ("sway/bin/swaybar-status.sh"
+     ,(home-file "files/sway/bin" "swaybar-status.sh"))
 
     ;; ("sway/bin/toggle-display.sh"
     ;;  ,(home-file "files/sway/bin" "toggle-display.sh"))

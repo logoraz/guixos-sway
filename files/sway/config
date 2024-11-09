@@ -137,14 +137,15 @@ exec swayidle -w \
 for_window [title="Firefox — Sharing Indicator"] kill
 for_window [title=".* - mpv$"] floating enable, sticky enable
 
+# Status Bar
 bar {
     position top
     # mode hide
     font pango:JetBrains Mono 11
     icon_theme "Papirus-Dark"
 
-    # status_command while ~/.config/sway/status.sh; do sleep 1; done
-    status_command while date +'%Y-%m-%d %I:%M:%S %p W%U'; do sleep 1; done
+    status_command while ~/.config/sway/bin/swaybar-status.sh; do sleep 0.5; done
+    # status_command while date +'%Y-%m-%d %I:%M:%S %p W%U'; do sleep 1; done
 
     tray_bindsym button1 Activate
     tray_bindsym button2 ContextMenu
@@ -170,7 +171,7 @@ seat * xcursor_theme Bibata-Original-Classic 16
 exec gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
 exec gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
 exec gsettings set org.gnome.desktop.interface font-name "Iosevka Aile 11"
-# Not working as I would like, still need to define a gtk-3.0/settings.ini file.
+# Not working sure if this is working...
 exec gsettings set org.gnome.desktop.interface cursor-theme "Bibata-Original-Classic"
 exec gsettings set org.gnome.desktop.interface cursor-size 16
 
