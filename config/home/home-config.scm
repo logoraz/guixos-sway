@@ -55,10 +55,15 @@
               (service home-bash-service-type
                        (home-bash-configuration
                         (guix-defaults? #f)
-                        (aliases '(("grep" . "grep --color=auto")
-                                   ("ls"   . "ls -p --color=auto")
-                                   ("ll"   . "ls -l")
-                                   ("la"   . "ls -la")))
+                        (aliases
+                         `(("grep" . "grep --color=auto")
+                           ("ls"   . "ls -p --color=auto")
+                           ("ll"   . "ls -l")
+                           ("la"   . "ls -la")
+                           ("gsr"  . ,(string-append "sudo guix system -L ~/.dotfiles/ reconfigure "
+                                                     "~/.dotfiles/config/system/system-config.scm"))
+                           ("ghr"  . ,(string-append "guix home -L ~/.dotfiles/ reconfigure "
+                                                     "~/.dotfiles/config/home/home-config.scm"))))
                         (bashrc
                          (list (local-file "dot-bashrc.sh"
                                            #:recursive? #t)))
