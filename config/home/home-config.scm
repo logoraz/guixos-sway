@@ -20,7 +20,8 @@
   (home-environment
 
    (services (list
-              ;; Enable sound/bluetooth connections to be handled properly
+              ;; Enable bluetooth connections to be handled properly
+              ;; bluetooth service only currently available at system level.
               (service home-dbus-service-type)
 
               ;; Enable pipewire audio
