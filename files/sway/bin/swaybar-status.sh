@@ -50,11 +50,13 @@ brightness_symbol='🔆'
 audio_volume=$(wpctl get-volume \@DEFAULT_AUDIO_SINK@ | awk '{print 100*$2}')
 audio_is_muted=$(wpctl get-volume \@DEFAULT_AUDIO_SINK@ | awk '{print $3}')
 audio_is_bluetooth=$(wpctl status | grep -E -o "bluez5")
+# Not sure if sink ID's are mutable... works for now!
+bluetooth_is_muted=$(wpctl get-volume 64 | awk '{print $3}')
 
-if [ $audio_is_bluetooth = "bluez5" ]; then
-    audio_active='🎧'
-elif [ $audio_is_muted = "[MUTED]" ]; then
+if [ $audio_is_muted = "[MUTED]" ] || [ $bluetooth_is_muted = "[MUTED]" ]; then
     audio_active=''
+elif [ $audio_is_bluetooth = "bluez5" ]; then
+    audio_active='🎧'
 elif [ $audio_volume -ge 50 ]; then
     audio_active=''
 else
