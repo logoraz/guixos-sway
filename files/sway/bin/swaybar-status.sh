@@ -47,6 +47,7 @@ else
     brightness_symbol='🔆'
 fi
 
+
 #
 # Audio
 #
