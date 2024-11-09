@@ -56,12 +56,12 @@
 (define (home-sway-desktop-profile-service config)
   (list  swaybg
          swayidle
-         wl-clipboard
          fuzzel
          mako
          grimshot ;; grimshot --notify copy area
          network-manager-applet
          libinput
+         wl-clipboard
 
          ;; Compatibility for older Xorg applications
          xorg-server-xwayland
@@ -81,6 +81,7 @@
          bibata-cursor-theme
 
          ;; Fonts
+         font-awesome
          font-jetbrains-mono
          font-liberation
          font-hack
@@ -127,7 +128,6 @@
 
          ;; General utilities
          lm-sensors
-         wev
          blueman ;;|--> gnu packages networking
          bluez
          brightnessctl
