@@ -56,6 +56,7 @@
 (define (home-sway-desktop-profile-service config)
   (list  swaybg
          swayidle
+         wlsunset
          fuzzel
          mako
          grimshot ;; grimshot --notify copy area

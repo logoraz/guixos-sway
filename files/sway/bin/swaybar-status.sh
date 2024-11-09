@@ -39,10 +39,13 @@ fi
 # Display
 #
 current_brightness=$(brightnessctl | grep -E "Current brightness" \
-                   | awk '{print $4}' | grep -E -o [0-9%]*)
+                   | awk '{print $4}' | grep -E -o [0-9]*)
 
-brightness_symbol='🔆'
-
+if [ $current_brightness -le 33 ]; then
+    brightness_symbol='🔅'
+else
+    brightness_symbol='🔆'
+fi
 
 #
 # Audio
@@ -54,13 +57,15 @@ audio_is_bluetooth=$(wpctl status | grep -E -o "bluez5")
 bluetooth_is_muted=$(wpctl get-volume 64 | awk '{print $3}')
 
 if [ $audio_is_muted = "[MUTED]" ] || [ $bluetooth_is_muted = "[MUTED]" ]; then
-    audio_active=''
+    audio_active='🔇'
 elif [ $audio_is_bluetooth = "bluez5" ]; then
     audio_active='🎧'
-elif [ $audio_volume -ge 50 ]; then
+elif [ $audio_volume -ge 35 ]; then
     audio_active=''
-else
+elif [ $audio_volume -gt 0 ]; then
     audio_active=''
+elif [ $audio_volume -eq 0 ]; then
+    audio_active=''
 fi
 
 
@@ -73,20 +78,20 @@ media_track=$(playerctl metadata title)
 media_track_trunk=${media_track:0:24}
 
 if [ $player_status = "Playing" ]; then
-    media_status="▶ $media_artist: $media_track_trunk... |"
+    media_status="▶ $media_artist: $media_track_trunk...╏"
 elif [ $player_status = "Paused" ]; then
-    media_status="⏸ $media_artist: $media_track_trunk... |"
+    media_status="⏸ $media_artist: $media_track_trunk...╏"
 else
     media_status=""
-    # media_status="⏹ $media_artist: $media_track_trunk | "
+    # media_status="⏹ $media_artist: $media_track_trunk ┃"
 fi
 
 
 #
 # Status Bar Configuration
 #
-echo $media_status "" \
-     $audio_active $audio_volume% " " \
-     $brightness_symbol $current_brightness " " \
-     $battery_pluggedin $battery_charge% " " \
-     $date_and_week $current_time " "
+echo $media_status \
+     $audio_active $audio_volume%" "\
+     $brightness_symbol $current_brightness%" "\
+     $battery_pluggedin $battery_charge%" "\
+     $date_and_week $current_time" ┋"
