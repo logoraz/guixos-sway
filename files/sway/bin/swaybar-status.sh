@@ -1,12 +1,12 @@
 # swaybar status configuration script
+#
 
-# Modified from:
-# https://git.sr.ht/~oscarcp/ghostfiles/tree/master/item/sway_wm/scripts/sway_bar.sh
 #
 # Date & Time
 #
 date_and_week=$(date "+%a %Y-%m-%d W%U")
 current_time=$(date "+%I:%M:%S")
+
 
 #
 # Battery/Charger Status
@@ -34,6 +34,16 @@ else
     battery_pluggedin=''
 fi
 
+
+#
+# Display
+#
+current_brightness=$(brightnessctl | grep -E "Current brightness" \
+                   | awk '{print $4}' | grep -E -o [0-9%]*)
+
+brightness_symbol='🔆'
+
+
 #
 # Audio
 #
@@ -51,23 +61,30 @@ else
     audio_active=''
 fi
 
+
 #
 # Multimedia
 #
-media_artist=$(playerctl metadata artist)
-media_song=$(playerctl metadata title)
 player_status=$(playerctl status)
+media_artist=$(playerctl metadata artist)
+media_track=$(playerctl metadata title)
+media_track_trunk=${media_track:0:24}
 
 if [ $player_status = "Playing" ]; then
-    media_status="▶ $media_artist: $media_song | "
+    media_status="▶ $media_artist: $media_track_trunk... |"
 elif [ $player_status = "Paused" ]; then
-    media_status="⏸ $media_artist: $media_song | "
+    media_status="⏸ $media_artist: $media_track_trunk... |"
 else
     media_status=""
-    # media_status="⏹ $media_artist: $media_song | "
+    # media_status="⏹ $media_artist: $media_track_trunk | "
 fi
 
-echo $media_status \
-     $audio_active $audio_volume% \
-     " | " $battery_pluggedin $battery_charge% \
-     " | " $date_and_week $current_time
+
+#
+# Status Bar Configuration
+#
+echo $media_status "" \
+     $audio_active $audio_volume% " " \
+     $brightness_symbol $current_brightness " " \
+     $battery_pluggedin $battery_charge% " " \
+     $date_and_week $current_time " "
