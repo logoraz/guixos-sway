@@ -14,12 +14,12 @@ Custom Guix System Distribution + Sway Configuration.
 
 ```scm
 
-    dotfiles/                     ;; Project root directory
+    dotfiles/                        ;; Project root directory
     |- config/
-       |- home/                   ;; Guix Home directory
+       |- home/                      ;; Guix Home directory
           |- dot-bash_profile.sh
           |- dot-bashrc.sh
-          |- home-config.scm      ;; Main Guix Home Config
+          |- home-config.scm         ;; Main Guix Home Config
           |- services/
              |- emacs-guile.scm
              |- environment.scm
@@ -27,25 +27,25 @@ Custom Guix System Distribution + Sway Configuration.
              |- sway-desktop.scm
              |- udiskie.scm
              |- xdg-files.scm
-       |- packages/               ;; Custom Packages
+       |- packages/                  ;; Custom Packages
           |- raz-emacs.scm
-       |- services/               ;; System Services
+       |- services/                  ;; System Services
           |- tbd
-       |- system/                 ;; Guix System directory
+       |- system/                    ;; Guix System directory
           |- base-system.scm
           |- channels.scm
-          |- system-config.scm    ;; Main Guix System Config
-    |- files/                      ;; XDG_CONFIG_HOME Files
+          |- system-config.scm       ;; Main Guix System Config
+    |- files/                        ;; XDG_CONFIG_HOME Files
        |- assets/...
        |- foot/...
        |- gnupg/...
        |- gtk-3.0/...
        |- qutebrowser/...
-       |- sway/                    ;; Sway WM Directory
-          |- config                ;; Main Sway config file
+       |- sway/                      ;; Sway WM Directory
+          |- config                  ;; Main Sway config file
           |- bin/
-             |- swaybar-status.sh  ;; Swaybar configuration
-             |- toggle-display.sh  ;; WIP
+             |- swaybar-status.sh    ;; Swaybar configuration
+             |- toggle-display.sh    ;; WIP
          
 ```
 
