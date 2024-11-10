@@ -46,7 +46,8 @@ Custom Guix System Distribution + Sway Configuration.
  - Create a highly functional WM setup that is efficient & aesthetically pleasing 
  - Construct a modulur Guix System configuration as a Guile program
  - Handle customizations as custom Guix packages or service extensions
- - Use Guix, as much as possible, to handle every other part of my workflow
+ - Configure everything using Guix/Guile (where possible)
+ - Generalize to support setup on multiple machines
  - Optimize to create an efficient system for programing in Guile Scheme
  - Eventually create a System/Home service utility that enhances Guix   
 
