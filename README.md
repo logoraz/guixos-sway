@@ -63,7 +63,7 @@ Custom Guix System Distribution + Sway Configuration.
 
 ## Download & Install
 
-First download and install Guix System from either of the release images:
+First download and install Guix System from either of the release images below:
     
  - https://gitlab.com/nonguix/nonguix/-/releases
  - https://github.com/SystemCrafters/guix-installer
