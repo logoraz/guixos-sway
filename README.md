@@ -43,25 +43,25 @@ Custom Guix System Distribution + Sway Configuration.
 
 ## Goals
 
-  - Create a highly functional WM setup that is efficient & aesthetically pleasing 
-  - Construct a modulur Guix System configuration as a Guile program
-  - Handle customizations as custom Guix packages or service extensions
-  - Use Guix, as much as possible, to handle every other part of my workflow
-  - Optimize to create an efficient system for programing in Guile Scheme
-  - Eventually create a System/Home service utility that enhances Guix   
+ - Create a highly functional WM setup that is efficient & aesthetically pleasing 
+ - Construct a modulur Guix System configuration as a Guile program
+ - Handle customizations as custom Guix packages or service extensions
+ - Use Guix, as much as possible, to handle every other part of my workflow
+ - Optimize to create an efficient system for programing in Guile Scheme
+ - Eventually create a System/Home service utility that enhances Guix   
 
 
 ## Download & Install
 
-    First download and install Guix System from either of the release images:
+First download and install Guix System from either of the release images:
     
-    1. https://gitlab.com/nonguix/nonguix/-/releases
-    2. https://github.com/SystemCrafters/guix-installer/releases/tag/v202410220127
+ - 1. https://gitlab.com/nonguix/nonguix/-/releases
+ - 2. https://github.com/SystemCrafters/guix-installer/releases/tag/v202410220127
 
-    Once Guix has been installed from the images do a `guix pull` and `system reconfigure`
-    to get to the latest.
+Once Guix has been installed from the images do a `guix pull` and `system reconfigure`
+to get to the latest.
 
-    Next, download this project repo and install as follows:
+Next, download this project repo and install as follows:
 
 ```bash
 
@@ -70,7 +70,7 @@ Custom Guix System Distribution + Sway Configuration.
 
     $ sudo guix system -L ~/.dotfiles/ reconfigure ~/.dotfiles/config/system/system-config.scm
     $ guix home -L ~/.dotfiles/ reconfigure ~/.dotfiles/config/home/home-config.scm
-        
+   
 ```
 
 
