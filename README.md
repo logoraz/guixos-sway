@@ -19,7 +19,7 @@ Custom Guix System Distribution + Sway Configuration.
        |- home/                   ;; Guix Home directory
           |- dot-bash_profile.sh
           |- dot-bashrc.sh
-          |- home-config.scm
+          |- home-config.scm      ;; Main Guix Home Config
           |- services/
              |- emacs-guile.scm
              |- environment.scm
@@ -29,14 +29,23 @@ Custom Guix System Distribution + Sway Configuration.
              |- xdg-files.scm
        |- packages/               ;; Custom Packages
           |- raz-emacs.scm
-          |- tbd
        |- services/               ;; System Services
-          |- tbd
           |- tbd
        |- system/                 ;; Guix System directory
           |- base-system.scm
           |- channels.scm
-          |- system-config.scm
+          |- system-config.scm    ;; Main Guix System Config
+   |- files/                      ;; XDG_CONFIG_HOME Files
+      |- assets/...
+      |- foot/...
+      |- gnupg/...
+      |- gtk-3.0/...
+      |- qutebrowser/...
+      |- sway/                    ;; Sway WM Directory
+         |- config                ;; Main Sway config file
+         |- bin/
+            |- swaybar-status.sh  ;; Swaybar configuration
+            |- toggle-display.sh  ;; WIP
          
 ```
 
