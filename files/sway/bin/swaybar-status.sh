@@ -41,7 +41,7 @@ fi
 current_brightness=$(brightnessctl | grep -E "Current brightness" \
                    | awk '{print $4}' | grep -E -o [0-9]*)
 
-if [ $current_brightness -le 33 ]; then
+if [ $current_brightness -lt 50 ]; then
     brightness_symbol='🔅'
 else
     brightness_symbol='🔆'

@@ -68,7 +68,7 @@ First download and install Guix System from either of the release images below:
  - https://gitlab.com/nonguix/nonguix/-/releases
  - https://github.com/SystemCrafters/guix-installer
 
-Once Guix has been installed from the images do a `guix pull` and `system reconfigure`
+Once Guix has been installed from the images do a `guix pull` and `guix system reconfigure`
 to get to the latest.
 
 Next, download this project repo and install as follows:
