@@ -1,4 +1,6 @@
+# Modified from https://codeberg.org/daviwil/dotfiles/.files/.config/sway/config
 set $mod Mod4
+
 #include "~/.config/sway/before-config"
 
 # Configure displays

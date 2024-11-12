@@ -1,3 +1,5 @@
+;;; Borrowed from https://codeberg.org/daviwil/dotfiles/daviwil/home-services/udiskie.scm
+
 (define-module (config home services udiskie)
   #:use-module (gnu services)
   #:use-module (gnu home services)
