@@ -155,7 +155,9 @@ bar {
     font pango:JetBrains Mono 11
     icon_theme "Papirus-Dark"
 
-    status_command while ~/.config/sway/bin/swaybar-status.sh; do sleep 0.5; done
+    # TODO decrease sleep time from 1 -> 0.25 to mimize lag observed when updating items
+    # Have not yet observed computational overhead this applies...
+    status_command while ~/.config/sway/bin/swaybar-status.sh; do sleep 0.25; done
 
     tray_bindsym button1 Activate
     tray_bindsym button2 ContextMenu
