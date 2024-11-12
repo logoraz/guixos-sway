@@ -13,7 +13,6 @@ Custom Guix System Distribution + Sway Configuration.
 ## Project Scaffolding
 
 ```scm
-
     dotfiles/                        ;; Project root directory
     |- config/
        |- home/                      ;; Guix Home directory
@@ -46,7 +45,6 @@ Custom Guix System Distribution + Sway Configuration.
           |- bin/
              |- swaybar-status.sh    ;; Swaybar configuration
              |- toggle-display.sh    ;; WIP
-         
 ```
 
 
@@ -74,14 +72,48 @@ to get to the latest.
 Next, download this project repo and install as follows:
 
 ```bash
-
     $ git clone https://codeberg.org/loraz/dotfiles ~/.dotfiles
     $ cd ~/.dotfiles
 
     $ sudo guix system -L ~/.dotfiles/ reconfigure ~/.dotfiles/config/system/system-config.scm
     $ guix home -L ~/.dotfiles/ reconfigure ~/.dotfiles/config/home/home-config.scm
-   
 ```
+
+
+## Establishing Wifi
+
+This can be done via also via `nm-connection-editor`, but I like to keep reference to `nmcli`
+Working on figuring out how to establish a 'clickable' swaybar icon to automatically bring up
+`nm-connection-editor`...
+
+```bash
+  # List Wifi networks available
+  $ sudo nmcli device wifi list
+
+  # Connect to ESSID
+  $ sudo nmcli device wifi connect <ESSID> password <network-password>
+```
+
+List known connections and delete them from list in Network Manager.
+
+```bash
+  # Get ESSID (name) or UUID of connection to delete
+  $ sudo nmcli connection show
+
+  # Delete connection via ID (aka name or ESSID)
+  $ sudo nmcli connection delete <ESSID>
+```
+
+
+## Establishing Bluetooth
+
+Bluetooth works and is automatically deployed via bluez in Guix system config, however, initial
+device connection first needs to be established via `blueman-manager`.
+
+Still working on better integration, however, auto-starting `nm-applet` to do the job currently
+has a bug in it's package recipe/service in Guix, that has yet to be addressed:
+(see https://issues.guix.gnu.org/71528). Note this handles bluetooth connection once device has
+been established.
 
 
 ## References:
