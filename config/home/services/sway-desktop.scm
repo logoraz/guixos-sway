@@ -63,6 +63,7 @@
          network-manager-applet
          libinput
          wl-clipboard
+         wlogout
 
          ;; Compatibility for older Xorg applications
          xorg-server-xwayland

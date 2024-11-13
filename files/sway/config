@@ -209,6 +209,9 @@ bindsym $mod+Shift+e exec swaynag -t warning \
         -m 'You pressed the exit shortcut. Do you really want to exit sway?' \
         -B 'Yes, exit sway' 'swaymsg exit'
 
+# Exit sway (wlogout -> provide a menu to logout, restart, shutdown, etc)
+bindsym $mod+Shift+l exec wlogout
+
 # Toggle touchpad on or off
 # bindsym XF86TouchpadToggle input type:touchpad events toggle enabled disabled
 bindsym $mod+Shift+t input type:touchpad events toggle enabled disabled
