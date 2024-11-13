@@ -110,10 +110,10 @@ List known connections and delete them from list in Network Manager.
 Bluetooth works and is automatically deployed via bluez in Guix system config, however, initial
 device connection first needs to be established via `blueman-manager`.
 
-Still working on better integration, however, auto-starting `nm-applet` to do the job currently
-has a bug in it's package recipe/service in Guix, that has yet to be addressed:
-(see https://issues.guix.gnu.org/71528). Note this handles bluetooth connection once device has
-been established.
+Still working on better integration, such as auto-starting `blueman-applet` in sway config, however, it
+currently has a bug in it's dbus service that has yet to be addressed, see
+https://issues.guix.gnu.org/71528. Note this handles bluetooth connection once device has been
+established.
 
 
 ## References:
