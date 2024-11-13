@@ -1,5 +1,7 @@
 #!/bin/sh
-
+# Borrowed from:
+# https://codeberg.org/daviwil/dotfiles/.files/.bin/toggle-display
+# TODO: needs to be tested in accordance to my config
 if [ $# -eq 0 ]; then
     echo "No arguments provided. Please provide the names of the displays to toggle."
     exit 1

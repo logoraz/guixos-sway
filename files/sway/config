@@ -1,4 +1,5 @@
 # Modified from https://codeberg.org/daviwil/dotfiles/.files/.config/sway/config
+
 set $mod Mod4
 
 #include "~/.config/sway/before-config"
@@ -23,6 +24,7 @@ output "*" bg ~/.dotfiles/files/assets/wallpapers/sunset-mountain.jpg fill
 
 # Toggle Displays
 # bindsym $mod+Shift+s exec ~/.config/sway/bin/toggle-display $primary
+
 input type:keyboard {
     xkb_layout us,il
     # xkb_options ctrl:nocaps
