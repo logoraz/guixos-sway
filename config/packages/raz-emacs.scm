@@ -20,7 +20,8 @@
                   (url "https://codeberg.org/loraz/raz-emacs.git")
                   (commit "66ce54bb75fdf8cdd774bda742f6f443600ec637")))
             (hash
-             (content-hash "1hi67lssryghqgxd366qsxhqkwv9rjwhadspxn4d13gawx3kch7g"))))
+             (content-hash
+              "1hi67lssryghqgxd366qsxhqkwv9rjwhadspxn4d13gawx3kch7g"))))
    (build-system copy-build-system)
    (home-page "https://codeberg.org/loraz/raz-emacs")
    (synopsis "Raz Emacs")

@@ -1,12 +1,10 @@
 (define-module (config home services environment)
   #:use-module (gnu home)
   #:use-module (gnu home services)
-  ;; #:use-module (guix gexp)
-  ;; #:use-module (gnu home services dotfiles)
+
   #:export (home-env-vars-configuration-service-type))
 
-
-(define (home-env-vars-configuration config)
+(define (home-env-vars-config-list config)
   '(;; Sort hidden (dot) files first in ls listings
     ("LC_COLLATE" . "C")
 
@@ -42,5 +40,5 @@
                 (extensions
                  (list (service-extension
                         home-environment-variables-service-type
-                        home-env-vars-configuration)))
+                        home-env-vars-config-list)))
                 (default-value #f)))

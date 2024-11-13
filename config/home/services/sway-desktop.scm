@@ -106,7 +106,7 @@
          pinentry
          password-store
 
-         ;; Audio devices and media playback
+         ;; Audio devices & Media playback
          mpv ;;|--> gnu packages video
          mpv-mpris
          youtube-dl

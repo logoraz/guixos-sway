@@ -17,7 +17,7 @@
                filename)
               #:recursive? #t))
 
-(define (home-xdg-local-files-list-service config)
+(define (home-xdg-local-files-gexp-service config)
   `(;; Guix Configuration Channels
     ("guix/channels.scm"
      ,(home-file "config/system" "channels.scm"))
@@ -29,8 +29,8 @@
     ("sway/bin/swaybar-status.sh"
      ,(home-file "files/sway/bin" "swaybar-status.sh"))
 
-    ;; ("sway/bin/toggle-display.sh"
-    ;;  ,(home-file "files/sway/bin" "toggle-display.sh"))
+    ("sway/bin/toggle-display.sh"
+     ,(home-file "files/sway/bin" "toggle-display.sh"))
 
     ;; GTK configuration
     ("gtk-3.0/settings.ini"
@@ -60,7 +60,7 @@
                 (extensions
                  (list (service-extension
                         home-xdg-configuration-files-service-type
-                        home-xdg-local-files-list-service)))
+                        home-xdg-local-files-gexp-service)))
                 (default-value #f)))
 
 
