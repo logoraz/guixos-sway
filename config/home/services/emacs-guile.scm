@@ -59,14 +59,14 @@
         ;; Magit
         git
         (list git "send-email")
-        ;; Guile Scheme Integration
+        ;; Guile Scheme Emacs Integration
         guile-next
         guile-ares-rs
+        ;; Guile UI Development Tools & UI's
+        guile-hall
         guile-hoot
         guile-websocket
-        guile-hall
-        guile-sdl2
-        sdl2
+        guile-g-golf
         ;; Common Lisp Integration
         sbcl
         sbcl-slynk))
