@@ -1,12 +1,12 @@
 {
     "label" : "lock",
-    "action" : "loginctl lock-session",
+    "action" : "swaylock -f --screenshots --clock --effect-blur 9x7 --effect-vignette 0.25:0.5",
     "text" : "Lock",
     "keybind" : "l"
 }
 {
     "label" : "logout",
-    "action" : "loginctl terminate-user $USER",
+    "action" : "sway exit",
     "text" : "Logout",
     "keybind" : "e"
 }
