@@ -137,11 +137,18 @@ set $lock 'swaylock -f --screenshots --clock \
           --effect-blur 9x7 --effect-vignette 0.25:0.5 \
           --grace 60 --fade-in 0.25'
 
+set $qlock 'swaylock -f --screenshots --clock \
+           --effect-blur 9x7 --effect-vignette 0.25:0.5 \
+           --fade-in 0.25'
+
 exec swayidle -w \
   timeout 900 $lock \
   timeout 960 'swaymsg "output * dpms off"' \
   resume 'swaymsg "output * dpms on"' \
   before-sleep $lock
+
+# Lock Screen
+bindsym $mod+Shift+o exec $qlock
 
 # Night Light (CA lat/long)
 exec wlsunset -l 34.1 -L -117.7
@@ -205,12 +212,12 @@ exec gsettings set org.gnome.desktop.interface cursor-size 16
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
 # Exit sway (logs you out of your Wayland session)
-bindsym $mod+Shift+e exec swaynag -t warning \
-        -m 'You pressed the exit shortcut. Do you really want to exit sway?' \
-        -B 'Yes, exit sway' 'swaymsg exit'
+# bindsym $mod+Shift+e exec swaynag -t warning \
+#         -m 'You pressed the exit shortcut. Do you really want to exit sway?' \
+#         -B 'Yes, exit sway' 'swaymsg exit'
 
 # Exit sway (wlogout -> provide a menu to logout, restart, shutdown, etc)
-bindsym $mod+Shift+l exec wlogout
+bindsym $mod+Shift+e exec wlogout -p layer-shell
 
 # Toggle touchpad on or off
 # bindsym XF86TouchpadToggle input type:touchpad events toggle enabled disabled

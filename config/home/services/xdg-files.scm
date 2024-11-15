@@ -32,6 +32,31 @@
     ("sway/bin/toggle-display.sh"
      ,(home-file "files/sway/bin" "toggle-display.sh"))
 
+    ;; wlogout configuration
+    ("wlogout/layout"
+     ,(home-file "files/wlogout" "layout"))
+
+    ("wlogout/style.css"
+     ,(home-file "files/wlogout" "style.css"))
+
+    ("wlogout/icons/lock.svg"
+     ,(home-file "files/wlogout/icons" "lock.svg"))
+
+    ("wlogout/icons/logout.svg"
+     ,(home-file "files/wlogout/icons" "logout.svg"))
+
+    ("wlogout/icons/reboot.svg"
+     ,(home-file "files/wlogout/icons" "reboot.svg"))
+
+    ("wlogout/icons/shutdown.svg"
+     ,(home-file "files/wlogout/icons" "shutdown.svg"))
+
+    ("wlogout/icons/suspend.svg"
+     ,(home-file "files/wlogout/icons" "suspend.svg"))
+
+    ("wlogout/icons/hibernate.svg"
+     ,(home-file "files/wlogout/icons" "hibernate.svg"))
+
     ;; GTK configuration
     ("gtk-3.0/settings.ini"
      ,(home-file "files/gtk-3.0" "settings.ini"))

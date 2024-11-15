@@ -62,6 +62,7 @@
          grimshot ;; grimshot --notify copy area
          network-manager-applet
          libinput
+         wev
          wl-clipboard
          wlogout
 
