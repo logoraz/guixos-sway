@@ -36,11 +36,15 @@ font pango:JetBrains Mono 12
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# Sway System Controls
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+x exit
 bindsym $mod+Shift+r reload
-bindsym $mod+Shift+Return exec foot
 
+# Disable Trackpad
+bindsym $mod+Shift+t input type:touchpad events toggle enabled disabled
+
+# Window Focus
 bindsym $mod+h focus left
 bindsym $mod+l focus right
 
@@ -138,8 +142,7 @@ set $lock 'swaylock -f --screenshots --clock \
           --grace 60 --fade-in 0.25'
 
 set $qlock 'swaylock -f --screenshots --clock \
-           --effect-blur 9x7 --effect-vignette 0.25:0.5 \
-           --fade-in 0.25'
+           --effect-blur 9x7 --effect-vignette 0.25:0.5'
 
 exec swayidle -w \
   timeout 900 $lock \
@@ -149,6 +152,9 @@ exec swayidle -w \
 
 # Lock Screen
 bindsym $mod+Shift+o exec $qlock
+
+# Sway Session Controls
+bindsym $mod+Shift+e exec wlogout -p layer-shell
 
 # Night Light (CA lat/long)
 exec wlsunset -l 34.1 -L -117.7
@@ -210,18 +216,6 @@ exec gsettings set org.gnome.desktop.interface cursor-size 16
 
 # Update DBUS activation records to ensure Flatpak apps work
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-
-# Exit sway (logs you out of your Wayland session)
-# bindsym $mod+Shift+e exec swaynag -t warning \
-#         -m 'You pressed the exit shortcut. Do you really want to exit sway?' \
-#         -B 'Yes, exit sway' 'swaymsg exit'
-
-# Exit sway (wlogout -> provide a menu to logout, restart, shutdown, etc)
-bindsym $mod+Shift+e exec wlogout -p layer-shell
-
-# Toggle touchpad on or off
-# bindsym XF86TouchpadToggle input type:touchpad events toggle enabled disabled
-bindsym $mod+Shift+t input type:touchpad events toggle enabled disabled
 
 # Load system-specific configuration
 #include "~/.config/sway/systems/$(hostname)"
