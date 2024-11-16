@@ -25,11 +25,13 @@ Custom Guix System Distribution + Sway Configuration.
              |- emacs-guile.scm
              |- environment.scm
              |- raz-emacs.scm
+             |- streaming.scm        ;; WIP - borrowed from daviwil
              |- sway-desktop.scm
              |- udiskie.scm
              |- xdg-files.scm
        |- packages/                  ;; Custom Packages
           |- raz-emacs.scm
+          |- video.scm               ;; WIP - borrowed from daviwil
        |- services/                  ;; System Services
           |- tbd
        |- system/                    ;; Guix System directory
