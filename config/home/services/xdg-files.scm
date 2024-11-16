@@ -32,9 +32,17 @@
     ("sway/bin/toggle-display.sh"
      ,(home-file "files/sway/bin" "toggle-display.sh"))
 
-    ;; Yambar configuration (WIP)
+    ;; GTK configuration --> needed for mouse theme on GTK applications
+    ("gtk-3.0/settings.ini"
+     ,(home-file "files/gtk-3.0" "settings.ini"))
+
+    ;; ?? Yambar configuration (WIP)
     ;; ("yambar/config.yml"
     ;;  ,(home-file "files/yambar" "config.yml"))
+
+    ;; Fuzzel configuration
+    ("fuzzel/fuzzel.ini"
+     ,(home-file "files/fuzzel" "fuzzel.ini"))
 
     ;; wlogout configuration
     ("wlogout/layout"
@@ -60,10 +68,6 @@
 
     ("wlogout/icons/hibernate.svg"
      ,(home-file "files/wlogout/icons" "hibernate.svg"))
-
-    ;; GTK configuration
-    ("gtk-3.0/settings.ini"
-     ,(home-file "files/gtk-3.0" "settings.ini"))
 
     ;; GnuPG Configuration
     ("gnupg/gpg-agent.conf"

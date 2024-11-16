@@ -67,11 +67,8 @@ bindsym $mod+Shift+p sticky toggle
 # change focus between tiling / floating windows
 bindsym $mod+Control+space focus mode_toggle
 
-# App launcher
-bindsym $mod+space exec fuzzel \
-        -w 50 -x 8 -y 8 -r 3 \
-        -b 232635ff -t A6Accdff -s A6Accdff -S 232635ff -C c792eacc -m c792eacc \
-        -f "JetBrains Mono:weight=light:size=8" --icon-theme="Papirus-Dark"
+# App launcher - configured in fuzzel.ini
+bindsym $mod+space exec fuzzel
 
 # Set defaults
 default_orientation horizontal
@@ -184,19 +181,14 @@ bar {
     }
 }
 
-# Autostart Applications
+# Autostart Utility Applications
 exec mako --border-radius=2 --font="JetBrains Mono 8" \
           --max-visible=5 --outer-margin=5 --margin=3 --background="#1c1f26" \
           --border-color="#89AAEB" --border-size=1 --default-timeout=7000
 exec nm-applet --indicator
 exec udiskie -s
-# blueman-applet on Guix gives following Error:
-# g-dbus-error-quark: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: \
-# The name org.blueman.Mechanism was not provided by any .service files (2)
 # Open Guix Issue: https://issues.guix.gnu.org/71528
 # exec blueman-applet
-exec gammastep-indicator -l 37.983810:23.727539 -t 6500:3500 -b 1.0:0.7
-exec emacs
 
 # Cursor Theme
 seat * xcursor_theme Bibata-Original-Classic 16
