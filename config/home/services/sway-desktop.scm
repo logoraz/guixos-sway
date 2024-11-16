@@ -98,8 +98,9 @@
          ;; Browsers
          qutebrowser
          qtwayland
-         egl-wayland
          ;; (specification->package "qtwayland@5")
+         egl-wayland
+
          python
          python-pynacl
          icecat ;;staged for removal
