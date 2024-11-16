@@ -32,6 +32,10 @@
     ("sway/bin/toggle-display.sh"
      ,(home-file "files/sway/bin" "toggle-display.sh"))
 
+    ;; Yambar configuration (WIP)
+    ;; ("yambar/config.yml"
+    ;;  ,(home-file "files/yambar" "config.yml"))
+
     ;; wlogout configuration
     ("wlogout/layout"
      ,(home-file "files/wlogout" "layout"))
@@ -75,6 +79,13 @@
 
     ("qutebrowser/quteconfig.py"
      ,(home-file "files/qutebrowser" "quteconfig.py"))
+
+    ("qutebrowser/onedark-theme.py"
+     ,(home-file "files/qutebrowser" "onedark-theme.py"))
+
+    ;; WIP - disabled for now
+    ;; ("qutebrowser/emacs-keybindings.py"
+    ;;  ,(home-file "files/qutebrowser" "emacs-keybindings.py"))
 
     ("qutebrowser/qute-keepassxc"
      ,(home-file "files/qutebrowser" "qute-keepassxc"))))

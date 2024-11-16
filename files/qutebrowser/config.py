@@ -1,5 +1,10 @@
 # borrowed from:
-# https://github.com/daviwil/dotfiles/blob/master/.files/.config/qutebrowser/config.py
+# https://github.com/daviwil/dotfiles/.files/.config/qutebrowser/config.py
+
+# Load the autoconfig file (quteconfig.py)
+config.load_autoconfig()
+
+# Session Controls
 c.auto_save.session = True
 c.scrolling.smooth = True
 c.session.lazy_restore = True
@@ -15,26 +20,16 @@ c.fonts.statusbar = "JetBrains Mono"
 # Use dark mode where possible
 c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.darkmode.policy.images = "never"
-c.colors.webpage.bg = "black"
+# c.colors.webpage.bg = "black"
 
 # Make Ctrl+g quit everything like in Emacs
 config.bind('<Ctrl-g>', 'leave-mode', mode='insert')
 config.bind('<Ctrl-g>', 'leave-mode', mode='command')
 config.bind('<Ctrl-g>', 'leave-mode', mode='prompt')
 config.bind('<Ctrl-g>', 'leave-mode', mode='hint')
-# config.bind('v', 'spawn ~/.dotfiles/bin/umpv {url}')
-# config.bind('V', 'hint links spawn ~/.dotfiles/bin/umpv {hint-url}')
-
-# Load the autoconfig file (quteconfig.py)
-config.load_autoconfig()
-
-# Load qutemacs file (qutemacs.py) for Emacs Keybindings.
-#config.source('qutemacs.py')
 
 # Password Integration with KeepassXC
 # --> GPG key is needed for KeepassXC's keyfile... using GPG Key ID below
-# pinentry not working with gpg at least on wayland need to use
-# --pinentry-mode=loopback when invoking gpg --decrypt
 config.bind('<Alt-Shift-u>',
             'spawn --userscript qute-keepassxc --key DBCAD6D0FE9E5C0E7',
             mode='insert')
@@ -42,3 +37,9 @@ config.bind('<Alt-Shift-u>',
 config.bind('pw',
             'spawn --userscript qute-keepassxc --key DBCAD6D0FE9E5C0E7',
             mode='normal')
+
+# Load onedark-theme
+config.source('onedark-theme.py')
+
+# Load qutemacs file (qutemacs.py) for Emacs Keybindings.
+#config.source('qutemacs.py')

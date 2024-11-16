@@ -1,14 +1,10 @@
-# qutemacs - a simple, preconfigured Emacs binding set for qutebrowser
-#
-# The aim of this binding set is not to provide bindings for absolutely
-# everything, but to provide a stable launching point for people to make their
-# own bindings.
+# emacs-keybdings - a simple, preconfigured Emacs binding set for qutebrowser
 #
 # Installation:
 #
 # 1. Copy this file or add this repo as a submodule to your dotfiles.
 # 2. Add this line to your config.py, and point the path to this file:
-# config.source('qutemacs/qutemacs.py')
+# config.source('emacs-keybindings.py')
 #
 # References:
 # 1. https://www.reddit.com/r/qutebrowser/comments/eh10i7/config_share_qute_with_emacs_keybindings/
