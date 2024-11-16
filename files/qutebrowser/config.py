@@ -17,22 +17,18 @@ c.fonts.web.family.sans_serif = "JetBrains Mono"
 c.fonts.web.family.fixed = "JetBrains Mono"
 c.fonts.statusbar = "JetBrains Mono"
 
-# Load onedark-theme
-config.source('city-lights-theme.py')
-
-# Use dark mode where possible --> disabled for now trialing out onedark-the
-# c.colors.webpage.darkmode.enabled = True
-# c.colors.webpage.darkmode.policy.images = "never"
+# Use dark mode where possible
+c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.darkmode.policy.images = "never"
 # c.colors.webpage.bg = "black"
 
-# Make Ctrl+g quit everything like in Emacs
+# Make Ctrl+g quit everything and Alt+x act like M-x, like in Emacs
 config.bind('<Ctrl-g>', 'mode-leave', mode='insert')
 config.bind('<Ctrl-g>', 'mode-leave', mode='command')
 config.bind('<Ctrl-g>', 'mode-leave', mode='prompt')
 config.bind('<Ctrl-g>', 'mode-leave', mode='hint')
-
-# Load qutemacs file (qutemacs.py) for Emacs Keybindings. --> disabled until bugs fixed...
-#config.source('emacs-keybindings.py')
+config.bind('<Alt-x>', 'cmd-set-text :', mode='normal')
+config.bind('<Alt-x>', 'mode-leave;;cmd-set-text :', mode='insert')
 
 # Password Integration with KeepassXC
 # --> GPG key is needed for KeepassXC's keyfile... using GPG Key ID below
@@ -43,3 +39,6 @@ config.bind('<Alt-Shift-u>',
 config.bind('pw',
             'spawn --userscript qute-keepassxc --key DBCAD6D0FE9E5C0E7',
             mode='normal')
+
+# Load external/other configs --> place in ~/.config/qutebrowser/
+# config.source('other.py')
