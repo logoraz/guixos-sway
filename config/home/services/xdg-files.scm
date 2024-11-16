@@ -80,12 +80,12 @@
     ("qutebrowser/quteconfig.py"
      ,(home-file "files/qutebrowser" "quteconfig.py"))
 
-    ("qutebrowser/themes/city-lights.py"
-     ,(home-file "files/qutebrowser/themes" "city-lights.py"))
+    ("qutebrowser/city-lights-theme.py"
+     ,(home-file "files/qutebrowser" "city-lights-theme.py"))
 
     ;; WIP - disabled for now
-    ;; ("qutebrowser/keybindings/emacs.py"
-    ;;  ,(home-file "files/qutebrowser/keybindings" "emacs.py"))
+    ;; ("qutebrowser/emacs-theme.py"
+    ;;  ,(home-file "files/qutebrowser" "emacs-keybindings.py"))
 
     ("qutebrowser/qute-keepassxc"
      ,(home-file "files/qutebrowser" "qute-keepassxc"))))

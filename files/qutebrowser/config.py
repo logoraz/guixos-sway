@@ -18,7 +18,7 @@ c.fonts.web.family.fixed = "JetBrains Mono"
 c.fonts.statusbar = "JetBrains Mono"
 
 # Load onedark-theme
-config.source('themes/city-lights.py')
+config.source('city-lights-theme.py')
 
 # Use dark mode where possible --> disabled for now trialing out onedark-the
 # c.colors.webpage.darkmode.enabled = True
@@ -32,7 +32,7 @@ config.bind('<Ctrl-g>', 'mode-leave', mode='prompt')
 config.bind('<Ctrl-g>', 'mode-leave', mode='hint')
 
 # Load qutemacs file (qutemacs.py) for Emacs Keybindings. --> disabled until bugs fixed...
-#config.source('keybindings/emacs.py')
+#config.source('emacs-keybindings.py')
 
 # Password Integration with KeepassXC
 # --> GPG key is needed for KeepassXC's keyfile... using GPG Key ID below
