@@ -65,6 +65,7 @@
          wev
          wl-clipboard
          wlogout
+         yambar-wayland
 
          ;; Compatibility for older Xorg applications
          xorg-server-xwayland
