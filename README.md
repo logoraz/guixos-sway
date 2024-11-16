@@ -9,6 +9,8 @@ Custom Guix System Distribution + Sway Configuration.
 
 ![View 2](files/assets/screenshots/guix-sway-expose-2__2024-11-09.png)
 
+![View 3](files/assets/screenshots/guix-sway-expose-3__2024-11-15.png)
+
 
 ## Project Scaffolding
 
@@ -40,6 +42,8 @@ Custom Guix System Distribution + Sway Configuration.
        |- gnupg/...
        |- gtk-3.0/...
        |- qutebrowser/...
+       |- wlogout/...
+       |- yambar/...                 ;; WIP as alternative to swaybar...               
        |- sway/                      ;; Sway WM Directory
           |- config                  ;; Main Sway config file
           |- bin/
