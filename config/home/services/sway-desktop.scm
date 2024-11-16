@@ -98,6 +98,7 @@
          ;; Browsers
          qutebrowser
          qtwayland
+         egl-wayland
          ;; (specification->package "qtwayland@5")
          python
          python-pynacl

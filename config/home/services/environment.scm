@@ -4,8 +4,9 @@
 
   #:export (home-env-vars-configuration-service-type))
 
+;; borrowed from https://codeberg.org/daviwil/dotfiles/daviwil/systems/common.scm
 (define (home-env-vars-config-list config)
-  '(;; Sort hidden (dot) files first in ls listings
+  '( ;; Sort hidden (dot) files first in ls listings
     ("LC_COLLATE" . "C")
 
     ;; Set Emacs as editor
@@ -25,9 +26,14 @@
     ("SDL_VIDEODRIVER"     . "wayland")
     ("MOZ_ENABLE_WAYLAND"  . "1")
     ("CLUTTER_BACKEND"     . "wayland")
-    ("ELM_ENGINE"          . "wayland_egl")
+    ("ELM_ENGINE"          . "wayland-egl")
     ("ECORE_EVAS_ENGINE"   . "wayland-egl")
     ("QT_QPA_PLATFORM"     . "wayland-egl")
+
+    ;; GTK & QT Theme
+    ("GTK_THEME" . "Adwaita:dark")
+    ("QT_STYLE_OVERRIDE" . "adwaita")
+    ("QT_QPA_PLATFORMTHEME" . "gtk3")
 
     ;; Set XDG environment variables
     ("XDG_DOWNLOAD_DIR" . "/home/loraz/Downloads")
