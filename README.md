@@ -88,9 +88,10 @@ Next, download this project repo and install as follows:
 
 ## Establishing Wifi
 
-This can be done via also via `nm-connection-editor`, but I like to keep reference to `nmcli`
+This can be done with the UI via `nm-connection-editor`, but I like to keep reference to `nmcli`.
 Working on figuring out how to establish a 'clickable' swaybar icon to automatically bring up
-`nm-connection-editor`...
+`nm-connection-editor`, though also working on setting up a more advanced status panel with yambar,
+stay tuned...
 
 ```bash
   # List Wifi networks available
@@ -118,8 +119,9 @@ device connection first needs to be established via `blueman-manager`.
 
 Still working on better integration, such as auto-starting `blueman-applet` in sway config, however, it
 currently has a bug in it's dbus service that has yet to be addressed, see
-https://issues.guix.gnu.org/71528. Note this handles bluetooth connection once device has been
-established.
+https://issues.guix.gnu.org/71528. Note this handles bluetooth connection interfacing with sway, i.e.
+detection and notifications so you can start it up in a shell (and get a ugly warning message) once
+in your sway session - I usually don't and things still work, but w/o notifications...
 
 
 ## References:
