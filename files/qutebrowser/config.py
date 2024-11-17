@@ -33,11 +33,11 @@ config.bind('<Alt-x>', 'mode-leave;;cmd-set-text :', mode='insert')
 # Password Integration with KeepassXC
 # --> GPG key is needed for KeepassXC's keyfile... using GPG Key ID below
 config.bind('<Alt-Shift-u>',
-            'spawn --userscript qute-keepassxc --key DBCAD6D0FE9E5C0E7',
+            'spawn --userscript qute-keepassxc --key BCAD6D0FE9E5C0E7',
             mode='insert')
 
 config.bind('pw',
-            'spawn --userscript qute-keepassxc --key DBCAD6D0FE9E5C0E7',
+            'spawn --userscript qute-keepassxc --key BCAD6D0FE9E5C0E7',
             mode='normal')
 
 # Load external/other configs --> place in ~/.config/qutebrowser/
