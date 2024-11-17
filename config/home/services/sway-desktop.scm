@@ -115,10 +115,10 @@
          gst-plugins-bad
          gst-plugins-ugly
          gst-libav
-         ; alsa-utils
-         ; pavucontrol
          pipewire ;;|--> gnu packages linux
          wireplumber
+         ; alsa-utils
+         ; pavucontrol
 
          ;; File syncing
          ;syncthing-gtk
