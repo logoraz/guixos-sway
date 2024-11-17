@@ -11,7 +11,6 @@
   #:use-module (guix packages)
   #:use-module (config packages raz-emacs)
 
-
   #:export (home-raz-emacs-service-type
             home-raz-emacs-configuration))
 ;;;

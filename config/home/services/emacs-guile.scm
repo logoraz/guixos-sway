@@ -5,7 +5,6 @@
   #:use-module (gnu packages version-control)
   #:use-module (gnu packages guile)
   #:use-module (gnu packages guile-xyz)
-  #:use-module (gnu packages sdl)
   #:use-module (gnu packages lisp)
   #:use-module (gnu packages lisp-xyz)
   #:use-module (gnu home services)
@@ -62,11 +61,6 @@
         ;; Guile Scheme Emacs Integration
         guile-next
         guile-ares-rs
-        ;; Guile UI Development Tools & UI's
-        guile-hall
-        guile-hoot
-        guile-websocket
-        guile-g-golf
         ;; Common Lisp Integration
         sbcl
         sbcl-slynk))

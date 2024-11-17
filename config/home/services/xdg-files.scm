@@ -4,6 +4,7 @@
   #:use-module (gnu home services)
   #:use-module (guix gexp)
   #:use-module (gnu home services dotfiles)
+
   #:export (home-xdg-local-files-service-type))
 
 ;; TODO - Refactor, rename symbols accordingly!
@@ -35,10 +36,6 @@
     ;; GTK configuration --> needed for mouse theme on GTK applications
     ("gtk-3.0/settings.ini"
      ,(home-file "files/gtk-3.0" "settings.ini"))
-
-    ;; ?? Yambar configuration (WIP)
-    ;; ("yambar/config.yml"
-    ;;  ,(home-file "files/yambar" "config.yml"))
 
     ;; Fuzzel configuration
     ("fuzzel/fuzzel.ini"

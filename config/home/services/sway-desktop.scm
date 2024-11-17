@@ -12,7 +12,7 @@
   #:use-module (gnu packages xdisorg)
   #:use-module (gnu packages freedesktop)
   #:use-module (gnu packages linux)
-  #:use-module (gnu packages pulseaudio)
+;  #:use-module (gnu packages pulseaudio)
   #:use-module (gnu packages glib)
   #:use-module (gnu packages gnome)
   #:use-module (gnu packages gnome-xyz)
@@ -26,9 +26,7 @@
   #:use-module (gnu packages music)
   #:use-module (gnu packages video)
   #:use-module (gnu packages qt)
-  #:use-module (gnu packages python)
-  #:use-module (gnu packages python-crypto)
-  #:use-module (gnu packages syncthing)
+  ;#:use-module (gnu packages syncthing)
   #:use-module (gnu packages package-management)
   #:use-module (gnu packages password-utils)
   #:use-module (gnu packages gnupg)
@@ -37,7 +35,6 @@
   #:use-module (gnu packages inkscape)
   #:use-module (gnu packages pdf)
   #:use-module (gnu packages shellutils)
-
   #:use-module (gnu home services)
   #:use-module (gnu services)
   #:use-module (gnu services configuration)
@@ -56,25 +53,27 @@
 (define (home-sway-desktop-profile-service config)
   (list  swaybg
          swayidle
-         wlsunset
          fuzzel
+         wlogout
          mako
          grimshot ;; grimshot --notify copy area
+         wlsunset
          network-manager-applet
          libinput
-         wev
          wl-clipboard
-         wlogout
-         yambar-wayland
+         wev
 
          ;; Compatibility for older Xorg applications
          xorg-server-xwayland
 
-         ;; XDG Utilities
+         ;;Flatpak & XDG Utilities
+         flatpak
+         xdg-desktop-portal
+         xdg-desktop-portal-gtk
+         xdg-desktop-portal-wlr
          xdg-utils ;; For xdg-open, etc
          xdg-dbus-proxy
          shared-mime-info
-         udiskie
          (list glib "bin")
 
          ;; Appearance
@@ -85,25 +84,19 @@
          bibata-cursor-theme
 
          ;; Fonts
-         font-awesome
          font-jetbrains-mono
-         font-liberation
-         font-hack
          font-fira-code
+         font-hack
+         font-liberation
          font-iosevka-aile
+         font-awesome
          font-google-noto
          font-google-noto-emoji
          font-google-noto-sans-cjk
 
          ;; Browsers
          qutebrowser
-         qtwayland
-         ;; (specification->package "qtwayland@5")
-         egl-wayland
-
-         python
-         python-pynacl
-         icecat ;;staged for removal
+         qtwayland ;;(specification->package "qtwayland@5")
 
          ;; Authentication
          keepassxc
@@ -117,23 +110,30 @@
          youtube-dl
          playerctl
          gstreamer
+         gst-plugins-base
          gst-plugins-good
          gst-plugins-bad
+         gst-plugins-ugly
          gst-libav
-         ;; alsa-utils
-         ;; pavucontrol
+         ; alsa-utils
+         ; pavucontrol
          pipewire ;;|--> gnu packages linux
          wireplumber
 
+         ;; File syncing
+         ;syncthing-gtk
+
          ;; Applications
-         foot     ;;|--> gnu packages terminals
-         gnucash  ;;|--> gnu packages gnucash
-         gimp     ;;|--> gnu packages gimp
-         inkscape ;;|--> gnu packages inkscape
-         blender  ;;|--> gnu packages graphics
+         foot       ;;|--> gnu packages terminals
+         gnucash    ;;|--> gnu packages gnucash
+         gimp-next  ;;|--> gnu packages gimp
+         inkscape   ;;|--> gnu packages inkscape
+         blender    ;;|--> gnu packages graphics
 
          ;; General utilities
+         egl-wayland
          lm-sensors
+         udiskie
          blueman ;;|--> gnu packages networking
          bluez
          brightnessctl
