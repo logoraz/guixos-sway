@@ -117,15 +117,15 @@
          gst-libav
          pipewire ;;|--> gnu packages linux
          wireplumber
-         ; alsa-utils
-         ; pavucontrol
+         ;;alsa-utils
+         ;;pavucontrol
 
          ;; PDF reader
          zathura
          zathura-pdf-mupdf
 
          ;; File syncing
-                                        ;syncthing-gtk
+         ;;syncthing-gtk
 
          ;; Applications
          foot       ;;|--> gnu packages terminals
