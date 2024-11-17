@@ -1,12 +1,13 @@
 (define-module (config home services environment)
   #:use-module (gnu home)
   #:use-module (gnu home services)
+  #:use-module (guix gexp)
 
   #:export (home-env-vars-configuration-service-type))
 
 ;; borrowed from https://codeberg.org/daviwil/dotfiles/daviwil/systems/common.scm
 (define (home-env-vars-config-list config)
-  '( ;; Sort hidden (dot) files first in ls listings
+  `( ;; Sort hidden (dot) files first in ls listings
     ("LC_COLLATE" . "C")
 
     ;; Set Emacs as editor
@@ -34,6 +35,8 @@
     ("GTK_THEME" . "Adwaita:dark")
     ("QT_STYLE_OVERRIDE" . "adwaita")
     ("QT_QPA_PLATFORMTHEME" . "gtk3")
+    ;;TODO use gexp local-file to resolve this file...
+    ("GTK2_RC_FILES" . "/home/loraz/.guix-home/profile/share/themes/Adwaita-dark/gtk-2.0/gtkrc")
 
     ;; Set XDG environment variables
     ("XDG_DOWNLOAD_DIR" . "/home/loraz/Downloads")
