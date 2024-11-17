@@ -61,6 +61,7 @@
         ;; Guile Scheme Emacs Integration
         guile-next
         guile-ares-rs
+        guile-colorized
         ;; Common Lisp Integration
         sbcl
         sbcl-slynk))
