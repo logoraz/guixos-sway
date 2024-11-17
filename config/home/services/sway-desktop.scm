@@ -120,8 +120,12 @@
          ; alsa-utils
          ; pavucontrol
 
+         ;; PDF reader
+         zathura
+         zathura-pdf-mupdf
+
          ;; File syncing
-         ;syncthing-gtk
+                                        ;syncthing-gtk
 
          ;; Applications
          foot       ;;|--> gnu packages terminals
