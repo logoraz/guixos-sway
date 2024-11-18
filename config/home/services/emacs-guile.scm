@@ -33,7 +33,7 @@
         emacs-no-littering
         emacs-ws-butler
         emacs-undo-tree
-        emacs-paredit
+
         emacs-visual-fill-column
         emacs-ace-window
         emacs-mct
@@ -42,25 +42,36 @@
         emacs-marginalia
         emacs-beframe
         emacs-denote
-        emacs-magit
-        emacs-vterm
-        emacs-guix
-        emacs-arei
-        emacs-sly
+
+        ;; Mail & Org
         ;;https://packages.guix.gnu.org/packages/emacs-pinentry/0.1-1.dcc9ba0/
         emacs-pinentry
         emacs-mbsync
         emacs-org-superstar
         emacs-org-appear
+
+        ;; IRC
         emacs-erc-hl-nicks
         emacs-erc-image
         emacs-emojify
-        ;; Magit
+
+        ;; Development Packages
+        emacs-magit
+        emacs-vterm
+        emacs-paredit
+        emacs-guix
+        emacs-macrostep
+        emacs-sly
+        ;; emacs-arei ;; Experimental alternative to geiser
+
+        ;; Utilities
         git
         (list git "send-email")
+
         ;; Guile Scheme Emacs Integration
-        guile-next
-        guile-ares-rs
+        ;; guile-3.0
+        ;; guile-next
+        ;; guile-ares-rs
         guile-colorized
         ;; Common Lisp Integration
         sbcl
