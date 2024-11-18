@@ -1,6 +1,5 @@
 (define-module (config home services emacs-guile)
   #:use-module (gnu packages)
-  #:use-module (gnu packages emacs)
   #:use-module (gnu packages emacs-xyz)
   #:use-module (gnu packages version-control)
   #:use-module (gnu packages guile)
@@ -60,10 +59,10 @@
         emacs-vterm
         emacs-paredit
         emacs-arei
-        emacs-guix
+        emacs-guix ;; comes loaded with geiser and geiser-guile etc...
         emacs-macrostep
         emacs-sly
-        ;; emacs-arei ;; Experimental alternative to geiser
+        emacs-arei ;; Experimental alternative to geiser
 
         ;; Utilities
         git

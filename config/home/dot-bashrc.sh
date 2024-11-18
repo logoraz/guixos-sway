@@ -33,4 +33,7 @@ fi
 #
 # Vterm (Emacs) Configuration
 #
-source ${XDG_CONFIG_HOME}/vterm/emacs-vterm-bash.sh
+emacs_vterm_path=${XDG_CONFIG_HOME}/vterm
+if [ "$INSIDE_EMACS" = 'vterm' ] && [ -d $emacs_vterm_path ]; then
+    source $emacs_vterm_path/emacs-vterm-bash.sh
+fi
