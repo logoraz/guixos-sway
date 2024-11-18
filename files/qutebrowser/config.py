@@ -22,11 +22,14 @@ c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.darkmode.policy.images = "never"
 # c.colors.webpage.bg = "black"
 
-# Make Ctrl+g quit everything and Alt+x act like M-x, like in Emacs
+# Make Ctrl+g quit everything
+# open "qute://bindings/" to view all of qutebrowsers bindings
 config.bind('<Ctrl-g>', 'mode-leave', mode='insert')
 config.bind('<Ctrl-g>', 'mode-leave', mode='command')
 config.bind('<Ctrl-g>', 'mode-leave', mode='prompt')
 config.bind('<Ctrl-g>', 'mode-leave', mode='hint')
+config.bind('<Ctrl-g>', 'mode-leave', mode='caret')
+# Make Alt+x act like M-x in Emacs
 config.bind('<Alt-x>', 'cmd-set-text :', mode='normal')
 config.bind('<Alt-x>', 'mode-leave;;cmd-set-text :', mode='insert')
 
