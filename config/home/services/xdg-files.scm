@@ -70,9 +70,12 @@
     ("gnupg/gpg-agent.conf"
      ,(home-file "files/gnupg" "gpg-agent.conf"))
 
-    ;; Terminal configuration
+    ;; Terminal configurations
     ("foot/foot.ini"
      ,(home-file "files/foot" "foot.ini"))
+
+    ("vterm/emacs-vterm-bash.sh"
+     ,(home-file "files/vterm" "emacs-vterm-bash.sh"))
 
     ;; Qutebrowser Configuration Files
     ("qutebrowser/config.py"

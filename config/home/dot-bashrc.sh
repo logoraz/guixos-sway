@@ -29,3 +29,8 @@ then
 else
     PS1='\u@\h \w\$ '
 fi
+
+#
+# Vterm (Emacs) Configuration
+#
+source ${XDG_CONFIG_HOME}/vterm/emacs-vterm-bash.sh
