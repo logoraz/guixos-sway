@@ -23,6 +23,10 @@
     ("guix/channels.scm"
      ,(home-file "config/system" "channels.scm"))
 
+    ;;TODO: prep for GNU guile next relase to store these in XDG_CONFIG_HOME...
+    ("guile/guile-rc.scm"
+     ,(home-file "files/guile" "guile-rc.scm"))
+
     ;; Sway configuration files
     ("sway/config"
      ,(home-file "files/sway" "config"))
