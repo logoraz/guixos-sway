@@ -7,8 +7,6 @@
   #:use-module (gnu packages guile-xyz)
   #:use-module (gnu packages lisp)
   #:use-module (gnu packages lisp-xyz)
-  #:use-module (gnu packages gtk)
-  #:use-module (gnu packages gnome)
   #:use-module (gnu home services)
   #:use-module (gnu services)
   #:use-module (gnu services configuration)
@@ -61,6 +59,7 @@
         emacs-magit
         emacs-vterm
         emacs-paredit
+        emacs-arei
         emacs-guix
         emacs-macrostep
         emacs-sly
@@ -72,15 +71,9 @@
 
         ;; Guile Scheme Emacs Integration
         ;; guile-3.0      ;not needed since I live in Guix SD!
-        ;; guile-next     ;doesn't work with g-golf
-        ;; guile-ares-rs  ;going to use geiser  for now
+        guile-next     ;doesn't work with g-golf
+        guile-ares-rs
         guile-colorized
-        guile-hall
-        guile-hoot
-        guile-websocket
-        guile-g-golf
-        gtk
-        libadwaita
         ;; Common Lisp Integration
         sbcl
         sbcl-slynk))
