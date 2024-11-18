@@ -1,4 +1,8 @@
 # gitignore
 
+# main
+
+# config
+
 # files
-/files/qutebrowser/config.py
+
