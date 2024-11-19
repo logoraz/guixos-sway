@@ -29,6 +29,8 @@ config.bind('<Ctrl-g>', 'mode-leave', mode='command')
 config.bind('<Ctrl-g>', 'mode-leave', mode='prompt')
 config.bind('<Ctrl-g>', 'mode-leave', mode='hint')
 config.bind('<Ctrl-g>', 'mode-leave', mode='caret')
+config.bind('<Ctrl-g>', 'mode-leave', mode='passthrough')
+
 # Make Alt+x act like M-x in Emacs
 config.bind('<Alt-x>', 'cmd-set-text :', mode='normal')
 config.bind('<Alt-x>', 'mode-leave;;cmd-set-text :', mode='insert')
