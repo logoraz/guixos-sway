@@ -23,7 +23,7 @@ if [[ -e /etc/bashrc ]]; then
 fi
 
 # Adjust the prompt depending on whether we're in 'guix environment'.
-if [ -n "$GUIX_ENVIRONMENT" ]
+if [[ -n "$GUIX_ENVIRONMENT" ]]
 then
     PS1='\u@\h \w [env]\$ '
 else
@@ -34,6 +34,8 @@ fi
 # Vterm (Emacs) Configuration
 #
 emacs_vterm_path=${XDG_CONFIG_HOME}/vterm
-if [ "$INSIDE_EMACS" = 'vterm' ] && [ -d $emacs_vterm_path ]; then
+
+if [[ "$INSIDE_EMACS" = 'vterm' && -d "$emacs_vterm_path" ]]
+then
     source $emacs_vterm_path/emacs-vterm-bash.sh
 fi
