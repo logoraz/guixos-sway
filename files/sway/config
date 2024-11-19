@@ -151,7 +151,7 @@ exec swayidle -w \
 bindsym $mod+Shift+o exec $qlock
 
 # Sway Session Controls
-bindsym $mod+Shift+e exec wlogout -p layer-shell
+bindsym $mod+Shift+space exec wlogout -p layer-shell
 
 # Night Light (CA lat/long)
 exec wlsunset -l 34.1 -L -117.7
