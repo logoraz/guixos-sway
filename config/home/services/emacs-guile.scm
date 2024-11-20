@@ -71,8 +71,8 @@
         ;; Guile Scheme Emacs Integration
         ;; guile-3.0      ;not needed since I live in Guix SD!
         guile-next     ;doesn't work with g-golf
-        guile-ares-rs
         guile-colorized
+        guile-ares-rs
         ;; Common Lisp Integration
         sbcl
         sbcl-slynk))
