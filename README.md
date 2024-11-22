@@ -9,7 +9,7 @@ Custom Guix System Distribution + Sway Configuration.
 
 ![View 2](files/assets/screenshots/guix-sway-expose-2__2024-11-16.png)
 
-![View 3](files/assets/screenshots/guix-sway-expose-3__2024-11-15.png)
+![View 3](files/assets/screenshots/guix-sway-expose-3__2024-11-21.png)
 
 
 ## Project Scaffolding
