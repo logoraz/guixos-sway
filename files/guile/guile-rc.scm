@@ -18,8 +18,10 @@
 ;;          (display "Consider installing the 'guile-colorized' package
 ;; for a colorful Guile experience.\n\n"))))
 
-;; Use globally w/o conditions
+;; Use globally
 (use-modules (ice-9 readline)
+             (ice-9 format)
+             (ice-9 pretty-print)
              (ice-9 colorized))
 
 (activate-readline)
