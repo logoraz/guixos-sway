@@ -90,7 +90,7 @@ Next, download this project repo and install as follows:
 
 This can be done with the UI via `nm-connection-editor`, but I like to keep reference to `nmcli`.
 Working on figuring out how to establish a 'clickable' swaybar icon to automatically bring up
-`nm-connection-editor`, though also working on setting up a more advanced status panel with yambar,
+`nm-connection-editor`.
 stay tuned...
 
 ```bash
