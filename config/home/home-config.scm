@@ -53,6 +53,9 @@
               ;; Sway Desktop profile configuration
               (service home-sway-desktop-service-type)
 
+              ;; Streaming profile service
+              (service home-streaming-service-type)
+
               ;; Bash configuration
               (service home-bash-service-type
                        (home-bash-configuration
