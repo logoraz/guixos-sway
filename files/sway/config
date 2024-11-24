@@ -126,7 +126,7 @@ bindsym --locked XF86AudioMicMute exec wpctl set-mute \@DEFAULT_AUDIO_SOURCE@ to
 bindsym Print exec grimshot --notify save output
 bindsym Alt+Print exec grimshot --notify save area
 
-set $bgcolor #1d1f21dd
+set $bgcolor #232635dd
 set $bordercolor #5e81accc
 
 
