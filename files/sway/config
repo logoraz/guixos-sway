@@ -126,8 +126,12 @@ bindsym --locked XF86AudioMicMute exec wpctl set-mute \@DEFAULT_AUDIO_SOURCE@ to
 bindsym Print exec grimshot --notify save output
 bindsym Alt+Print exec grimshot --notify save area
 
-set $bgcolor #232635dd
-set $bordercolor #c792eacc
+# set $bgcolor #232635dd
+# set $bordercolor #c792eacc
+
+set $bgcolor #eceff4d9
+set $bordercolor #5e81accc
+
 
 # Style the UI
 client.focused $bordercolor $bgcolor #ffffffff #ffffffff #c792eacc 
@@ -182,9 +186,10 @@ bar {
 }
 
 # Autostart Utility Applications
-exec mako --border-radius=2 --font="JetBrains Mono 8" \
-          --max-visible=5 --outer-margin=5 --margin=3 --background="#1c1f26" \
-          --border-color="#89AAEB" --border-size=1 --default-timeout=7000
+# exec mako --border-radius=2 --font="JetBrains Mono 8" \
+#           --max-visible=5 --outer-margin=5 --margin=3 --background="#1c1f26" \
+#           --border-color="#89AAEB" --border-size=1 --default-timeout=7000
+exec mako
 exec nm-applet --indicator
 exec udiskie -s
 # Open Guix Issue: https://issues.guix.gnu.org/71528
