@@ -1,11 +1,28 @@
 # Mako configuration file
 
-border-radius=2
-font="JetBrains Mono 8"
-max-visible=5
-outter-margin=5
-margin=3
-background="#1c1f26"
-border-color="#89AAEB"
+font=Hack 9
+text-color=#ffffff
+background-color=#1c1f26ee
+border-color=#89AAEBee
 border-size=1
+border-radius=4
+padding=5
+height=200
+width=300
+
+layer=overlay
 default-timeout=7000
+ignore-timeout=0
+icons=1
+anchor=top-right
+sort=+time
+
+max-visible=5
+
+[hidden]
+format=(and %h more)
+text-color=#777777
+
+[urgency=high]
+background-color=#c00000
+border-color=#ff0000
