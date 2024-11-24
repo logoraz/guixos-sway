@@ -1,0 +1,11 @@
+# Mako configuration file
+
+border-radius=2
+font="JetBrains Mono 8"
+max-visible=5
+outter-margin=5
+margin=3
+background="#1c1f26"
+border-color="#89AAEB"
+border-size=1
+default-timeout=7000

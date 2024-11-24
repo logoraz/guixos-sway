@@ -41,6 +41,10 @@
     ("gtk-3.0/settings.ini"
      ,(home-file "files/gtk-3.0" "settings.ini"))
 
+    ;; Mako configuration
+    ("mako/config"
+     ,(home-file "files/mako" "config"))
+
     ;; Fuzzel configuration
     ("fuzzel/fuzzel.ini"
      ,(home-file "files/fuzzel" "fuzzel.ini"))
