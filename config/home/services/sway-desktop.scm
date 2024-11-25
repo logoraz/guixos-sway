@@ -156,7 +156,7 @@
 ;; see: https://mail.gnu.org/archive/html/guix-patches/2024-10/msg00020.html
 ;; for examples of configuration
 ;; (define (home-sway-config-gexp config)
-;;   `()
+;;   #~()
 ;;   )
 
 (define home-sway-desktop-service-type

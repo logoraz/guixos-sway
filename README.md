@@ -1,6 +1,6 @@
 # dotfiles
 
-GuixOS Sway Train: Custom Guix System Distribution + Sway Configuration.
+GuixOS "Sway Train": Custom Guix System Distribution + Sway Configuration.
 
 
 ## Screenshots
