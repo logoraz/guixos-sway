@@ -129,11 +129,11 @@ notifications...
 ## TODOs (Wish List)
 
  - Configure Sway in Guile/Guix via `home-sway-service-type`
- - Minimize dependency on `xdg-files (reserved for one-off's where possible)
+ - Minimize dependency on `xdg-files` (reserved for one-off's where possible)
  - Create custom system service to handle package substitutes & transformations
  - Create base system config to apply to machine-specific configurations. 
  - Research solution to blueman-applet: https://issues.guix.gnu.org/71528
- - Update Emacs config to (use Guile/Guix) 'home-emacs-service-type` once available
+ - Update Emacs config to (use Guile/Guix) `home-emacs-service-type` once available
 
    
 ## References:
