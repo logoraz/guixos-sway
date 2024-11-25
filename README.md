@@ -55,14 +55,14 @@ GuixOS "Sway Train": Custom Guix System Distribution + Sway Configuration.
 ```
 
 
-## Goals
+## Philosophy
 
- - Create a highly functional WM setup that is efficient & aesthetically pleasing 
+ - Create a highly functional WM setup that is efficient & aesthetic 
  - Construct a modulur Guix System configuration as a Guile program
  - Handle customizations as custom Guix packages & services
- - Configure everything using Guix/Guile (where possible)
+ - Configure everything using Guile/Guix where possible!
  - Generalize to support setup on multiple machines
- - Optimize to create an efficient system for programing in Guile Scheme
+ - Optimize to create an efficient system for hacking in Guile Scheme
  - Eventually create a System/Home service utility that enhances Guix   
 
 
@@ -73,8 +73,8 @@ First download and install Guix System from either of the release images below:
  - https://gitlab.com/nonguix/nonguix/-/releases
  - https://github.com/SystemCrafters/guix-installer
 
-Once Guix has been installed from the images do a `guix pull` and `guix system reconfigure`
-to get to the latest.
+Once Guix has been installed from the images do a `guix pull` and
+`guix system reconfigure` to get to the latest.
 
 Next, download this project repo and install as follows:
 
@@ -89,10 +89,9 @@ Next, download this project repo and install as follows:
 
 ## Establishing Wifi
 
-This can be done with the UI via `nm-connection-editor`, but I like to keep reference to `nmcli`.
-Working on figuring out how to establish a 'clickable' swaybar icon to automatically bring up
-`nm-connection-editor`.
-stay tuned...
+This can be done with the UI via `nm-connection-editor`, but I like to keep
+reference to `nmcli`. Working on figuring out how to establish a 'clickable'
+swaybar icon to automatically bring up `nm-connection-editor`. stay tuned...
 
 ```bash
   # List Wifi networks available
@@ -115,14 +114,17 @@ List known connections and delete them from list in Network Manager.
 
 ## Establishing Bluetooth
 
-Bluetooth works and is automatically deployed via bluez in Guix system config, however, initial
-device connection first needs to be established via `blueman-manager`.
+Bluetooth works and is automatically deployed via bluez in Guix system config,
+however, initial device connection first needs to be established via
+`blueman-manager`.
 
-Still working on better integration, such as auto-starting `blueman-applet` in sway config, however, it
-currently has a bug in it's dbus service that has yet to be addressed, see
-https://issues.guix.gnu.org/71528. Note this handles bluetooth connection interfacing with sway, i.e.
-detection and notifications so you can start it up in a shell (and get a ugly warning message) once
-in your sway session - I usually don't and things still work, but w/o notifications...
+Still working on better integration, such as auto-starting `blueman-applet`
+in sway config, however, it currently has a bug in it's dbus service that has
+yet to be addressed, see https://issues.guix.gnu.org/71528. Note this handles
+bluetooth connection interfacing with sway, i.e. detection and notifications
+so you can start it up in a shell (and get a ugly warning message) once in
+your sway session - I usually don't and things still work, but with out
+notifications...
 
 ## TODOs (Wish List)
 
