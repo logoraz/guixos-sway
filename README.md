@@ -13,41 +13,44 @@ Custom Guix System Distribution + Sway Configuration.
 ## Project Scaffolding
 
 ```scm
-    dotfiles/                        ;; Project root directory
+    dotfiles/                        ;; Project root
     |- config/
-       |- home/                      ;; Guix Home directory
-          |- dot-bash_profile.sh
+       |- home/                      ;; Guix Home config
+          |- home-config.scm         ;; ** Home Config **
+          |- dot-bash_profile.sh               
           |- dot-bashrc.sh
-          |- home-config.scm         ;; Main Guix Home Config
-          |- services/
+          |- services/               ;; Home Services
              |- emacs-guile.scm
              |- environment.scm
              |- raz-emacs.scm
-             |- streaming.scm        ;; WIP - borrowed from daviwil
+             |- streaming.scm
              |- sway-desktop.scm
              |- udiskie.scm
              |- xdg-files.scm
-       |- packages/                  ;; Custom Packages
+       |- packages/                  ;; Custom Guix Packages
           |- raz-emacs.scm
-          |- video.scm               ;; WIP - borrowed from daviwil
-       |- services/                  ;; System Services
+          |- video.scm
+       |- services/                  ;; Custom System Services
           |- tbd
-       |- system/                    ;; Guix System directory
+       |- system/                    ;; Guix System config
+          |- system-config.scm       ;; ** System Config **
           |- base-system.scm
           |- channels.scm
-          |- system-config.scm       ;; Main Guix System Config
     |- files/                        ;; XDG_CONFIG_HOME Files
        |- assets/...
+       |- guile/...
        |- gtk-3.0/...
        |- foot/...
+       |- vterm/...
        |- fuzzel/...
+       |- mako/...
        |- wlogout/...
        |- qutebrowser/...
        |- gnupg/...    
-       |- sway/                      ;; Sway WM Directory
-          |- config                  ;; Main Sway config file
+       |- sway/                      ;; Sway WM config
+          |- config
           |- bin/
-             |- swaybar-status.sh    ;; Swaybar configuration
+             |- swaybar-status.sh
              |- toggle-display.sh    ;; WIP
 ```
 
