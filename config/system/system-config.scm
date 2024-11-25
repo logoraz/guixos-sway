@@ -1,4 +1,5 @@
 (define-module (config system system-config)
+  ;; #:use-module (config system base-system)
   #:use-module (gnu)
   #:use-module (gnu system nss)
   #:use-module (gnu system keyboard)
@@ -27,6 +28,7 @@
   (keyboard-layout "us"))
 
 ;; System Services
+;; TODO: Move to custom system service (if possible)
 ;; Use Package substitutes instead of compiling everything & specify channels
 ;; https://guix.gnu.org/manual/en/html_node/Getting-Substitutes-from-Other-Servers.html
 (define (substitutes->services config)
@@ -81,8 +83,10 @@
 
 (define user-name "loraz")
 
-(define os-config
+(define guixos-sway
   (operating-system
+   ;; TODO: create base system config --> base-guixos
+   ;; (inherit guixos-base)
    (host-name "locutus")
    (timezone "America/Los_Angeles")
    (locale "en_US.utf8")
@@ -137,4 +141,4 @@
    ;; Allow resolution of '.local' host names with mDNS.
    (name-service-switch %mdns-host-lookup-nss)))
 
-os-config
+guixos-sway

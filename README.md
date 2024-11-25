@@ -1,6 +1,6 @@
 # dotfiles
 
-Custom Guix System Distribution + Sway Configuration.
+GuixOS Sway Train: Custom Guix System Distribution + Sway Configuration.
 
 
 ## Screenshots
@@ -124,7 +124,16 @@ https://issues.guix.gnu.org/71528. Note this handles bluetooth connection interf
 detection and notifications so you can start it up in a shell (and get a ugly warning message) once
 in your sway session - I usually don't and things still work, but w/o notifications...
 
+## TODOs (Wish List)
 
+ - Configure Sway in Guile/Guix via `home-sway-service-type`
+ - Minimize dependency on `xdg-files (reserved for one-off's where possible)
+ - Create custom system service to handle package substitutes & transformations
+ - Create base system config to apply to machine-specific configurations. 
+ - Research solution to blueman-applet: https://issues.guix.gnu.org/71528
+ - Update Emacs config to (use Guile/Guix) 'home-emacs-service-type` once available
+
+   
 ## References:
 
   - TBD

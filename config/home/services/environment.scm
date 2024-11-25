@@ -6,7 +6,7 @@
   #:export (home-env-vars-configuration-service-type))
 
 ;; borrowed from https://codeberg.org/daviwil/dotfiles/daviwil/systems/common.scm
-(define (home-env-vars-config-list config)
+(define (home-env-vars-config-gexp config)
   `( ;; Sort hidden (dot) files first in ls listings
     ("LC_COLLATE" . "C")
 
@@ -49,5 +49,5 @@
                 (extensions
                  (list (service-extension
                         home-environment-variables-service-type
-                        home-env-vars-config-list)))
+                        home-env-vars-config-gexp)))
                 (default-value #f)))

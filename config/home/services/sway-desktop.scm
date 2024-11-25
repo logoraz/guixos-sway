@@ -35,9 +35,13 @@
   #:use-module (gnu packages inkscape)
   #:use-module (gnu packages pdf)
   #:use-module (gnu packages shellutils)
-  #:use-module (gnu home services)
+
   #:use-module (gnu services)
   #:use-module (gnu services configuration)
+  #:use-module (gnu home services)
+  ;; TODO: implement sway via Guile...
+  ;; https://git.savannah.gnu.org/cgit/guix.git/tree/gnu/home/services/sway.scm
+  ;; #:use-module (gnu home services sway)
   #:use-module (guix gexp)
   #:use-module (guix transformations)
 
@@ -148,6 +152,12 @@
          unzip
          trash-cli))
 
+;; TODO - set sway config here in scheme another file
+;; see: https://mail.gnu.org/archive/html/guix-patches/2024-10/msg00020.html
+;; for examples of configuration
+;; (define (home-sway-config-gexp config)
+;;   `()
+;;   )
 
 (define home-sway-desktop-service-type
   (service-type (name 'home-sway-desktop-config)
@@ -155,5 +165,10 @@
                 (extensions
                  (list (service-extension
                         home-profile-service-type
-                        home-sway-desktop-profile-service)))
+                        home-sway-desktop-profile-service)
+                       ;; TODO
+                       ;; (service-extension
+                       ;;  home-sway-service-type
+                       ;;  home-sway-config-gexp)
+                       ))
                 (default-value #f)))
