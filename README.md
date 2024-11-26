@@ -121,8 +121,8 @@ however, initial device connection first needs to be established via
 Still working on better integration, such as auto-starting `blueman-applet`
 in sway config, however, it currently has a bug in it's dbus service that has
 yet to be addressed, see https://issues.guix.gnu.org/71528. Note this handles
-bluetooth connection interfacing with sway, i.e. detection and notifications
-so you can start it up in a shell (and get a ugly warning message) once in
+bluetooth connection interfacing with sway, i.e. detection and notifications.
+You can start it up in a shell (and get a ugly warning message) once in
 your sway session - I usually don't and things still work, but with out
 notifications...
 
