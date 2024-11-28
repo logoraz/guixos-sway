@@ -48,6 +48,10 @@
         emacs-mbsync
         emacs-org-superstar
         emacs-org-appear
+        isync
+        smtpmail
+        mu
+
 
         ;; IRC
         emacs-erc-hl-nicks

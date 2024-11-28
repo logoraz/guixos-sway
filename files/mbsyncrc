@@ -1,0 +1,28 @@
+# .mbsyncr file
+IMAPAccount fastmail
+Host imap.fastmail.com
+Port 993
+User erikalmaraz@fastmail.com
+PassCmd "gpg --quiet --for-your-eyes-only --no-tty --decrypt ~/Documents/moses/fastmail/app.gpg"
+SSLType IMAPS
+SSLVersions TLSv1.2
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore fastmail-remote
+Account fastmail
+
+MaildirStore fastmail-local
+Path ~/.local/share/mu4e/Fastmail/
+Inbox ~/.local/share/mu4e/Fastmail/INBOX/
+Trash ~/.local/share/mu4e/Fastmail/Trash/
+SubFolders Verbatim
+
+Channel fastmail
+Master :fastmail-remote:
+Slave :fastmail-local:
+Patterns *
+Expunge None
+CopyArrivalDate yes
+Sync All
+Create Both
+SyncState *
