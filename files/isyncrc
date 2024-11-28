@@ -1,4 +1,4 @@
-# .mbsyncr file
+# isyncr file
 IMAPAccount fastmail
 Host imap.fastmail.com
 Port 993

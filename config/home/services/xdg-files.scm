@@ -79,8 +79,8 @@
      ,(home-file "files/gnupg" "gpg-agent.conf"))
 
     ;; mbsync configuration (for mu/mu4e)
-    ("mbsyncrc"
-     ,(home-file "files" "mbsyncrc"))
+    ("isyncrc"
+     ,(home-file "files" "isyncrc"))
 
     ;; Terminal configurations
     ("foot/foot.ini"

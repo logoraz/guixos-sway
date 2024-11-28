@@ -6,6 +6,7 @@
   #:use-module (gnu packages guile-xyz)
   #:use-module (gnu packages lisp)
   #:use-module (gnu packages lisp-xyz)
+  #:use-module (gnu packages mail)
   #:use-module (gnu home services)
   #:use-module (gnu services)
   #:use-module (gnu services configuration)
