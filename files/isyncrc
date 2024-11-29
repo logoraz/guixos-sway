@@ -12,7 +12,7 @@ Account fastmail
 
 MaildirStore fastmail-local
 Path ~/.local/share/mu4e/Fastmail/
-Inbox ~/.local/share/mu4e/Fastmail/INBOX/
+Inbox ~/.local/share/mu4e/Fastmail/Inbox/
 Trash ~/.local/share/mu4e/Fastmail/Trash/
 SubFolders Verbatim
 
