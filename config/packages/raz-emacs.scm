@@ -18,10 +18,10 @@
             (method git-fetch)
             (uri (git-reference
                   (url "https://codeberg.org/loraz/raz-emacs.git")
-                  (commit "521f0923fd82b69127c5ee51d3bae30d0c54fe98")))
+                  (commit "f5d8550ae6cfdf6a85d316bf3a06e4b8fc37c59b")))
             (hash
              (content-hash
-              "0pzm0gd58j0nqq1hs9ph47zfrfs26zdycf2c0lw7biydgjki6hcz"))))
+              "08i6b3jfshb3dvlv3nqgj2649p4qpy9i1x3j7j76hhc1yiral9xk"))))
    (build-system copy-build-system)
    (home-page "https://codeberg.org/loraz/raz-emacs")
    (synopsis "Raz Emacs")
