@@ -1,27 +1,31 @@
 # isyncr file
+# See: https://fanpengkong.com/post/emacs-email/emacs-email/#headline-2
+
+# Account Information
 IMAPAccount fastmail
 Host imap.fastmail.com
 Port 993
 User erikalmaraz@fastmail.com
 PassCmd "gpg --quiet --for-your-eyes-only --no-tty --decrypt ~/Documents/moses/fastmail/app.gpg"
 TLSType IMAPS
+AuthMechs LOGIN
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
+# Remote Storage
 IMAPStore fastmail-remote
 Account fastmail
 
+# Local Storage: CREATE DIRECTORIES with mkdir -p <maildir>/Fastmail
 MaildirStore fastmail-local
 Path ~/.local/share/mu4e/Fastmail/
-Inbox ~/.local/share/mu4e/Fastmail/Inbox/
-Trash ~/.local/share/mu4e/Fastmail/Trash/
+Inbox ~/.local/share/mu4e/Fastmail/INBOX/
 SubFolders Verbatim
 
 Channel fastmail
 Far :fastmail-remote:
 Near :fastmail-local:
 Patterns *
-Expunge None
-CopyArrivalDate yes
-Sync All
 Create Both
+Expunge Both
+Sync All
 SyncState *
