@@ -80,7 +80,11 @@
 
     ;; mbsync configuration (for mu/mu4e)
     ("isyncrc"
-     ,(home-file "files" "isyncrc"))
+     ,(home-file "files/isync" "isyncrc"))
+
+    ;; msmtp configuration (for mu/mu4e)
+    ("msmtp/config"
+     ,(home-file "files/msmtp" "config"))
 
     ;; Terminal configurations
     ("foot/foot.ini"

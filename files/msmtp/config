@@ -1,0 +1,20 @@
+# msmtp config
+
+# Set default values for all following accounts.
+defaults
+auth           on
+tls            on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+logfile        ~/.cache/msmtp.log
+
+# Fastmail
+account        fastmail
+host           smtp.fastmail.com
+port           465
+tls_starttls   off
+from           erikalmaraz@fastmail.com
+user           erikalmaraz@fastmail.com
+passwordeval   "gpg -q --for-your-eyes-only --no-tty -d ~/Documents/moses/fastmail/app.gpg" 
+
+# Set a default account
+account default: fastmail

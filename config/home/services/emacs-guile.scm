@@ -50,7 +50,7 @@
         emacs-org-superstar
         emacs-org-appear
         isync
-        smtpmail
+        msmtp
         mu
 
 
