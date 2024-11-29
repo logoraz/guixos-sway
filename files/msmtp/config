@@ -1,5 +1,8 @@
 # msmtp config
 # See: https://fanpengkong.com/post/emacs-email/emacs-email/#headline-2
+#
+# This file is placed in XDG_CONFIG_HOME/msmtp/config via Guix xdg-files service
+#
 
 # Set default values for all following accounts.
 defaults
