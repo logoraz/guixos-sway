@@ -1,4 +1,5 @@
-(define-module (config systems base-system)
+;; WIP
+(define-module (config systems guixos-base)
   #:use-modules (gnu)
   #:use-modules (guix)
   #:use-module (nongnu packages linux)
