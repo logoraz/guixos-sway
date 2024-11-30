@@ -2,6 +2,8 @@
 
 GuixOS "Sway Train": Custom Guix System Distribution + Sway Configuration.
 
+This is specifically setup and trailed with my Lenovo ThinkPad X1 Carbon
+4th Gen (Type 20FB) Laptop.
 
 ## Screenshots
 
@@ -17,6 +19,7 @@ GuixOS "Sway Train": Custom Guix System Distribution + Sway Configuration.
     |- config/
        |- home/                      ;; Guix Home config
           |- home-config.scm         ;; ** Home Config **
+          |- guixos-home.scm         ;; WIP
           |- dot-bash_profile.sh               
           |- dot-bashrc.sh
           |- services/               ;; Home Services
@@ -34,7 +37,9 @@ GuixOS "Sway Train": Custom Guix System Distribution + Sway Configuration.
           |- tbd
        |- system/                    ;; Guix System config
           |- system-config.scm       ;; ** System Config **
-          |- base-system.scm
+          |- guixos.scm              ;; ** WIP **
+          |- guixos-base.scm         ;; WIP
+          |- guixos-channels.scm     ;; WIP
           |- channels.scm
     |- files/                        ;; XDG_CONFIG_HOME Files
        |- assets/...
