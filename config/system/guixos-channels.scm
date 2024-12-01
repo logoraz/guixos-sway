@@ -1,6 +1,5 @@
 (define-module (config system guixos-channels)
-  #:use-module (gnu)
-  #:use-module (gnu packages)
+  #:use-module (guix channels)
 
   #:export (%guixos-channels))
 
@@ -63,6 +62,6 @@
 
 
 (define %guixos-channels
-  (append (list nonguix-channel
-                guixos-channels)
+  (append (list %nonguix-channel
+                %guix-channel)
           %default-channels))

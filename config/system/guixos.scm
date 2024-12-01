@@ -10,6 +10,7 @@
   #:use-module (gnu system nss)
   #:use-module (gnu system keyboard)
   #:use-module (gnu packages)
+  #:use-module (gnu packages package-management)
   #:use-module (gnu packages ssh)
   #:use-module (gnu packages cups)
   #:use-module (gnu packages certs)
@@ -22,11 +23,13 @@
   #:use-module (gnu services desktop)
   #:use-module (gnu services xorg)
   #:use-module (gnu services guix)
+  #:use-module (gnu home) ;; for guix-home-serivice-type
   #:use-module (nongnu packages linux)
   #:use-module (nongnu system linux-initrd)
 
   #:use-module (guix)
   #:use-module (guix gexp)
+  #:use-module (guix transformations)
   #:use-module (guix ci)
   #:use-module (guix packages)
   #:use-module (guix download))
@@ -56,8 +59,9 @@
            %default-authorized-guix-keys))))
 
 (define %guixos-services
-   ;; Configure gdm-service for wayland -> move wayland to home?
-   ;; https://guix.gnu.org/manual/en/html_node/X-Window.html
+  ;; Configure gdm-service for wayland -> move wayland to home?
+  ;; https://guix.gnu.org/manual/en/html_node/X-Window.html
+  (cons*
    (service screen-locker-service-type
             (screen-locker-configuration
              (name "swaylock")
@@ -89,7 +93,7 @@
    (modify-services %desktop-services
                     (guix-service-type
                      config =>
-                     (substitutes->services config))))
+                     (substitutes->services config)))))
 
 
 ;; TODO: Define in guixos-base
