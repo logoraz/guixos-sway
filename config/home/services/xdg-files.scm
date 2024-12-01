@@ -7,13 +7,17 @@
 
   #:export (home-xdg-local-files-service-type))
 
-;; TODO - Refactor, rename symbols accordingly!
-(define %home-path "/home/loraz/.dotfiles/")
+;; Edit setting the Home User
+(define %user-name "loraz")
+
+(define %source (string-append "/home"
+                               "/" %user-name
+                               "/.guixos-sway"))
 
 (define (home-file dir filename)
   "Resolve local config file."
   (local-file (string-append
-               %home-path
+               %source "/"
                dir "/"
                filename)
               #:recursive? #t))

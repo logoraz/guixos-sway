@@ -70,8 +70,9 @@
                   ("ll"   . "ls -l")
                   ("la"   . "ls -la")
                   ("gosr" . ,(string-append
-                              "sudo guix system -L ~/.dotfiles/ reconfigure "
-                              "~/.dotfiles/config/system/guixos.scm"))))
+                              "sudo guix system -L ~/.guixos-sway/ "
+                              "reconfigure "
+                              "~/.guixos-sway/config/system/guixos.scm"))))
                (bashrc
                 (list (local-file "dot-bashrc.sh"
                                   #:recursive? #t)))

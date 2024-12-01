@@ -5,6 +5,18 @@
 
   #:export (home-env-vars-configuration-service-type))
 
+
+;; Edit setting the Home User
+(define %user-name "loraz")
+
+(define %gtk2-rc ".guix-home/profile/share/themes/Adwaita-dark/gtk-2.0/gtkrc")
+
+(define (home-path directory)
+  (string-append
+   "/home"
+   "/" %user-name "/"
+   directory))
+
 ;; borrowed from https://codeberg.org/daviwil/dotfiles/daviwil/systems/common.scm
 (define (home-env-vars-config-gexp config)
   `( ;; Sort hidden (dot) files first in ls listings
@@ -32,15 +44,15 @@
     ("QT_QPA_PLATFORM"     . "wayland-egl")
 
     ;; GTK & QT Theme
-    ("GTK_THEME" . "Adwaita:dark")
-    ("QT_STYLE_OVERRIDE" . "adwaita")
+    ("GTK_THEME"            . "Adwaita:dark")
+    ("QT_STYLE_OVERRIDE"    . "adwaita")
     ("QT_QPA_PLATFORMTHEME" . "gtk3")
     ;;TODO use gexp local-file to resolve this file...
-    ("GTK2_RC_FILES" . "/home/loraz/.guix-home/profile/share/themes/Adwaita-dark/gtk-2.0/gtkrc")
+    ("GTK2_RC_FILES"        . ,(home-path %gtk2-rc))
 
     ;; Set XDG environment variables
-    ("XDG_DOWNLOAD_DIR" . "/home/loraz/Downloads")
-    ("XDG_PICTURES_DIR" . "/home/loraz/Pictures/Screenshots")))
+    ("XDG_DOWNLOAD_DIR" . ,(home-path "Downloads"))
+    ("XDG_PICTURES_DIR" . ,(home-path "Pictures/Screenshots"))))
 
 
 (define home-env-vars-configuration-service-type

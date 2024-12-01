@@ -153,7 +153,7 @@
                   (name %user-name)
                   (comment "Erik P Almaraz")
                   (group "users")
-                  (home-directory (string-append "/home/" %user-name ))
+                  (home-directory (string-append "/home/" %user-name))
                   (supplementary-groups
                    '("wheel" "netdev" "audio" "video" "lp")))
 		 %base-user-accounts))
