@@ -73,20 +73,31 @@ This is specifically setup and trailed with my Lenovo ThinkPad X1 Carbon
 ## Download & Install
 
 First download and install Guix System from either of the release images below:
-    
- - https://gitlab.com/nonguix/nonguix/-/releases
- - https://github.com/SystemCrafters/guix-installer
 
-Once Guix has been installed from the images do a `guix pull` and
-`guix system reconfigure` to get to the latest.
+ - https://github.com/SystemCrafters/guix-installer
+ - https://gitlab.com/nonguix/nonguix/-/releases
+
+Once Guix has been installed from the release image, and the defined `channels`
+file has be unlocked from a specific commit, do a `guix pull` to get to the
+latest.
+
+I personally use the SystemCrafters Guix release image as it comes
+preconfigured with items that ease the pain of installation and the
+instructions are excellent, see:
+
+https://systemcrafters.net/craft-your-system-with-guix/full-system-install/
 
 Next, download this project repo and edit the GuixOS configuration module
-with your machine and user specific information, i.e. swap-devices,
-file-systems, user-account, and %user-name:
+with your machine and user specific information, i.e. `swap-devices`,
+`file-systems`, `user-account`, and `%user-name`. Note: See
+"Establishing WiFi" section on a refresher of connecting to wifi.
+
+You probably won't have git installed, hence the `guix shell` command.
 
 ```bash
 
-    $ git clone https://codeberg.org/loraz/dotfiles ~/.dotfiles
+    $ guix shell git # Install git via guix shell...
+    $ git clone https://codeberg.org/loraz/dotfiles.git ~/.dotfiles
     $ cd ~/.dotfiles
     
     # Edit GuixOS configuration module
@@ -97,14 +108,14 @@ file-systems, user-account, and %user-name:
 Also, you will need to edit the following Home modules with your specific
 information:
 
-  - `./config/home/guixos-home.scm` => home-bash-configuration 
+  - `./config/home/guixos-home.scm` => `home-bash-configuration` 
   - `/.config/home/services/environment.scm` => `home-env-vars-config-gexp`
   - `/.config/home/services/xdg-files.scm` => `%home-path`        
 
 
 Note: I am currently working to generalize this to replace user-specific
-strings with variables that can be set in one global place to faciliate the
-installation.
+strings with variables that can be set in one global place to better faciliate
+the installation.
 
 Now we are ready to install GuixOS "Sway Train":
 
