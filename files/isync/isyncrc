@@ -4,10 +4,14 @@
 # This file is placed in XDG_CONFIG_HOME/isyncrc via Guix xdg-files service
 #
 # Initial Setup
-# > cd to path/to/Maildir (~/.local/share/mu4e)
+# > mkdir path/to/<Maildir> (~/.local/share/mu4e)
+# > mkdir path/to/<Maildir>/Fastmail
+# > mkdir path/to/<Maildir>/Fastmail/INBOX
+#
+# > cd path/to/<Maildir> (~/.local/share/mu4e)
 # > mbsync -a
 # > mu init --maildir=~/.local/share/mu4e --my-address=erikalmaraz@fastmail.com
-# > mu index --maildir=~/.local/share/mu4d --my-address=erikalmaraz@fastmail.com
+# > mu index --maildir=~/.local/share/mu4e --my-address=erikalmaraz@fastmail.com
 
 # Account Information
 IMAPAccount fastmail
