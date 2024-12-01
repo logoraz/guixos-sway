@@ -2,10 +2,6 @@
   #:use-module (ice-9 optargs)
   #:use-module (ice-9 ftw)
 
-  ;; #:use-module (config system guixos-base)
-  #:use-module (config system guixos-channels)
-  #:use-module (config home guixos-home)
-
   #:use-module (gnu)
   #:use-module (gnu system nss)
   #:use-module (gnu system keyboard)
@@ -32,8 +28,14 @@
   #:use-module (guix transformations)
   #:use-module (guix ci)
   #:use-module (guix packages)
-  #:use-module (guix download))
+  #:use-module (guix download)
 
+  ;; #:use-module (config system guixos-base)
+  #:use-module (config system guixos-channels)
+  #:use-module (config home guixos-home))
+
+
+(define %user-name "loraz")
 
 ;; System Services
 ;; Use Package substitutes instead of compiling everything & specify channels
@@ -87,7 +89,7 @@
 
    ;; Set up home configuration
    (service guix-home-service-type
-            `(("guixos-home" ,%guixos-home)))
+            `((,%user-name ,%guixos-home)))
 
    ;; See: https://guix.gnu.org/manual/en/html_node/Desktop-Services.html
    (modify-services %desktop-services
@@ -95,12 +97,9 @@
                      config =>
                      (substitutes->services config)))))
 
-
 ;; TODO: Define in guixos-base
 (define %base-keyboard-layout
   (keyboard-layout "us"))
-
-(define %user-name "loraz")
 
 (define %guixos
   (operating-system
@@ -127,29 +126,37 @@
    (swap-devices (list (swap-space
                         (target
                          (uuid
-			  "72d71f71-bf44-4046-8d3d-f1fcfbe1cc42")))))
+			  "aea0c27b-be9f-4384-96b8-e8dba1848280")))))
 
    ;; Use 'blkid' to find unique file system identifiers ("UUIDs").
-   (file-systems (append
-                  (list (file-system
+   (file-systems (cons* (file-system
                          (mount-point  "/boot/efi")
-                         (device (uuid "F8E9-9C22" 'fat32))
+                         (device (uuid
+				  "F8E9-9C22"
+				  'fat32))
                          (type "vfat"))
                         (file-system
                          (mount-point "/")
-                         (device (uuid "5ed31dd1-64d8-4efe-9bf6-9559e9c50493" 'ext4))
-                         (type "ext4")))
-		  %base-file-systems))
+                         (device (uuid
+				  "25602346-c255-4995-89a3-3a704346c911"
+				  'ext4))
+                         (type "ext4"))
+			(file-system
+			 (mount-point "/home")
+			 (device (uuid
+				  "ef7e647d-4d74-44ca-8894-90e28d372a89"
+				  'ext4))
+			 (type "ext4"))
+			%base-file-systems))
 
-   (users (append
-           (list (user-account
+   (users (cons* (user-account
                   (name %user-name)
                   (comment "Erik P Almaraz")
                   (group "users")
                   (home-directory (string-append "/home/" %user-name ))
                   (supplementary-groups
-                   '("wheel" "netdev" "audio" "video" "lp"))))
-           %base-user-accounts))
+                   '("wheel" "netdev" "audio" "video" "lp")))
+		 %base-user-accounts))
 
    (packages (append
 	      (list sway
