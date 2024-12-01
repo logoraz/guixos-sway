@@ -90,7 +90,7 @@ https://systemcrafters.net/craft-your-system-with-guix/full-system-install/
 Next, download this project repo and edit the GuixOS configuration module
 with your machine and user specific information, i.e. `swap-devices`,
 `file-systems`, `user-account`, and `%user-name`. Note: See
-"Establishing WiFi" section on a refresher of connecting to wifi.
+"Establishing WiFi" section on a refresher for connecting to wifi via nmcli.
 
 You probably won't have git installed, hence the `guix shell` command.
 
