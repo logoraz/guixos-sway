@@ -5,6 +5,7 @@ GuixOS "Sway Train": Custom Guix System Distribution + Sway Configuration.
 This is specifically setup and trailed with my Lenovo ThinkPad X1 Carbon
 4th Gen (Type 20FB) Laptop.
 
+
 ## Screenshots
 
 ![View 1](files/assets/screenshots/guix-sway-exhibit-1__2024-11-24.png)
@@ -15,14 +16,13 @@ This is specifically setup and trailed with my Lenovo ThinkPad X1 Carbon
 ## Project Scaffolding
 
 ```scm
-    dotfiles/                        ;; Project root
+    dotfiles/                      ;; Project Root
     |- config/
-       |- home/                      ;; Guix Home config
-          |- home-config.scm         ;; ** Home Config **
-          |- guixos-home.scm         ;; WIP
+       |- home/                    ;; Home Config Root
+          |- guixos-home.scm
           |- dot-bash_profile.sh               
           |- dot-bashrc.sh
-          |- services/               ;; Home Services
+          |- services/             ;; Home Service Modules
              |- emacs-guile.scm
              |- environment.scm
              |- raz-emacs.scm
@@ -30,18 +30,17 @@ This is specifically setup and trailed with my Lenovo ThinkPad X1 Carbon
              |- sway-desktop.scm
              |- udiskie.scm
              |- xdg-files.scm
-       |- packages/                  ;; Custom Guix Packages
+       |- packages/                ;; Custom GuixOS Package Modules
           |- raz-emacs.scm
           |- video.scm
-       |- services/                  ;; Custom System Services
+       |- services/                ;; Custom GuixOS Service Modules
           |- tbd
-       |- system/                    ;; Guix System config
-          |- system-config.scm       ;; ** System Config **
-          |- guixos.scm              ;; ** WIP **
-          |- guixos-base.scm         ;; WIP
-          |- guixos-channels.scm     ;; WIP
+       |- system/                  ;; GuixOS Config Root
+          |- guixos.scm            ;; ** GuixOS Config **
+          |- guixos-base.scm       ;; WIP
+          |- guixos-channels.scm
           |- channels.scm
-    |- files/                        ;; XDG_CONFIG_HOME Files
+    |- files/                      ;; XDG_CONFIG_HOME Files (=> xdg-files.scm)
        |- assets/...
        |- guile/...
        |- gtk-3.0/...
@@ -52,11 +51,11 @@ This is specifically setup and trailed with my Lenovo ThinkPad X1 Carbon
        |- wlogout/...
        |- qutebrowser/...
        |- gnupg/...    
-       |- sway/                      ;; Sway WM config
+       |- sway/                    ;; Sway Config (WIP => home-sway-service-type)
           |- config
           |- bin/
              |- swaybar-status.sh
-             |- toggle-display.sh    ;; WIP
+             |- toggle-display.sh  ;; WIP
 ```
 
 
@@ -81,15 +80,42 @@ First download and install Guix System from either of the release images below:
 Once Guix has been installed from the images do a `guix pull` and
 `guix system reconfigure` to get to the latest.
 
-Next, download this project repo and install as follows:
+Next, download this project repo and edit the GuixOS configuration module
+with your machine and user specific information, i.e. swap-devices,
+file-systems, user-account, and %user-name:
 
 ```bash
+
     $ git clone https://codeberg.org/loraz/dotfiles ~/.dotfiles
     $ cd ~/.dotfiles
+    
+    # Edit GuixOS configuration module
+    $ emacs ./config/system/guixos.scm
 
-    $ sudo guix system -L ~/.dotfiles/ reconfigure ~/.dotfiles/config/system/system-config.scm
-    $ guix home -L ~/.dotfiles/ reconfigure ~/.dotfiles/config/home/home-config.scm
 ```
+
+Also, you will need to edit the following Home modules with your specific
+information:
+
+  - `./config/home/guixos-home.scm` => home-bash-configuration 
+  - `/.config/home/services/environment.scm` => `home-env-vars-config-gexp`
+  - `/.config/home/services/xdg-files.scm` => `%home-path`        
+
+
+Note: I am currently working to generalize this to replace user-specific
+strings with variables that can be set in one global place to faciliate the
+installation.
+
+Now we are ready to install GuixOS "Sway Train":
+
+```bash
+
+    $ sudo guix system -L ~/.dotfiles/ reconfigure ~/.dotfiles/config/system/guixos.scm
+
+```
+
+Once the initial install is complete, you will be able to reconfigure using
+the command `gosr` once you redefine user-specific paths in `guixos-home.scm`.
 
 
 ## Establishing Wifi
