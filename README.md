@@ -84,7 +84,6 @@ latest.
 I personally use the SystemCrafters Guix release image as it comes
 preconfigured with items that ease the pain of installation and the
 instructions are excellent, see:
-
 https://systemcrafters.net/craft-your-system-with-guix/full-system-install/
 
 Next, download this project repo and edit the GuixOS configuration module
