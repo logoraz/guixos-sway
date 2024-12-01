@@ -10,8 +10,8 @@
 #
 # > cd path/to/<Maildir> (~/.local/share/mu4e)
 # > mbsync -a
-# > mu init --maildir=~/.local/share/mu4e --my-address=erikalmaraz@fastmail.com
-# > mu index --maildir=~/.local/share/mu4e --my-address=erikalmaraz@fastmail.com
+# > mu init --maildir=/home/loraz/.local/share/mu4e --my-address=erikalmaraz@fastmail.com
+# > mu index
 
 # Account Information
 IMAPAccount fastmail
