@@ -1,6 +1,7 @@
-# dotfiles
+# GuixOS Sway
 
-GuixOS "Sway Train": Custom Guix System Distribution + Sway Configuration.
+GuixOS Sway (codename GuixOS Phonon): A Custom Guix System Distribution
+configured for Sway WM.
 
 This is specifically setup and trailed with my Lenovo ThinkPad X1 Carbon
 4th Gen (Type 20FB) Laptop.
@@ -16,7 +17,7 @@ This is specifically setup and trailed with my Lenovo ThinkPad X1 Carbon
 ## Project Scaffolding
 
 ```scm
-    dotfiles/                      ;; Project Root
+    guixos-sway/                   ;; Project Root
     |- config/
        |- home/                    ;; Home Config Root
           |- guixos-home.scm
@@ -96,8 +97,8 @@ You probably won't have git installed, hence the `guix shell` command.
 ```bash
 
     $ guix shell git # Install git via guix shell...
-    $ git clone https://codeberg.org/loraz/dotfiles.git ~/.dotfiles
-    $ cd ~/.dotfiles
+    $ git clone https://codeberg.org/loraz/guixos-sway.git ~/.guixos-sway
+    $ cd ~/.guixos-sway
     
     # Edit GuixOS configuration module
     $ emacs ./config/system/guixos.scm
@@ -107,25 +108,26 @@ You probably won't have git installed, hence the `guix shell` command.
 Also, you will need to edit the following Home modules with your specific
 information:
 
-  - `./config/home/guixos-home.scm` => `home-bash-configuration` 
-  - `/.config/home/services/environment.scm` => `home-env-vars-config-gexp`
-  - `/.config/home/services/xdg-files.scm` => `%home-path`        
+  - `/.config/home/services/xdg-files.scm` => `%user-name`
+  - `/.config/home/services/environment.scm` => `%user-name`
+  - [`./config/home/guixos-home.scm` => `home-bash-configuration`] 
+    - Optional if you choose a different root project directory name...
 
+Note: I am currently working to generalize this to define machine and user
+specific variables in one place...
 
-Note: I am currently working to generalize this to replace user-specific
-strings with variables that can be set in one global place to better faciliate
-the installation.
-
-Now we are ready to install GuixOS "Sway Train":
+Now we are ready to install GuixOS Phonon:
 
 ```bash
 
-    $ sudo guix system -L ~/.dotfiles/ reconfigure ~/.dotfiles/config/system/guixos.scm
+    $ sudo guix system -L ~/.guixos-sway/ \
+      reconfigure ~/.guixos-sway/config/system/guixos.scm
 
 ```
 
 Once the initial install is complete, you will be able to reconfigure using
-the command `gosr` once you redefine user-specific paths in `guixos-home.scm`.
+the command `gosr` if you choose to keep this project scaffolding, else you
+will need to edit `home-bash-configuration` in `guixos-home.scm`.
 
 
 ## Establishing Wifi
