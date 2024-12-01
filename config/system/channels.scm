@@ -1,4 +1,5 @@
-;;; Define Channels
+;;; Note this file is not to be edited
+;;; Contents should be copied from guixos-channels.scm
 (define %guix-channel
   (channel
    (name 'guix)
@@ -57,9 +58,10 @@
 
 
 (define %guixos-channels
-  (list %nonguix-channel
-        %guix-channel))
+  (append (list %nonguix-channel
+                %guix-channel)
+          %default-channels))
+
 
 ;; Instantiate selected channels
-(append %guixos-channels
-        %default-channels)
+%guixos-channels
