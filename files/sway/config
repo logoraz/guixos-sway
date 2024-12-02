@@ -20,7 +20,7 @@ set $mod Mod4
 # output HDMI-A-1 scale 2
 
 # Set Background
-output "*" bg ~/.dotfiles/files/assets/wallpapers/sunset-mountain.jpg fill
+output "*" bg ~/.guixos-sway/files/assets/wallpapers/primary-wall.jpg fill
 
 # Toggle Displays
 # bindsym $mod+Shift+s exec ~/.config/sway/bin/toggle-display $primary
