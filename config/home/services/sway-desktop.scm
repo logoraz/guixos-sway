@@ -48,11 +48,10 @@
   #:export (home-sway-desktop-service-type))
 
 ;;; Package Transformations
-;; Keep for now as an example
-;; deploy in package list as (latest-sbcl sbcl)
-;; (define latest-sbcl
-;;   (options->transformation
-;;    '((with-latest . "sbcl"))))
+(define latest-nyxt
+  (options->transformation
+   '((without-tests . "nyxt")
+     (with-latest   . "nyxt"))))
 
 (define (home-sway-desktop-profile-service config)
   (list  swaybg
@@ -70,11 +69,7 @@
          ;; Compatibility for older Xorg applications
          xorg-server-xwayland
 
-         ;;Flatpak & XDG Utilities
-         flatpak
-         xdg-desktop-portal
-         xdg-desktop-portal-gtk
-         xdg-desktop-portal-wlr
+         ;;XDG Utilities
          xdg-utils ;; For xdg-open, etc
          xdg-dbus-proxy
          shared-mime-info
@@ -101,6 +96,7 @@
          ;; Browsers
          qutebrowser
          qtwayland ;;(specification->package "qtwayland@5")
+         ;; (latest-nyxt nyxt)
 
          ;; Authentication
          keepassxc
@@ -132,11 +128,11 @@
          ;;syncthing-gtk
 
          ;; Applications
-         foot       ;;|--> gnu packages terminals
-         gnucash    ;;|--> gnu packages gnucash
-         gimp-next  ;;|--> gnu packages gimp
-         inkscape   ;;|--> gnu packages inkscape
-         blender    ;;|--> gnu packages graphics
+         foot      ;;|--> gnu packages terminals
+         gnucash   ;;|--> gnu packages gnucash
+         gimp-next ;;|--> gnu packages gimp
+         inkscape  ;;|--> gnu packages inkscape
+         blender   ;;|--> gnu packages graphics
 
          ;; General utilities
          egl-wayland
