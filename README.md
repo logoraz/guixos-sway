@@ -176,9 +176,16 @@ notifications...
  - Create custom system service to handle package substitutes & transformations
  - Create base system config to apply to machine-specific configurations. 
  - Research solution to blueman-applet: https://issues.guix.gnu.org/71528
+ - Implement/Use bcacefs for file systems
  - Update Emacs config to (use Guile/Guix) `home-emacs-service-type` once available
 
    
 ## References:
 
+  - [Crafting a Minimal Sway Environment in Guix](https://systemcrafters.net/live-streams/september-27-2024/)
+  - [How to Organize Your Guix Config](https://systemcrafters.net/craft-your-system-with-guix/how-to-organize-your-config/)
+
+  - [Configuring Rational Emacs with Guix Home](https://systemcrafters.net/live-streams/july-8-2022/)
+  - TBD
+  - TBD
   - TBD
