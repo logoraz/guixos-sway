@@ -171,13 +171,13 @@ notifications...
 
 ## TODOs (Wish List)
 
- - Configure Sway in Guile/Guix via `home-sway-service-type`
+ - Configure Sway in Guile/Guix via `home-sway-service-type` [Issue #1]
+ - Update Emacs config to (use Guile/Guix) `home-emacs-service-type` once available [Issue #2]
+ - Create custom system service to handle package substitutes & transformations [Issue #3]
+ - Create base system config to apply to machine-specific configurations [Issue #4] 
+ - Implement/Use bcacefs for file systems [Issue #5]
  - Minimize dependency on `xdg-files` (reserved for one-off's where possible)
- - Create custom system service to handle package substitutes & transformations
- - Create base system config to apply to machine-specific configurations. 
  - Research solution to blueman-applet: https://issues.guix.gnu.org/71528
- - Implement/Use bcacefs for file systems
- - Update Emacs config to (use Guile/Guix) `home-emacs-service-type` once available
 
    
 ## References:
