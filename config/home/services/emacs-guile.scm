@@ -54,10 +54,11 @@
         mu
 
 
-        ;; IRC
+        ;; IRC & Tools
         emacs-erc-hl-nicks
         emacs-erc-image
         emacs-emojify
+        emacs-0x0 ;; a pastebin integration tool
 
         ;; Development Packages
         emacs-magit
