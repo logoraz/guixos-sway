@@ -12,7 +12,6 @@
   #:use-module (gnu packages xdisorg)
   #:use-module (gnu packages freedesktop)
   #:use-module (gnu packages linux)
-  ;;#:use-module (gnu packages pulseaudio)
   #:use-module (gnu packages glib)
   #:use-module (gnu packages gnome)
   #:use-module (gnu packages gnome-xyz)
@@ -26,7 +25,6 @@
   #:use-module (gnu packages music)
   #:use-module (gnu packages video)
   #:use-module (gnu packages qt)
-  ;;#:use-module (gnu packages syncthing)
   #:use-module (gnu packages package-management)
   #:use-module (gnu packages password-utils)
   #:use-module (gnu packages gnupg)
@@ -86,7 +84,6 @@
          font-jetbrains-mono
          font-fira-code
          font-hack
-         font-liberation
          font-iosevka-aile
          font-awesome
          font-google-noto
@@ -99,10 +96,10 @@
          ;; (latest-nyxt nyxt)
 
          ;; Authentication
-         keepassxc
          gnupg
          pinentry
-         password-store
+         keepassxc
+         password-store ;; move to password-store eventually...
 
          ;; Audio devices & Media playback
          mpv ;;|--> gnu packages video
@@ -117,15 +114,10 @@
          gst-libav
          pipewire ;;|--> gnu packages linux
          wireplumber
-         ;;alsa-utils
-         ;;pavucontrol
 
          ;; PDF reader
          zathura
          zathura-pdf-mupdf
-
-         ;; File syncing
-         ;;syncthing-gtk
 
          ;; Applications
          foot      ;;|--> gnu packages terminals

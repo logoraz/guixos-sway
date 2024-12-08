@@ -15,12 +15,6 @@
 
   #:export (home-emacs-config-service-type))
 
-;;; Package Transformations
-;; Keep for now as an example
-;; deploy in package list as (latest-sbcl sbcl)
-;; (define latest-sbcl
-;;   (options->transformation
-;;    '((with-latest . "sbcl"))))
 
 (define (home-emacs-config-profile-service config)
   (list emacs-diminish       ;;|--> gnu packages emacs-xyz
@@ -33,7 +27,6 @@
         emacs-no-littering
         emacs-ws-butler
         emacs-undo-tree
-
         emacs-visual-fill-column
         emacs-ace-window
         emacs-mct
@@ -52,7 +45,6 @@
         isync
         msmtp
         mu
-
 
         ;; IRC & Tools
         emacs-erc-hl-nicks
@@ -75,10 +67,10 @@
         (list git "send-email")
 
         ;; Guile Scheme Emacs Integration
-        ;; guile-3.0      ;not needed since I live in Guix SD!
         guile-next     ;doesn't work with g-golf
-        guile-colorized
         guile-ares-rs
+        guile-colorized
+
         ;; Common Lisp Integration
         sbcl
         sbcl-slynk))
