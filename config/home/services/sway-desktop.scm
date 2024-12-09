@@ -15,6 +15,7 @@
   #:use-module (gnu packages glib)
   #:use-module (gnu packages gnome)
   #:use-module (gnu packages gnome-xyz)
+  #:use-module (gnu packages kde-frameworks)
   #:use-module (gnu packages web-browsers)
   #:use-module (gnu packages gstreamer)
   #:use-module (gnu packages compression)
@@ -70,7 +71,6 @@
          ;;Flatpak & XDG Utilities
          flatpak
          xdg-desktop-portal
-         xdg-desktop-portal-gtk
          xdg-desktop-portal-wlr
          xdg-utils ;; For xdg-open, etc
          xdg-dbus-proxy
