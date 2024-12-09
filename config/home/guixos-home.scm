@@ -6,16 +6,13 @@
   #:use-module (gnu home services shells)
   #:use-module (gnu home services sound)
   #:use-module (gnu home services desktop)
-  ;; #:use-module (gnu home services syncthing)
   #:use-module (guix gexp)
-
   #:use-module (config home services environment)
   #:use-module (config home services xdg-files)
   #:use-module (config home services sway-desktop)
   #:use-module (config home services emacs-guile)
   #:use-module (config home services raz-emacs)
   #:use-module (config home services streaming)
-
   #:use-module (config home services udiskie)
 
   #:export (%guixos-home))
