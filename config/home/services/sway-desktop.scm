@@ -67,7 +67,11 @@
          ;; Compatibility for older Xorg applications
          xorg-server-xwayland
 
-         ;;XDG Utilities
+         ;;Flatpak & XDG Utilities
+         flatpak
+         xdg-desktop-portal
+         xdg-desktop-portal-gtk
+         xdg-desktop-portal-wlr
          xdg-utils ;; For xdg-open, etc
          xdg-dbus-proxy
          shared-mime-info
@@ -77,6 +81,7 @@
          matcha-theme
          papirus-icon-theme
          adwaita-icon-theme
+         breeze-icons ;; for KDE apps
          gnome-themes-extra
          bibata-cursor-theme
 
@@ -84,6 +89,7 @@
          font-jetbrains-mono
          font-fira-code
          font-hack
+         font-liberation
          font-iosevka-aile
          font-awesome
          font-google-noto
