@@ -1,23 +1,19 @@
 (define-module (config home services emacs-guile)
-  #:use-module (gnu packages)
-  #:use-module (gnu packages emacs-xyz)
-  #:use-module (gnu packages version-control)
-  #:use-module (gnu packages guile)
-  #:use-module (gnu packages guile-xyz)
-  #:use-module (gnu packages lisp)
-  #:use-module (gnu packages lisp-xyz)
-  #:use-module (gnu packages mail)
+  #:use-module (gnu)
   #:use-module (gnu home services)
-  #:use-module (gnu services)
-  #:use-module (gnu services configuration)
   #:use-module (guix gexp)
   #:use-module (guix transformations)
 
   #:export (home-emacs-config-service-type))
 
 
+(use-package-modules emacs-xyz guile guile-xyz lisp lisp-xyz mail
+                     version-control)
+
+(use-service-modules configuration)
+
 (define (home-emacs-config-profile-service config)
-  (list emacs-diminish       ;;|--> gnu packages emacs-xyz
+  (list emacs-diminish ;;|--> gnu packages emacs-xyz
         emacs-delight
         emacs-nord-theme
         emacs-doom-themes
@@ -67,7 +63,7 @@
         (list git "send-email")
 
         ;; Guile Scheme Emacs Integration
-        guile-next     ;doesn't work with g-golf
+        guile-next                      ;doesn't work with g-golf
         guile-ares-rs
         guile-colorized
 

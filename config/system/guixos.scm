@@ -1,39 +1,26 @@
 (define-module (config system guixos)
   #:use-module (ice-9 optargs)
   #:use-module (ice-9 ftw)
-
   #:use-module (gnu)
-  #:use-module (gnu system nss)
-  #:use-module (gnu system keyboard)
-  #:use-module (gnu packages)
-  #:use-module (gnu packages package-management)
-  #:use-module (gnu packages ssh)
-  #:use-module (gnu packages cups)
-  #:use-module (gnu packages certs)
-  #:use-module (gnu packages suckless)
-  #:use-module (gnu packages wm)
-  #:use-module (gnu packages glib)
-  #:use-module (gnu services)
-  #:use-module (gnu services ssh)
-  #:use-module (gnu services cups)
-  #:use-module (gnu services desktop)
-  #:use-module (gnu services xorg)
-  #:use-module (gnu services guix)
   #:use-module (gnu home) ;; for guix-home-serivice-type
   #:use-module (nongnu packages linux)
   #:use-module (nongnu system linux-initrd)
-
   #:use-module (guix)
   #:use-module (guix gexp)
   #:use-module (guix transformations)
   #:use-module (guix ci)
   #:use-module (guix packages)
   #:use-module (guix download)
-
-  ;; #:use-module (config system guixos-base)
+  ;; #:use-module (config system guixos-base) ;WIP
   #:use-module (config system guixos-channels)
   #:use-module (config home guixos-home))
 
+
+(use-package-modules certs cups ssh suckless package-management wm admin)
+
+(use-service-modules cups ssh desktop xorg guix)
+
+(use-system-modules nss keyboard)
 
 (define %user-name "loraz")
 
@@ -91,11 +78,35 @@
    (service guix-home-service-type
             `((,%user-name ,%guixos-home)))
 
-   ;; See: https://guix.gnu.org/manual/en/html_node/Desktop-Services.html
-   (modify-services %desktop-services
-                    (guix-service-type
-                     config =>
-                     (substitutes->services config)))))
+   (service greetd-service-type
+            (greetd-configuration
+             (greeter-supplementary-groups '("video" "input" "users"))
+             (terminals
+              (list
+               (greetd-terminal-configuration
+                (terminal-vt "1")
+                (terminal-switch #t)
+                ;; issues.guix.gnu.org/65769
+                (default-session-command
+                  ;; https://guix.gnu.org/manual/en/html_node/Base-Services.html
+                  (greetd-wlgreet-sway-session)))
+               (greetd-terminal-configuration (terminal-vt "2"))
+               (greetd-terminal-configuration (terminal-vt "3"))
+               (greetd-terminal-configuration (terminal-vt "4"))
+               (greetd-terminal-configuration (terminal-vt "5"))
+               (greetd-terminal-configuration (terminal-vt "6"))))))
+
+    ;; See: https://guix.gnu.org/manual/en/html_node/Desktop-Services.html
+    (modify-services %desktop-services
+                     ;; remove gdm-service-type
+                     (delete gdm-service-type)
+                     ;; greetd-service-type provides "greetd" PAM service
+                     (delete login-service-type)
+                     ;; and can be used in place of mingetty-service-type
+                     (delete mingetty-service-type)
+                     (guix-service-type
+                      config =>
+                      (substitutes->services config)))))
 
 ;; TODO: Define in guixos-base
 (define %base-keyboard-layout
@@ -158,11 +169,11 @@
                    '("wheel" "netdev" "audio" "video" "lp")))
 		 %base-user-accounts))
 
-   (packages (append
-	      (list sway
-                    swaylock-effects
-                    glibc-locales)
-	      %base-packages))
+   (packages %base-packages)
+   ;; (packages (append
+   ;;            (list sway
+   ;;                  swaylock-effects)
+   ;;            %base-packages))
 
    (services %guixos-services)
 
@@ -170,5 +181,5 @@
    (name-service-switch %mdns-host-lookup-nss)))
 
 
-;; Instantiate GuixOS Sway
+;; Instantiate GuixOS Sway: code name GuixOS Phonon
 %guixos
