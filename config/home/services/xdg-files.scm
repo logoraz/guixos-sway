@@ -105,7 +105,11 @@
      ,(home-file "files/qutebrowser" "quteconfig.py"))
 
     ("qutebrowser/qute-keepassxc"
-     ,(home-file "files/qutebrowser" "qute-keepassxc"))))
+     ,(home-file "files/qutebrowser" "qute-keepassxc"))
+
+    ;; Zathura Configuration File
+    ("zathura/zathurarc"
+     ,(home-file "files/zathura" "zathurarc"))))
 
 (define home-xdg-local-files-service-type
   (service-type (name 'home-xdg-files)
