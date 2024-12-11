@@ -48,8 +48,6 @@
            %default-authorized-guix-keys))))
 
 (define %guixos-services
-  ;; Configure gdm-service for wayland -> move wayland to home?
-  ;; https://guix.gnu.org/manual/en/html_node/X-Window.html
   (cons*
    (service screen-locker-service-type
             (screen-locker-configuration
@@ -170,10 +168,6 @@
 		 %base-user-accounts))
 
    (packages %base-packages)
-   ;; (packages (append
-   ;;            (list sway
-   ;;                  swaylock-effects)
-   ;;            %base-packages))
 
    (services %guixos-services)
 

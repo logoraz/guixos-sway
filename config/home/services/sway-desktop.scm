@@ -49,7 +49,6 @@
         xdg-dbus-proxy
         shared-mime-info
         (list glib "bin")
-        ;; libinput
 
         ;; Appearance
         matcha-theme
