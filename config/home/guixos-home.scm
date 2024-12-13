@@ -9,7 +9,7 @@
   #:use-module (guix gexp)
   #:use-module (config home services environment)
   #:use-module (config home services xdg-files)
-  #:use-module (config home services sway-desktop) ;WIP
+  #:use-module (config home services sway-desktop)
   #:use-module (config home services emacs-guile)
   #:use-module (config home services raz-emacs)
   #:use-module (config home services streaming)

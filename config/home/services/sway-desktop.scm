@@ -1,7 +1,6 @@
 (define-module (config home services sway-desktop)
   #:use-module (gnu)
   #:use-module (gnu home services)
-  ;; #:use-module (gnu home services sway) ;WIP
   #:use-module (guix gexp)
   #:use-module (guix transformations)
 
@@ -24,8 +23,6 @@
      (with-latest   . "nyxt"))))
 
 (define (home-sway-desktop-profile-service config)
-  ;; convert to package list -> %sway-desktop-packages
-  ;; and define in its own module -> sway-desktop-packages.scm
   (list sway
         swaylock-effects
         swaybg
@@ -36,6 +33,7 @@
         grimshot ;; grimshot --notify copy area
         wlsunset
         wl-clipboard
+        librsvg
         wev
 
         ;; Compatibility for older Xorg applications
@@ -120,31 +118,11 @@
         unzip
         trash-cli))
 
-;; TODO - set sway config here in scheme another file
-;; https://guix.gnu.org/manual/devel/en/html_node/Sway-window-manager.html
-(define (home-sway-config-service config)
-  `()
-  ;; (list
-  ;;  (variables )
-  ;;  (keybindings )
-  ;;  (packages %sway-desktop-packages) ;; list of packages to add to the user profile
-  ;;  (inputs )
-  ;;  (outputs )
-  ;;  (bar )
-  ;;  (startup-programs )
-  ;;  (extra-content ))
-  )
-
 (define home-sway-desktop-service-type
   (service-type (name 'home-sway-desktop-config)
                 (description "Applies my personal Sway desktop configuration.")
                 (extensions
-                 (list (service-extension ;; TODO remove <- home-sway-service-type
+                 (list (service-extension
                         home-profile-service-type
-                        home-sway-desktop-profile-service)
-                       ;; TODO
-                       ;; (service-extension
-                       ;;  home-sway-service-type
-                       ;;  home-sway-config-gexp)
-                       ))
+                        home-sway-desktop-profile-service)))
                 (default-value #f)))
