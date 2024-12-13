@@ -139,7 +139,7 @@
   (service-type (name 'home-sway-desktop-config)
                 (description "Applies my personal Sway desktop configuration.")
                 (extensions
-                 (list (service-extension
+                 (list (service-extension ;; TODO remove <- home-sway-service-type
                         home-profile-service-type
                         home-sway-desktop-profile-service)
                        ;; TODO
