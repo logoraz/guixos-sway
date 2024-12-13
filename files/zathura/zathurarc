@@ -1,5 +1,5 @@
 # background transparent
-set default-bg "rgba(70,80,90,0.7)"
+set default-bg "rgba(70,80,90,0.9)"
 
 # Disable for now...
 # revert color black to white vice versa
