@@ -1,20 +1,45 @@
 (define-module (config home services sway-desktop)
   #:use-module (gnu)
+  #:use-module (gnu packages certs)
+  #:use-module (gnu packages ssh)
+  #:use-module (gnu packages fonts)
+  #:use-module (gnu packages wm)
+  #:use-module (gnu packages bootloaders)
+  #:use-module (gnu packages networking )
+  #:use-module (gnu packages xorg)
+  #:use-module (gnu packages xdisorg)
+  #:use-module (gnu packages freedesktop)
+  #:use-module (gnu packages linux)
+  #:use-module (gnu packages glib)
+  #:use-module (gnu packages gnome)
+  #:use-module (gnu packages gnome-xyz)
+  #:use-module (gnu packages kde-frameworks)
+  #:use-module (gnu packages web-browsers)
+  #:use-module (gnu packages gstreamer)
+  #:use-module (gnu packages compression)
+  #:use-module (gnu packages gnuzilla)
+  #:use-module (gnu packages terminals)
+  #:use-module (gnu packages graphics)
+  #:use-module (gnu packages image)
+  #:use-module (gnu packages music)
+  #:use-module (gnu packages video)
+  #:use-module (gnu packages qt)
+  #:use-module (gnu packages package-management)
+  #:use-module (gnu packages password-utils)
+  #:use-module (gnu packages gnupg)
+  #:use-module (gnu packages gnucash)
+  #:use-module (gnu packages gimp)
+  #:use-module (gnu packages inkscape)
+  #:use-module (gnu packages pdf)
+  ;; #:use-module (gnu packages shellutils)
+  #:use-module (gnu services configuration)
+
   #:use-module (gnu home services)
   #:use-module (guix gexp)
   #:use-module (guix transformations)
 
   #:export (home-sway-desktop-service-type))
 
-
-(use-package-modules certs ssh fonts wm wget curl bootloaders networking
-                     xorg xdisorg freedesktop linux glib gnome gnome-xyz
-                     kde-frameworks web-browsers gstreamer compression
-                     gnuzilla terminals graphics image music video qt
-                     package-management password-utils gnupg gnucash gimp
-                     inkscape pdf shellutils)
-
-(use-service-modules configuration)
 
 ;;; Package Transformations
 (define latest-nyxt
@@ -34,7 +59,6 @@
         wlsunset
         wl-clipboard
         librsvg
-        wev
 
         ;; Compatibility for older Xorg applications
         xorg-server-xwayland
@@ -103,20 +127,9 @@
         inkscape  ;;|--> gnu packages inkscape
         blender   ;;|--> gnu packages graphics
 
-        ;; General utilities
-        ;; egl-wayland
-        network-manager-applet
-        lm-sensors
-        udiskie
-        blueman ;;|--> gnu packages networking
-        bluez
-        brightnessctl
-        curl
-        wget
-        openssh
-        zip
-        unzip
-        trash-cli))
+        ;; Utilities
+        ;; trash-cli
+        wev))
 
 (define home-sway-desktop-service-type
   (service-type (name 'home-sway-desktop-config)

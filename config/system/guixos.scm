@@ -2,6 +2,33 @@
   #:use-module (ice-9 optargs)
   #:use-module (ice-9 ftw)
   #:use-module (gnu)
+  #:use-module (gnu packages certs)
+  #:use-module (gnu packages cups)
+  #:use-module (gnu packages ssh)
+  #:use-module (gnu packages suckless)
+  #:use-module (gnu packages file-systems)
+  #:use-module (gnu packages package-management)
+  #:use-module (gnu packages linux)
+  #:use-module (gnu packages audio)
+  #:use-module (gnu packages gnome)
+  #:use-module (gnu packages freedesktop)
+  #:use-module (gnu packages wm)
+  #:use-module (gnu packages wget)
+  #:use-module (gnu packages curl)
+  #:use-module (gnu packages version-control)
+  #:use-module (gnu packages compression)
+  #:use-module (gnu packages networking)
+  #:use-module (gnu packages admin)
+  #:use-module (gnu services guix)
+  #:use-module (gnu services cups)
+  #:use-module (gnu services ssh)
+  #:use-module (gnu services xorg)
+  #:use-module (gnu services desktop)
+  #:use-module (gnu system setuid)
+  #:use-module (gnu system file-systems)
+  #:use-module (gnu system nss)
+  #:use-module (gnu system keyboard)
+  #:use-module (gnu bootloader)
   #:use-module (gnu home) ;; for guix-home-serivice-type
   #:use-module (nongnu packages linux)
   #:use-module (nongnu system linux-initrd)
@@ -11,18 +38,69 @@
   #:use-module (guix ci)
   #:use-module (guix packages)
   #:use-module (guix download)
-  ;; #:use-module (config system guixos-base) ;WIP
   #:use-module (config system guixos-channels)
   #:use-module (config home guixos-home))
 
 
-(use-package-modules certs cups ssh suckless package-management wm admin)
-
-(use-service-modules cups ssh desktop xorg guix)
-
-(use-system-modules nss keyboard)
-
 (define %user-name "loraz")
+
+(define %guixos-keyboard-layout
+  (keyboard-layout "us"))
+
+(define %guixos-bootloader
+  (bootloader-configuration
+   (bootloader grub-efi-bootloader)
+   (targets '("/boot/efi"))
+   (keyboard-layout %guixos-keyboard-layout)))
+
+(define %guixos-swap-devices
+  (list (swap-space
+         (target
+          (uuid
+	   "aea0c27b-be9f-4384-96b8-e8dba1848280")))))
+
+(define %guixos-file-systems
+  ;; Use 'blkid' to find unique file system identifiers ("UUIDs").
+  (cons* (file-system
+          (mount-point  "/boot/efi")
+          (device (uuid
+		   "F8E9-9C22"
+		   'fat32))
+          (type "vfat"))
+         (file-system
+          (mount-point "/")
+          (device (uuid
+		   "25602346-c255-4995-89a3-3a704346c911"
+		   'ext4))
+          (type "ext4"))
+	 (file-system
+	  (mount-point "/home")
+	  (device (uuid
+		   "ef7e647d-4d74-44ca-8894-90e28d372a89"
+		   'ext4))
+	  (type "ext4"))
+	 %base-file-systems))
+
+(define %guixos-groups
+  ;; Add the 'seat' group
+  (cons
+   (user-group (system? #t) (name "seat"))
+   %base-groups))
+
+(define %guixos-users
+  (cons* (user-account
+          (name "loraz")
+          (comment "Worker Bee")
+          (home-directory "/home/loraz")
+          (group "users")
+          (supplementary-groups '("wheel"  ;; sudo
+                                  "netdev" ;; network devices
+                                  "tty"
+                                  "input"
+                                  "lp"       ;; control bluetooth devices
+                                  "audio"    ;; control audio devices
+                                  "video"))) ;; control video devices
+         %base-user-accounts))
 
 ;; System Services
 ;; Use Package substitutes instead of compiling everything & specify channels
@@ -106,68 +184,58 @@
                       config =>
                       (substitutes->services config)))))
 
-;; TODO: Define in guixos-base
-(define %base-keyboard-layout
-  (keyboard-layout "us"))
+(define %guixos-base-packages
+  ;; Install bare-minimum system packages
+  (cons* bcachefs-tools
+         ;; egl-wayland
+         ;; intel-media-driver/nonfree
+         bluez
+         bluez-alsa
+         blueman
+         brightnessctl
+         network-manager-applet
+         udiskie
+         lm-sensors
+         openssh
+         git
+         (list git "send-email")
+         curl
+         wget
+         zip
+         unzip
+         %base-packages))
+
 
 (define %guixos
   (operating-system
-   ;; TODO: create base system config --> base-guixos
    ;; (inherit guixos-base)
    (host-name "locutus")
    (timezone "America/Los_Angeles")
    (locale "en_US.utf8")
-   (keyboard-layout %base-keyboard-layout)
+   (keyboard-layout %guixos-keyboard-layout)
 
    (kernel linux)
+
    (firmware (list linux-firmware))
+
+   (initrd microcode-initrd)
+
    ;; Fixes Xorg Lag - https://gitlab.com/nonguix/nonguix/-/issues/212
    ;; for Lenovo ThinkPad X1 Carbon 4th Gen (Type 20FB) Laptop.
-   ;; Leave enabled for Wayland...
-   (initrd microcode-initrd)
-   (kernel-arguments (cons "i915.enable_psr=0" %default-kernel-arguments))
+   (kernel-arguments (cons "i915.enable_psr=0"
+                           %default-kernel-arguments))
 
-   (bootloader (bootloader-configuration
-                (bootloader grub-efi-bootloader)
-                (targets '("/boot/efi"))
-		(keyboard-layout %base-keyboard-layout)))
+   (bootloader %guixos-bootloader)
 
-   (swap-devices (list (swap-space
-                        (target
-                         (uuid
-			  "aea0c27b-be9f-4384-96b8-e8dba1848280")))))
+   (swap-devices %guixos-swap-devices)
 
-   ;; Use 'blkid' to find unique file system identifiers ("UUIDs").
-   (file-systems (cons* (file-system
-                         (mount-point  "/boot/efi")
-                         (device (uuid
-				  "F8E9-9C22"
-				  'fat32))
-                         (type "vfat"))
-                        (file-system
-                         (mount-point "/")
-                         (device (uuid
-				  "25602346-c255-4995-89a3-3a704346c911"
-				  'ext4))
-                         (type "ext4"))
-			(file-system
-			 (mount-point "/home")
-			 (device (uuid
-				  "ef7e647d-4d74-44ca-8894-90e28d372a89"
-				  'ext4))
-			 (type "ext4"))
-			%base-file-systems))
+   (file-systems %guixos-file-systems)
 
-   (users (cons* (user-account
-                  (name %user-name)
-                  (comment "Erik P Almaraz")
-                  (group "users")
-                  (home-directory (string-append "/home/" %user-name))
-                  (supplementary-groups
-                   '("wheel" "netdev" "audio" "video" "lp")))
-		 %base-user-accounts))
+   (groups %guixos-groups)
 
-   (packages %base-packages)
+   (users %guixos-users)
+
+   (packages %guixos-base-packages)
 
    (services %guixos-services)
 
