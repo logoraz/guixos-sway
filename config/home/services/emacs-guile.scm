@@ -14,11 +14,6 @@
   #:export (home-emacs-config-service-type))
 
 
-;; (use-package-modules emacs-xyz guile guile-xyz lisp lisp-xyz mail
-;;                      version-control)
-
-;; (use-service-modules configuration)
-
 (define (home-emacs-config-profile-service config)
   (list emacs-diminish ;;|--> gnu packages emacs-xyz
         emacs-delight

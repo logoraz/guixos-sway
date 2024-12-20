@@ -1,51 +1,49 @@
 (define-module (config home services sway-desktop)
-  #:use-module (gnu)
-  #:use-module (gnu packages certs)
-  #:use-module (gnu packages ssh)
-  #:use-module (gnu packages fonts)
-  #:use-module (gnu packages wm)
-  #:use-module (gnu packages bootloaders)
-  #:use-module (gnu packages networking )
-  #:use-module (gnu packages xorg)
-  #:use-module (gnu packages xdisorg)
-  #:use-module (gnu packages freedesktop)
-  #:use-module (gnu packages linux)
-  #:use-module (gnu packages glib)
-  #:use-module (gnu packages gnome)
-  #:use-module (gnu packages gnome-xyz)
-  #:use-module (gnu packages kde-frameworks)
-  #:use-module (gnu packages web-browsers)
-  #:use-module (gnu packages gstreamer)
-  #:use-module (gnu packages compression)
-  #:use-module (gnu packages gnuzilla)
-  #:use-module (gnu packages terminals)
-  #:use-module (gnu packages graphics)
-  #:use-module (gnu packages image)
-  #:use-module (gnu packages music)
-  #:use-module (gnu packages video)
-  #:use-module (gnu packages qt)
-  #:use-module (gnu packages package-management)
-  #:use-module (gnu packages password-utils)
-  #:use-module (gnu packages gnupg)
-  #:use-module (gnu packages gnucash)
-  #:use-module (gnu packages gimp)
-  #:use-module (gnu packages inkscape)
-  #:use-module (gnu packages pdf)
-  ;; #:use-module (gnu packages shellutils)
-  #:use-module (gnu services configuration)
-
-  #:use-module (gnu home services)
-  #:use-module (guix gexp)
-  #:use-module (guix transformations)
+  #:use-module (gnu)                             ;
+  #:use-module (gnu packages fonts)              ; font packages
+  #:use-module (gnu packages wm)                 ; sway etc.
+  #:use-module (gnu packages networking)         ; blueman
+  #:use-module (gnu packages xorg)               ; ?
+  #:use-module (gnu packages xdisorg)            ; ?
+  #:use-module (gnu packages freedesktop)        ; udiskie,
+  #:use-module (gnu packages linux)              ; ?
+  #:use-module (gnu packages glib)               ; ?
+  #:use-module (gnu packages gnome)              ; ?
+  #:use-module (gnu packages gnome-xyz)          ; ?
+  #:use-module (gnu packages kde-frameworks)     ; ?
+  #:use-module (gnu packages web-browsers)       ; ?
+  #:use-module (gnu packages gstreamer)          ; ?
+  #:use-module (gnu packages compression)        ; ?
+  #:use-module (gnu packages gnuzilla)           ; ?
+  #:use-module (gnu packages terminals)          ; ?
+  #:use-module (gnu packages graphics)           ; ?
+  #:use-module (gnu packages image)              ; ?
+  #:use-module (gnu packages music)              ; ?
+  #:use-module (gnu packages video)              ; ?
+  #:use-module (gnu packages qt)                 ; ?
+  #:use-module (gnu packages package-management) ; ?
+  #:use-module (gnu packages password-utils)     ; password-store
+  #:use-module (gnu packages gnupg)              ; gnupg
+  #:use-module (gnu packages gnucash)            ; gnucash
+  #:use-module (gnu packages gimp)               ; gimp
+  #:use-module (gnu packages inkscape)           ; inkscape
+  #:use-module (gnu packages pdf)                ; zathura
+  #:use-module (gnu packages shellutils)         ; trash-cli
+  #:use-module (gnu services configuration)      ; ?
+                                                 ;
+  #:use-module (gnu home services)               ; ?
+  #:use-module (guix gexp)                       ; ?
+  #:use-module (guix transformations)            ;-> options-transformations
 
   #:export (home-sway-desktop-service-type))
 
 
 ;;; Package Transformations
-(define latest-nyxt
+;; ref: https://guix.gnu.org/manual/en/guix.html#Defining-Package-Variants
+(define latest-trash-cli
+  ;; Currently failing build due to tests since update to latest python...
   (options->transformation
-   '((without-tests . "nyxt")
-     (with-latest   . "nyxt"))))
+   '((without-tests . "trash-cli"))))
 
 (define (home-sway-desktop-profile-service config)
   (list sway
@@ -94,7 +92,6 @@
         ;; Browsers
         qutebrowser
         qtwayland ;;(specification->package "qtwayland@5")
-        ;; (latest-nyxt nyxt)
 
         ;; Authentication
         gnupg
@@ -128,8 +125,11 @@
         blender   ;;|--> gnu packages graphics
 
         ;; Utilities
-        ;; trash-cli
-        wev))
+        wev
+        (latest-trash-cli trash-cli)
+        blueman
+        network-manager-applet
+        udiskie))
 
 (define home-sway-desktop-service-type
   (service-type (name 'home-sway-desktop-config)

@@ -1,6 +1,6 @@
-# GuixOS Sway
+# GuixOS Sway ("Alkaline Ice")
 
-GuixOS Sway (codename GuixOS Phonon): A Custom Guix System Distribution
+GuixOS Sway ("Alkaline Ice"): A Custom Guix System Distribution
 configured for Sway WM.
 
 This is specifically setup and trailed with my Lenovo ThinkPad X1 Carbon
@@ -119,7 +119,7 @@ information:
 Note: I am currently working to generalize this to define machine and user
 specific variables in one place...
 
-Now we are ready to install GuixOS Phonon:
+Now we are ready to install GuixOS Sway ("Alkaline Ice"):
 
 ```bash
 

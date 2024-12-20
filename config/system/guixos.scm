@@ -1,43 +1,35 @@
 (define-module (config system guixos)
-  #:use-module (ice-9 optargs)
-  #:use-module (ice-9 ftw)
-  #:use-module (gnu)
-  #:use-module (gnu packages certs)
-  #:use-module (gnu packages cups)
-  #:use-module (gnu packages ssh)
-  #:use-module (gnu packages suckless)
-  #:use-module (gnu packages file-systems)
-  #:use-module (gnu packages package-management)
-  #:use-module (gnu packages linux)
-  #:use-module (gnu packages audio)
-  #:use-module (gnu packages gnome)
-  #:use-module (gnu packages freedesktop)
-  #:use-module (gnu packages wm)
-  #:use-module (gnu packages wget)
-  #:use-module (gnu packages curl)
-  #:use-module (gnu packages version-control)
-  #:use-module (gnu packages compression)
-  #:use-module (gnu packages networking)
-  #:use-module (gnu packages admin)
-  #:use-module (gnu services guix)
-  #:use-module (gnu services cups)
-  #:use-module (gnu services ssh)
-  #:use-module (gnu services xorg)
-  #:use-module (gnu services desktop)
-  #:use-module (gnu system setuid)
-  #:use-module (gnu system file-systems)
-  #:use-module (gnu system nss)
-  #:use-module (gnu system keyboard)
-  #:use-module (gnu bootloader)
-  #:use-module (gnu home) ;; for guix-home-serivice-type
-  #:use-module (nongnu packages linux)
-  #:use-module (nongnu system linux-initrd)
-  #:use-module (guix)
-  #:use-module (guix gexp)
-  #:use-module (guix transformations)
-  #:use-module (guix ci)
-  #:use-module (guix packages)
-  #:use-module (guix download)
+  #:use-module (ice-9 optargs)                   ; ?
+  #:use-module (ice-9 ftw)                       ; ?
+  #:use-module (gnu)                             ; ?
+  #:use-module (gnu packages cups)               ;-> cups-filters
+  #:use-module (gnu packages ssh)                ; openssh
+  #:use-module (gnu packages file-systems)       ; bcacefs-tools
+  #:use-module (gnu packages package-management) ;-> guix-for-channels
+  #:use-module (gnu packages linux)              ;-> brightnessctl,lm-sensors
+  #:use-module (gnu packages audio)              ; bluez-alsa
+  #:use-module (gnu packages xorg)               ; egl-wayland
+  #:use-module (gnu packages wm)                 ; swaylock
+  #:use-module (gnu packages wget)               ; wget
+  #:use-module (gnu packages curl)               ; curl
+  #:use-module (gnu packages version-control)    ; git
+  #:use-module (gnu packages compression)        ; zip,unzip
+  #:use-module (gnu services guix)               ;-> guix-home-service-type
+  #:use-module (gnu services cups)               ; ?
+  #:use-module (gnu services ssh)                ; ?
+  #:use-module (gnu services xorg)               ; ?
+  #:use-module (gnu services desktop)            ; ?
+  #:use-module (gnu system setuid)               ; ?
+  #:use-module (gnu system file-systems)         ; ?
+  #:use-module (gnu system nss)                  ; ?
+  #:use-module (gnu system keyboard)             ; ?
+  #:use-module (gnu bootloader)                  ; ?
+  #:use-module (nongnu packages linux)           ; ?
+  #:use-module (nongnu system linux-initrd)      ; ?
+  #:use-module (guix transformations)            ;-> options->transformation
+  #:use-module (guix ci)                         ; ?
+  #:use-module (guix packages)                   ; ?
+  #:use-module (guix download)                   ; ?
   #:use-module (config system guixos-channels)
   #:use-module (config home guixos-home))
 
@@ -109,7 +101,7 @@
   (guix-configuration
    (inherit config)
    (channels channels)
-   ;; ref?
+   ;; ref https://guix.gnu.org/manual/devel/en/html_node/Customizing-the-System_002dWide-Guix.html
    (guix (guix-for-channels channels))
    (substitute-urls
     (cons* "https://substitutes.nonguix.org"
@@ -184,17 +176,17 @@
                       config =>
                       (substitutes->services config)))))
 
+;;; Package Transformations & Packages
+;; ref: https://guix.gnu.org/manual/en/guix.html#Defining-Package-Variants
+
 (define %guixos-base-packages
   ;; Install bare-minimum system packages
   (cons* bcachefs-tools
-         ;; egl-wayland
+         egl-wayland
          ;; intel-media-driver/nonfree
          bluez
          bluez-alsa
-         blueman
          brightnessctl
-         network-manager-applet
-         udiskie
          lm-sensors
          openssh
          git
