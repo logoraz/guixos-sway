@@ -149,10 +149,12 @@
                (greetd-terminal-configuration
                 (terminal-vt "1")
                 (terminal-switch #t)
-                ;; issues.guix.gnu.org/65769
                 (default-session-command
                   ;; https://guix.gnu.org/manual/en/html_node/Base-Services.html
-                  (greetd-wlgreet-sway-session)))
+                  ;; issues.guix.gnu.org/65769
+                  (greetd-wlgreet-sway-session
+                   (sway-configuration
+                    (make-file "../../files/sway/sway-greetd.conf")))))
                (greetd-terminal-configuration (terminal-vt "2"))
                (greetd-terminal-configuration (terminal-vt "3"))
                (greetd-terminal-configuration (terminal-vt "4"))
