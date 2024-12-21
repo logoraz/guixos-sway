@@ -27,7 +27,7 @@ output "*" bg ~/.guixos-sway/files/assets/wallpapers/primary-wall.jpg fill
 
 input type:keyboard {
     xkb_layout us,il
-    # xkb_options ctrl:nocaps
+    xkb_options ctrl:nocaps
 }
 
 # Set system font
