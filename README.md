@@ -54,6 +54,7 @@ This is specifically setup and trailed with my Lenovo ThinkPad X1 Carbon
        |- qutebrowser/...
        |- sway/                    ;; Sway Config (WIP => home-sway-service-type)
           |- config
+          |- sway-greetd.conf      ;; Active WIP
           |- bin/
              |- swaybar-status.sh
              |- toggle-display.sh  ;; WIP
