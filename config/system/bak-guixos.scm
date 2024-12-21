@@ -19,7 +19,6 @@
   #:use-module (gnu services ssh)                ; ?
   #:use-module (gnu services xorg)               ; ?
   #:use-module (gnu services desktop)            ; ?
-  #:use-module (gnu services networking)         ;-> tor-service-type
   #:use-module (gnu system setuid)               ; ?
   #:use-module (gnu system file-systems)         ; ?
   #:use-module (gnu system nss)                  ; ?
@@ -49,20 +48,29 @@
 (define %guixos-swap-devices
   (list (swap-space
          (target
-          (uuid "1c3244f3-16d5-4bca-8f33-c6465a6e2f69")))))
+          (uuid
+	   "aea0c27b-be9f-4384-96b8-e8dba1848280")))))
 
 (define %guixos-file-systems
   ;; Use 'blkid' to find unique file system identifiers ("UUIDs").
   (cons* (file-system
           (mount-point  "/boot/efi")
-          (device (uuid "F8E9-9C22"
-			'fat32))
+          (device (uuid
+		   "F8E9-9C22"
+		   'fat32))
           (type "vfat"))
          (file-system
           (mount-point "/")
-          (device (uuid "90a13ca3-a38d-4b47-a637-d037bc6ac567"
-			'ext4))
+          (device (uuid
+		   "25602346-c255-4995-89a3-3a704346c911"
+		   'ext4))
           (type "ext4"))
+	 (file-system
+	  (mount-point "/home")
+	  (device (uuid
+		   "ef7e647d-4d74-44ca-8894-90e28d372a89"
+		   'ext4))
+	  (type "ext4"))
 	 %base-file-systems))
 
 (define %guixos-groups
@@ -127,9 +135,6 @@
              (web-interface? #t)
              (default-paper-size "Letter")
              (extensions (list cups-filters hplip-minimal))))
-
-   ;; TODO: New - need to look into & configure!!
-   (service tor-service-type)
 
    ;; ssh user@host -p 2222
    (service openssh-service-type
