@@ -9,7 +9,7 @@ This is specifically setup and trailed with my Lenovo ThinkPad X1 Carbon
 
 ## Screenshots
 
-![View 1](files/assets/screenshots/guix-sway-exhibit-1__2024-11-24.png)
+![View 1](files/assets/screenshots/guix-sway-desktop-exhibit__2024-12-23.png)
 
 ![View 2](files/assets/screenshots/guix-sway-exhibit-2__2024-11-24.png)
 
