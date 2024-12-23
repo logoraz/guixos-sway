@@ -33,6 +33,7 @@
         emacs-marginalia
         emacs-beframe
         emacs-denote
+        emacs-consult-denote
 
         ;; Mail & Org
         ;;https://packages.guix.gnu.org/packages/emacs-pinentry/0.1-1.dcc9ba0/

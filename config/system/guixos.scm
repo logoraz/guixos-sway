@@ -1,58 +1,36 @@
 (define-module (config system guixos)
-  #:use-module (ice-9 optargs)                   ;-> substitutes->services
-  #:use-module (ice-9 ftw)                       ;-> wip
-  #:use-module (gnu)                             ; ?
-  #:use-module (gnu packages cups)               ;-> cups-filters
-  #:use-module (gnu packages ssh)                ;-> openssh
-  #:use-module (gnu packages file-systems)       ;-> bcacefs-tools
-  #:use-module (gnu packages package-management) ;-> guix-for-channels
-  #:use-module (gnu packages linux)              ;-> brightnessctl,lm-sensors
-  #:use-module (gnu packages audio)              ;-> bluez-alsa
-  #:use-module (gnu packages xorg)               ;-> egl-wayland
-  #:use-module (gnu packages wm)                 ;-> swaylock
-  #:use-module (gnu packages wget)               ;-> wget
-  #:use-module (gnu packages curl)               ;-> curl
-  #:use-module (gnu packages version-control)    ;-> git
-  #:use-module (gnu packages compression)        ;-> zip,unzip
-  #:use-module (gnu services guix)               ;-> guix-home-service-type
-  #:use-module (gnu services cups)               ;-> cups-service-type
-  #:use-module (gnu services ssh)                ;-> openssh-service-type
-  #:use-module (gnu services xorg)               ;-> screen-locker-service-type
-  #:use-module (gnu services desktop)            ; ?
-  #:use-module (gnu services networking)         ;-> tor-service-type
-  #:use-module (gnu system setuid)               ; ?
-  #:use-module (gnu system file-systems)         ; ?
-  #:use-module (gnu system nss)                  ; ?
-  #:use-module (gnu system keyboard)             ; ?
-  #:use-module (gnu bootloader)                  ; ?
-  #:use-module (nongnu packages linux)           ;-> Modified NF Linux kernel
-  #:use-module (nongnu system linux-initrd)      ;-> Microcode for NF  kernel
-  #:use-module (guix gexp)                       ;-> gexp's local-file
-  #:use-module (guix transformations)            ;-> options->transformation
-  #:use-module (guix ci)                         ; ?
-  #:use-module (guix packages)                   ; ?
-  #:use-module (guix download)                   ; ?
+  #:use-module (gnu)                          ;-> grub-efi-bootloader, etc.
+  #:use-module (gnu packages cups)            ;-> cups-filters
+  #:use-module (gnu packages ssh)             ;-> openssh
+  #:use-module (gnu packages file-systems)    ;-> bcacefs-tools
+  #:use-module (gnu packages linux)           ;-> brightnessctl,lm-sensors
+  #:use-module (gnu packages audio)           ;-> bluez-alsa
+  #:use-module (gnu packages xorg)            ;-> egl-wayland
+  #:use-module (gnu packages wm)              ;-> swaylock
+  #:use-module (gnu packages wget)            ;-> wget
+  #:use-module (gnu packages curl)            ;-> curl
+  #:use-module (gnu packages version-control) ;-> git
+  #:use-module (gnu packages compression)     ;-> zip,unzip
+  #:use-module (gnu services guix)            ;-> guix-home-service-type
+  #:use-module (gnu services cups)            ;-> cups-service-type
+  #:use-module (gnu services ssh)             ;-> openssh-service-type
+  #:use-module (gnu services xorg)            ;-> screen-locker-service-type
+  #:use-module (gnu services desktop)         ; ?
+  #:use-module (gnu services networking)      ;-> tor-service-type
+  #:use-module (gnu system nss)               ;-> %mdns-host-lookup-nss
+  #:use-module (gnu system keyboard)          ;-> keyboard-layout
+  #:use-module (nongnu packages linux)        ;-> Modified NF Linux kernel
+  #:use-module (nongnu system linux-initrd)   ;-> Microcode for NF  kernel
+  #:use-module (guix gexp)                    ;-> gexp's local-file
+  #:use-module (guix transformations)         ;-> options->transformation
+  #:use-module (config services substitutes)
   #:use-module (config system guixos-channels)
-  #:use-module (config home guixos-home)
-
-  ;; wip guixos-sway-core
-  #:export (%guixos-user-name
-            %guixos-keyboard-layout
-            %guixos-bootloader
-            %guixos-swap-devices
-            %guixos-file-systems
-            %guixos-groups
-            %guixos-users
-            %greetd-conf
-            substitutes->services
-            %guixos-base-services
-            %guixos-base-packages
-            %guixos-sway-core))
+  #:use-module (config home guixos-home))
 
 
 ;;; operating-system parameters
 
-(define %guixos-user-name "loraz")
+(define guixos-user-name "loraz")
 
 (define %guixos-keyboard-layout
   (keyboard-layout "us"))
@@ -108,28 +86,6 @@
 ;; Needed for greetd sway configuration...
 (define %greetd-conf (string-append "/home/loraz/.guixos-sway/"
                                       "files/sway/sway-greetd.conf"))
-
-;; Use Package substitutes instead of compiling everything & specify channels
-;; https://guix.gnu.org/manual/en/html_node/Getting-Substitutes-from-Other-Servers.html
-(define* (substitutes->services config #:optional (channels %guixos-channels))
-  (guix-configuration
-   (inherit config)
-   (channels channels)
-   ;; ref https://guix.gnu.org/manual/devel/en/html_node/Customizing-the-System_002dWide-Guix.html
-   (guix (guix-for-channels channels))
-   (substitute-urls
-    (cons* "https://substitutes.nonguix.org"
-           "https://ci.guix.gnu.org"
-           %default-substitute-urls))
-   (authorized-keys
-    (cons* (origin
-            (method url-fetch)
-            (uri "https://substitutes.nonguix.org/signing-key.pub")
-            (file-name "nonguix.pub")
-            (hash
-             (content-hash
-              "0j66nq1bxvbxf5n8q2py14sjbkn57my0mjwq7k1qm9ddghca7177")))
-           %default-authorized-guix-keys))))
 
 (define %guixos-base-services
   (cons*
@@ -187,7 +143,7 @@
 
    ;; Set up home configuration
    (service guix-home-service-type
-            `((,%guixos-user-name ,%guixos-home)))
+            `((,guixos-user-name ,%guixos-sway-home)))
 
    ;; See: https://guix.gnu.org/manual/en/html_node/Desktop-Services.html
    (modify-services %desktop-services
@@ -199,7 +155,8 @@
                     (delete mingetty-service-type)
                     (guix-service-type
                      config =>
-                     (substitutes->services config)))))
+                     (substitutes->services config
+                                            #:channels %guixos-channels)))))
 
 ;;; Package Transformations & Packages
 ;; ref: https://guix.gnu.org/manual/en/guix.html#Defining-Package-Variants

@@ -15,10 +15,10 @@
   #:use-module (config home services streaming)    ; ?
   #:use-module (config home services udiskie)      ; ?
 
-  #:export (%guixos-home))
+  #:export (%guixos-sway-home))
 
 
-(define %guixos-home
+(define %guixos-sway-home
   (home-environment
    (services
     (list

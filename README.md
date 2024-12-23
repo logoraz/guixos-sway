@@ -35,10 +35,9 @@ This is specifically setup and trailed with my Lenovo ThinkPad X1 Carbon
           |- raz-emacs.scm
           |- video.scm
        |- services/                ;; Custom GuixOS Service Modules
-          |- tbd
+          |- substitutes.scm       
        |- system/                  ;; GuixOS Config Root
           |- guixos.scm            ;; ** GuixOS Config **
-          |- guixos-base.scm       ;; WIP
           |- guixos-channels.scm
           |- channels.scm
     |- files/                      ;; XDG_CONFIG_HOME Files (=> xdg-files.scm)
