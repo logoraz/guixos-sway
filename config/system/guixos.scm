@@ -11,6 +11,10 @@
   #:use-module (gnu packages curl)            ;-> curl
   #:use-module (gnu packages version-control) ;-> git
   #:use-module (gnu packages compression)     ;-> zip,unzip
+  #:use-module (gnu packages guile)           ;-> guile (ensure)
+  #:use-module (gnu packages guile-xyz)       ;-> guile-colorized (ensure)
+  #:use-module (gnu packages lisp)            ;-> sbcl
+  #:use-module (gnu packages lisp-xyz)        ;-> sbcl-slynk
   #:use-module (gnu services guix)            ;-> guix-home-service-type
   #:use-module (gnu services cups)            ;-> cups-service-type
   #:use-module (gnu services ssh)             ;-> openssh-service-type
@@ -84,8 +88,10 @@
 ;;; System Services
 
 ;; Needed for greetd sway configuration...
+;; Sneaky step here, need to manually place photo/contents needed
+;; by sway-greetd.conf in places like /etc/
 (define %greetd-conf (string-append "/home/loraz/.guixos-sway/"
-                                      "files/sway/sway-greetd.conf"))
+                                    "files/sway/sway-greetd.conf"))
 
 (define %guixos-base-services
   (cons*
@@ -163,7 +169,11 @@
 
 (define %guixos-base-packages
   ;; Install bare-minimum system packages
-  (cons* bcachefs-tools
+  (cons* guile
+         guile-colorized
+         sbcl
+         sbcl-slynk
+         bcachefs-tools
          egl-wayland
          ;; intel-media-driver/nonfree
          bluez

@@ -107,6 +107,26 @@
     ("qutebrowser/qute-keepassxc"
      ,(home-file "files/qutebrowser" "qute-keepassxc"))
 
+    ;; Nyxt browser Configuration fils
+    ("nyxt/config.lisp"
+     ,(home-file "files/nyxt" "config.lisp"))
+
+    ("nyxt/passwords.lisp"
+     ,(home-file "files/nyxt" "passwords.lisp"))
+
+    ("nyxt/passwords-dev.lisp"
+     ,(home-file "files/nyxt" "passwords-dev.lisp"))
+
+    ("nyxt/utilities.lisp"
+     ,(home-file "files/nyxt" "utilities.lisp"))
+
+    ;; A not so good way to lug around extensions too...
+    ("nyxt/extensions/nx-invader-2/nx-invader-2.lisp"
+     ,(home-file "files/nyxt/extensions/nx-invader-2" "nx-invader-2.lisp"))
+
+    ("nyxt/extensions/nx-invader-2/nx-invader-2.asd"
+     ,(home-file "files/nyxt/extensions/nx-invader-2" "nx-invader-2.asdf"))
+
     ;; Zathura Configuration File
     ("zathura/zathurarc"
      ,(home-file "files/zathura" "zathurarc"))))

@@ -3,8 +3,6 @@
   #:use-module (gnu packages emacs-xyz)
   #:use-module (gnu packages guile)
   #:use-module (gnu packages guile-xyz)
-  #:use-module (gnu packages lisp)
-  #:use-module (gnu packages lisp-xyz)
   #:use-module (gnu packages mail)
   #:use-module (gnu services configuration)
   #:use-module (gnu home services)
@@ -63,12 +61,7 @@
 
         ;; Guile Scheme Emacs Integration
         guile-next                      ;doesn't work with g-golf
-        guile-ares-rs
-        guile-colorized
-
-        ;; Common Lisp Integration
-        sbcl
-        sbcl-slynk))
+        guile-ares-rsw))
 
 (define home-emacs-config-service-type
   (service-type (name 'home-emacs-config)

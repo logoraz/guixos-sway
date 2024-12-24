@@ -40,10 +40,15 @@
 
 ;;; Package Transformations
 ;; ref: https://guix.gnu.org/manual/en/guix.html#Defining-Package-Variants
-(define latest-trash-cli
+(define curr-trash-cli
   ;; Currently failing build due to tests since update to latest python...
   (options->transformation
    '((without-tests . "trash-cli"))))
+
+(define latest-nyxt
+  (options->transformation
+   '((without-tests . "nyxt")
+     (with-latest   . "nyxt"))))
 
 (define (home-sway-desktop-profile-service config)
   (list sway
@@ -92,6 +97,7 @@
         ;; Browsers
         qutebrowser
         qtwayland ;;(specification->package "qtwayland@5")
+        (latest-nyxt nyxt)
 
         ;; Authentication
         gnupg
@@ -126,7 +132,7 @@
 
         ;; Utilities
         wev
-        (latest-trash-cli trash-cli)
+        (curr-trash-cli trash-cli)
         blueman
         network-manager-applet
         udiskie))
