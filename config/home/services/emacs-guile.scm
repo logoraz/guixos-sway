@@ -61,7 +61,7 @@
 
         ;; Guile Scheme Emacs Integration
         guile-next                      ;doesn't work with g-golf
-        guile-ares-rsw))
+        guile-ares-rs))
 
 (define home-emacs-config-service-type
   (service-type (name 'home-emacs-config)

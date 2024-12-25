@@ -169,7 +169,7 @@
 
 (define %guixos-base-packages
   ;; Install bare-minimum system packages
-  (cons* guile
+  (cons* (specification->package "guile")
          guile-colorized
          sbcl
          sbcl-slynk

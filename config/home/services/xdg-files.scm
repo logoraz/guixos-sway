@@ -125,7 +125,7 @@
      ,(home-file "files/nyxt/extensions/nx-invader-2" "nx-invader-2.lisp"))
 
     ("nyxt/extensions/nx-invader-2/nx-invader-2.asd"
-     ,(home-file "files/nyxt/extensions/nx-invader-2" "nx-invader-2.asdf"))
+     ,(home-file "files/nyxt/extensions/nx-invader-2" "nx-invader-2.asd"))
 
     ;; Zathura Configuration File
     ("zathura/zathurarc"
