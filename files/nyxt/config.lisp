@@ -55,6 +55,6 @@
 ;;; ~/.local/share/nyxt/extensions/*
 (define-nyxt-user-system-and-load nyxt-user/nx-invader-2-proxy
   ;; :extensions-directory (#P"~/.config/nyxt/extensions/")
-  :description "Dark style theme for Nyxt"
+  :description "Simple Dark style theme for Nyxt"
   :depends-on ("nx-invader-2"))
 
