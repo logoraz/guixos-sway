@@ -15,8 +15,8 @@
 
 (defmethod initialize-instance :after ((interface password:keepassxc-interface)
                                        &key &allow-other-keys)
-  (setf (password:password-file interface) "/home/loraz/Documents/moses/p.kdbx"
-        (password:key-file interface) "/home/loraz/Documents/moses/pkf"
+  (setf (password:password-file interface) "/home/loraz/Documents/moses/keepassxc/p.kdbx"
+        (password:key-file interface) "/home/loraz/Documents/moses/keepassxc/pkf"
         (password:yubikey-slot interface) "")) ; set as `empty string' to avoid propmt
 
 (define-configuration nyxt/mode/password:password-mode

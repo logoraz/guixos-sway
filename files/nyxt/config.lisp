@@ -22,7 +22,6 @@
 
 ;; Loading files from the same directory (~/.config/nyxt/).
 (define-nyxt-user-system-and-load nyxt-user/basic-config
-  ;; :config-directory (#P"~/.config/nyxt/modules/")
   :components ("utilities"
                "passwords"
                "passwords-dev"))
@@ -50,11 +49,9 @@
   "Reroute bookmarks to the `.config/nyxt/' directory."
   #p"~/.config/nyxt/bookmarks.lisp")
 
-
 ;;; Nyxt Extensions
 ;;; ~/.local/share/nyxt/extensions/*
 (define-nyxt-user-system-and-load nyxt-user/nx-invader-2-proxy
-  ;; :extensions-directory (#P"~/.config/nyxt/extensions/")
   :description "Simple Dark style theme for Nyxt"
   :depends-on ("nx-invader-2"))
 
