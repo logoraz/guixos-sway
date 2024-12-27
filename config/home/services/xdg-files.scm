@@ -111,14 +111,14 @@
     ("nyxt/config.lisp"
      ,(home-file "files/nyxt" "config.lisp"))
 
-    ("nyxt/passwords.lisp"
-     ,(home-file "files/nyxt" "passwords.lisp"))
+    ("nyxt/keepassxc-pwi.lisp"
+     ,(home-file "files/nyxt" "keepassxc-pwi.lisp"))
 
-    ("nyxt/passwords-dev.lisp"
-     ,(home-file "files/nyxt" "passwords-dev.lisp"))
+    ("nyxt/keepassxc-3431.lisp"
+     ,(home-file "files/nyxt" "keepassxc-3431.lisp"))
 
-    ("nyxt/utilities.lisp"
-     ,(home-file "files/nyxt" "utilities.lisp"))
+    ("nyxt/bookmarks.lisp"
+     ,(home-file "files/nyxt" "bookmarks.lisp"))
 
     ;; A not so good way to lug around extensions too...
     ("nyxt/extensions/nx-invader-2/nx-invader-2.lisp"
