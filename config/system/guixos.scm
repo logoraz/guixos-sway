@@ -19,7 +19,7 @@
   #:use-module (gnu services cups)            ;-> cups-service-type
   #:use-module (gnu services ssh)             ;-> openssh-service-type
   #:use-module (gnu services xorg)            ;-> screen-locker-service-type
-  #:use-module (gnu services desktop)         ; ?
+  #:use-module (gnu services desktop)         ;-> bluetooth-service-type
   #:use-module (gnu services networking)      ;-> tor-service-type
   #:use-module (gnu system nss)               ;-> %mdns-host-lookup-nss
   #:use-module (gnu system keyboard)          ;-> keyboard-layout
