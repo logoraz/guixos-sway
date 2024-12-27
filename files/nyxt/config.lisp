@@ -20,7 +20,7 @@
 ;; Loading files from the same directory (~/.config/nyxt/).
 (define-nyxt-user-system-and-load nyxt-user/basic-config
   :components ("keepassxc-pwi"
-               "password"))
+               "keepassxc-3431"))
 
 ;; Base broswer/buffer configurations
 (define-configuration :browser
