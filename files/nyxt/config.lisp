@@ -33,25 +33,15 @@
 (define-configuration :buffer
     ((default-modes `(emacs-mode ,@%slot-value%))))
 
-;; Drastically impacts Nyxt startup...
-(define-configuration :web-buffer
-    ((default-modes `(blocker-mode ,@%slot-value%))))
-
-;; trialing out
-(define-configuration :document-buffer
-    ((search-always-auto-complete-p nil)))
-
-;; Borrowed from aartaka
-(define-configuration :prompt-buffer
-    ((dynamic-attribute-width-p t)))
-
-(defmethod files:resolve ((profile nyxt:nyxt-profile) (file nyxt/mode/bookmark:bookmarks-file))
-  "Reroute bookmarks to the `.config/nyxt/' directory."
-  #p"~/.config/nyxt/bookmarks.lisp")
-
 ;;; Nyxt Extensions
 ;;; ~/.local/share/nyxt/extensions/*
 (define-nyxt-user-system-and-load nyxt-user/nx-invader-2-proxy
   :description "Simple Dark style theme for Nyxt"
   :depends-on ("nx-invader-2"))
 
+
+;;; Hacks
+;;Borrowed from aartaka
+(defmethod files:resolve ((profile nyxt:nyxt-profile) (file nyxt/mode/bookmark:bookmarks-file))
+           "Reroute bookmarks to the `.config/nyxt/' directory."
+           #p"~/.config/nyxt/bookmarks.lisp")
