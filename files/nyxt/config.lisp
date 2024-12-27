@@ -8,9 +8,6 @@
 ;;; 2. https://discourse.atlas.engineer/t/where-is-the-download-directory-specified/285
 ;;;    Set XDG_DOWNLOAD_DIR in start-stumpwm.sh -> should define custom XDG env vars there!
 ;;;    see: nyxt:describe-function?fn=%1Bxdg-download-dir&function=%1Bxdg-download-dir
-;;; 3. TBD
-;;; 4. TBD
-
 
 ;;; Start-Up & Configuration
 
@@ -22,9 +19,8 @@
 
 ;; Loading files from the same directory (~/.config/nyxt/).
 (define-nyxt-user-system-and-load nyxt-user/basic-config
-  :components ("utilities"
-               "passwords"
-               "passwords-dev"))
+  :components ("keepassxc-pwi"
+               "password"))
 
 ;; Base broswer/buffer configurations
 (define-configuration :browser
