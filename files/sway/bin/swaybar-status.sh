@@ -12,7 +12,7 @@ current_time=$(date "+%I:%M:%S")
 # Battery/Charger Status
 #
 battery_charge=$(upower --show-info $(upower --enumerate | grep 'BAT') \
-               | grep -E "percentage" | awk '{print $2}' | grep -E -o [0-9]*3)
+               | grep -E "percentage" | awk '{print $2}' | grep -E -o '[0-9]*')
 
 # battery_status=$(upower --show-info $(upower --enumerate | grep 'BAT') \
 #                | egrep "state" | awk '{print $2}')
@@ -39,7 +39,7 @@ fi
 # Display
 #
 current_brightness=$(brightnessctl | grep -E "Current brightness" \
-                   | awk '{print $4}' | grep -E -o [0-9]*3)
+                   | awk '{print $4}' | grep -E -o '[0-9]*')
 
 if [ $current_brightness -lt 50 ]; then
     brightness_symbol='🔅'
