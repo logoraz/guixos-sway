@@ -1,7 +1,8 @@
 ;;;; Nyxt Configuration - Initialization File
 
 ;;; Commentary:
-;;; Set Mode & Browser Settings
+;;; Set Buffer Settings & load in Keepassxc interface configuration as well as
+;;; modified invader theme as an extension (similar to StumpWM contrib modules).
 
 ;;; References
 ;;; 1. https://github.com/aartaka/nyxt-config/
@@ -9,7 +10,8 @@
 ;;;    Set XDG_DOWNLOAD_DIR in start-stumpwm.sh -> should define custom XDG env vars there!
 ;;;    see: nyxt:describe-function?fn=%1Bxdg-download-dir&function=%1Bxdg-download-dir
 
-;;; Start-Up & Configuration
+
+;;; A very simple configuration... doesn't need to be complex...
 
 (in-package #:nyxt-user)
 
@@ -22,10 +24,6 @@
   :components ("keepassxc-pwi"
                "keepassxc-3431"))
 
-;; Base broswer/buffer configurations
-(define-configuration :browser
-    ((restore-session-on-startup-p nil)))
-
 (define-configuration :buffer
     ((default-modes `(emacs-mode ,@%slot-value%))))
 
@@ -34,7 +32,6 @@
 (define-nyxt-user-system-and-load nyxt-user/nx-invader-2-proxy
   :description "Simple Dark style theme for Nyxt"
   :depends-on ("nx-invader-2"))
-
 
 ;;; Hacks
 ;;Borrowed from aartaka
