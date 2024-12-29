@@ -3,10 +3,10 @@
   #:use-module (ice-9 ftw)                       ;-> wip
   #:use-module (gnu)                             ;-> guix-configuration
   #:use-module (gnu packages package-management) ;-> guix-for-channels
-  #:use-module (guix gexp)                       ; ?
-  #:use-module (guix ci)                         ; ?
-  #:use-module (guix packages)                   ; ?
-  #:use-module (guix download)                   ; ?
+  #:use-module (guix gexp)                       ; -
+  #:use-module (guix ci)                         ; -
+  #:use-module (guix packages)                   ; -
+  #:use-module (guix download)                   ; -
 
   #:export (substitutes->services
             %guixos-substitute-urls

@@ -1,9 +1,9 @@
 (define-module (config packages raz-emacs)
-  #:use-module (guix download)
-  #:use-module (guix git-download)
-  #:use-module (guix packages)
-  #:use-module (guix build-system copy)
-  #:use-module ((guix licenses) #:prefix license:))
+  #:use-module (guix download)                      ; -
+  #:use-module (guix git-download)                  ; -
+  #:use-module (guix packages)                      ; -
+  #:use-module (guix build-system copy)             ; -
+  #:use-module ((guix licenses) #:prefix license:)) ; -
 
 ;;TODO - doesn't work when exported, only with define-public... why?
 

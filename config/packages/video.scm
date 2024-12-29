@@ -1,18 +1,17 @@
 ;;; Borrowed from:
 ;;; https://codeberg.org/daviwil/dotfiles/daviwil/packages/video.scm
-
 (define-module (config packages video)
-  #:use-module (gnu packages cmake)
-  #:use-module (gnu packages video)
-  #:use-module (gnu packages gstreamer)
-  #:use-module (gnu packages pciutils)
-  #:use-module (gnu packages pkg-config)
-  #:use-module (guix build-system meson)
-  #:use-module (guix download)
-  #:use-module (guix git-download)
-  #:use-module ((guix licenses) #:prefix license:)
-  #:use-module (guix packages)
-  #:use-module (guix gexp))
+  #:use-module (gnu packages cmake)                ; -
+  #:use-module (gnu packages video)                ; -
+  #:use-module (gnu packages gstreamer)            ; -
+  #:use-module (gnu packages pciutils)             ; -
+  #:use-module (gnu packages pkg-config)           ; -
+  #:use-module (guix build-system meson)           ; -
+  #:use-module (guix download)                     ; -
+  #:use-module (guix git-download)                 ; -
+  #:use-module ((guix licenses) #:prefix license:) ; -
+  #:use-module (guix packages)                     ; -
+  #:use-module (guix gexp))                        ;-
 
 (define-public obs-vaapi
   (package

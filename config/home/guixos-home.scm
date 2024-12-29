@@ -1,19 +1,19 @@
 (define-module (config home guixos-home)
-  #:use-module (gnu)                               ; ?
-  #:use-module (gnu home)                          ; ?
-  #:use-module (gnu home services)                 ; ?
-  #:use-module (gnu home services pm)              ; ?
-  #:use-module (gnu home services shells)          ; ?
-  #:use-module (gnu home services sound)           ; ?
-  #:use-module (gnu home services desktop)         ; ?
-  #:use-module (guix gexp)                         ; ?
-  #:use-module (config home services environment)  ; ?
-  #:use-module (config home services xdg-files)    ; ?
-  #:use-module (config home services sway-desktop) ; ?
-  #:use-module (config home services emacs-guile)  ; ?
-  #:use-module (config home services raz-emacs)    ; ?
-  #:use-module (config home services streaming)    ; ?
-  #:use-module (config home services udiskie)      ; ?
+  #:use-module (gnu)                               ; -
+  #:use-module (gnu home)                          ; -
+  #:use-module (gnu home services)                 ; -
+  #:use-module (gnu home services pm)              ; -
+  #:use-module (gnu home services shells)          ; -
+  #:use-module (gnu home services sound)           ; -
+  #:use-module (gnu home services desktop)         ; -
+  #:use-module (guix gexp)                         ; -
+  #:use-module (config home services environment)
+  #:use-module (config home services xdg-files)
+  #:use-module (config home services sway-desktop)
+  #:use-module (config home services emacs-guile)
+  #:use-module (config home services raz-emacs)
+  #:use-module (config home services streaming)
+  #:use-module (config home services udiskie)
 
   #:export (%guixos-sway-home))
 

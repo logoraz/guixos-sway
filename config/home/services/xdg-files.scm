@@ -1,9 +1,9 @@
 (define-module (config home services xdg-files)
-  #:use-module (ice-9 optargs)
-  #:use-module (gnu home)
-  #:use-module (gnu home services)
-  #:use-module (guix gexp)
-  #:use-module (gnu home services dotfiles)
+  #:use-module (ice-9 optargs)              ; -
+  #:use-module (gnu home)                   ; -
+  #:use-module (gnu home services)          ; -
+  #:use-module (guix gexp)                  ; -
+  #:use-module (gnu home services dotfiles) ; -
 
   #:export (home-xdg-local-files-service-type))
 

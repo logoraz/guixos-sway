@@ -1,10 +1,9 @@
 ;;; Borrowed from:
 ;;; https://codeberg.org/daviwil/dotfiles/daviwil/home-services/streaming.scm
-
 (define-module (config home services streaming)
-  #:use-module (nongnu packages video)
+  #:use-module (nongnu packages video) ; -
   #:use-module (config packages video)
-  #:use-module (gnu home services)
+  #:use-module (gnu home services)     ; -
 
   #:export (home-streaming-service-type))
 

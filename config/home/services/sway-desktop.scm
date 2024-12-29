@@ -1,27 +1,27 @@
 (define-module (config home services sway-desktop)
-  #:use-module (gnu)                             ;
+  #:use-module (gnu)                             ; -
   #:use-module (gnu packages fonts)              ; font packages
   #:use-module (gnu packages wm)                 ; sway etc.
   #:use-module (gnu packages networking)         ; blueman
-  #:use-module (gnu packages xorg)               ; ?
-  #:use-module (gnu packages xdisorg)            ; ?
+  #:use-module (gnu packages xorg)               ; -
+  #:use-module (gnu packages xdisorg)            ; -
   #:use-module (gnu packages freedesktop)        ; udiskie,
-  #:use-module (gnu packages linux)              ; ?
-  #:use-module (gnu packages glib)               ; ?
-  #:use-module (gnu packages gnome)              ; ?
-  #:use-module (gnu packages gnome-xyz)          ; ?
-  #:use-module (gnu packages kde-frameworks)     ; ?
-  #:use-module (gnu packages web-browsers)       ; ?
-  #:use-module (gnu packages gstreamer)          ; ?
-  #:use-module (gnu packages compression)        ; ?
-  #:use-module (gnu packages gnuzilla)           ; ?
-  #:use-module (gnu packages terminals)          ; ?
-  #:use-module (gnu packages graphics)           ; ?
-  #:use-module (gnu packages image)              ; ?
-  #:use-module (gnu packages music)              ; ?
-  #:use-module (gnu packages video)              ; ?
-  #:use-module (gnu packages qt)                 ; ?
-  #:use-module (gnu packages package-management) ; ?
+  #:use-module (gnu packages linux)              ; -
+  #:use-module (gnu packages glib)               ; -
+  #:use-module (gnu packages gnome)              ; -
+  #:use-module (gnu packages gnome-xyz)          ; -
+  #:use-module (gnu packages kde-frameworks)     ; -
+  #:use-module (gnu packages web-browsers)       ; -
+  #:use-module (gnu packages gstreamer)          ; -
+  #:use-module (gnu packages compression)        ; -
+  #:use-module (gnu packages gnuzilla)           ; -
+  #:use-module (gnu packages terminals)          ; -
+  #:use-module (gnu packages graphics)           ; -
+  #:use-module (gnu packages image)              ; -
+  #:use-module (gnu packages music)              ; -
+  #:use-module (gnu packages video)              ; -
+  #:use-module (gnu packages qt)                 ; -
+  #:use-module (gnu packages package-management) ; -
   #:use-module (gnu packages password-utils)     ; password-store
   #:use-module (gnu packages gnupg)              ; gnupg
   #:use-module (gnu packages gnucash)            ; gnucash
@@ -29,10 +29,9 @@
   #:use-module (gnu packages inkscape)           ; inkscape
   #:use-module (gnu packages pdf)                ; zathura
   #:use-module (gnu packages shellutils)         ; trash-cli
-  #:use-module (gnu services configuration)      ; ?
-                                                 ;
-  #:use-module (gnu home services)               ; ?
-  #:use-module (guix gexp)                       ; ?
+  #:use-module (gnu services configuration)      ; -
+  #:use-module (gnu home services)               ; -
+  #:use-module (guix gexp)                       ; -
   #:use-module (guix transformations)            ;-> options-transformations
 
   #:export (home-sway-desktop-service-type))

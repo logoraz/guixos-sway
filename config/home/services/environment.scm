@@ -1,7 +1,7 @@
 (define-module (config home services environment)
-  #:use-module (gnu home)
-  #:use-module (gnu home services)
-  #:use-module (guix gexp)
+  #:use-module (gnu home)          ; -
+  #:use-module (gnu home services) ; -
+  #:use-module (guix gexp)         ; -
 
   #:export (home-env-vars-configuration-service-type))
 

@@ -1,14 +1,13 @@
 ;;; Borrowed from https://codeberg.org/daviwil/dotfiles/daviwil/home-services/udiskie.scm
-
 (define-module (config home services udiskie)
-  #:use-module (gnu services)
-  #:use-module (gnu home services)
-  #:use-module (gnu home services shepherd)
-  #:use-module (gnu packages freedesktop)
-  #:use-module (gnu services configuration)
-  #:use-module (guix gexp)
+  #:use-module (gnu services)               ; -
+  #:use-module (gnu home services)          ; -
+  #:use-module (gnu home services shepherd) ; -
+  #:use-module (gnu packages freedesktop)   ; -
+  #:use-module (gnu services configuration) ; -
+  #:use-module (guix gexp)                  ; -
 
-  #:export (home-udiskie-service-type))
+  #:export (home-udiskie-service-type))     ; -
 
 (define (home-udiskie-profile-service config)
   (list udiskie))

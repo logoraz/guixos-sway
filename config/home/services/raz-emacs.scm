@@ -1,14 +1,14 @@
 (define-module (config home services raz-emacs)
-  #:use-module (ice-9 format)
-  #:use-module (gnu services)
-  #:use-module (gnu services configuration)
-  #:use-module (gnu home services)
-  #:use-module (gnu home services shepherd)
-  #:use-module (gnu home services utils)
-  #:use-module (gnu packages certs)
-  #:use-module (gnu packages emacs)
-  #:use-module (guix gexp)
-  #:use-module (guix packages)
+  #:use-module (ice-9 format)               ; -
+  #:use-module (gnu services)               ; -
+  #:use-module (gnu services configuration) ; -
+  #:use-module (gnu home services)          ; -
+  #:use-module (gnu home services shepherd) ; -
+  #:use-module (gnu home services utils)    ; -
+  #:use-module (gnu packages certs)         ; -
+  #:use-module (gnu packages emacs)         ; -
+  #:use-module (guix gexp)                  ; -
+  #:use-module (guix packages)              ; -
   #:use-module (config packages raz-emacs)
 
   #:export (home-raz-emacs-service-type

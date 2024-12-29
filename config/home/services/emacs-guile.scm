@@ -1,13 +1,13 @@
 (define-module (config home services emacs-guile)
-  #:use-module (gnu)
-  #:use-module (gnu packages emacs-xyz)
-  #:use-module (gnu packages guile)
-  #:use-module (gnu packages guile-xyz)
-  #:use-module (gnu packages mail)
-  #:use-module (gnu services configuration)
-  #:use-module (gnu home services)
-  #:use-module (guix gexp)
-  #:use-module (guix transformations)
+  #:use-module (gnu)                        ; -
+  #:use-module (gnu packages emacs-xyz)     ; -
+  #:use-module (gnu packages guile)         ; -
+  #:use-module (gnu packages guile-xyz)     ; -
+  #:use-module (gnu packages mail)          ; -
+  #:use-module (gnu services configuration) ; -
+  #:use-module (gnu home services)          ; -
+  #:use-module (guix gexp)                  ; -
+  #:use-module (guix transformations)       ; -
 
   #:export (home-emacs-config-service-type))
 
