@@ -166,16 +166,20 @@
 
 ;;; Package Transformations & Packages
 ;; ref: https://guix.gnu.org/manual/en/guix.html#Defining-Package-Variants
+(define latest-guile ;; example of guile-next
+  (options->transformation
+   '((with-latest   . "guile"))))
+
 
 (define %guixos-base-packages
   ;; Install bare-minimum system packages
-  (cons* (specification->package "guile")
+  (cons* guile-3.0 ;;(specification->package "guile")
          guile-colorized
          sbcl
          sbcl-slynk
          bcachefs-tools
          egl-wayland
-         ;; intel-media-driver/nonfree
+         ;;intel-media-driver/nonfree
          bluez
          bluez-alsa
          brightnessctl
