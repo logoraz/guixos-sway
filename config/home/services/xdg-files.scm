@@ -117,8 +117,9 @@
     ("nyxt/keepassxc-3431.lisp"
      ,(home-file "files/nyxt" "keepassxc-3431.lisp"))
 
-    ("nyxt/bookmarks.lisp"
-     ,(home-file "files/nyxt" "bookmarks.lisp"))
+    ;; Nyxt needs this to be a writeable location
+    ;; ("nyxt/bookmarks.lisp"
+    ;;  ,(home-file "files/nyxt" "bookmarks.lisp"))
 
     ;; A not so good way to lug around extensions too...
     ("nyxt/extensions/nx-invader-2/nx-invader-2.lisp"

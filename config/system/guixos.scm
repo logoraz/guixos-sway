@@ -1,20 +1,18 @@
 (define-module (config system guixos)
-  #:use-module (gnu)                          ;-> grub-efi-bootloader, etc.
+  #:use-module (gnu)                          ;-> grub-efi-bootloader (?)
   #:use-module (gnu packages cups)            ;-> cups-filters
   #:use-module (gnu packages ssh)             ;-> openssh
+  #:use-module (gnu packages guile)           ;-> guile (ensure)
+  #:use-module (gnu packages guile-xyz)       ;-> guile-colorized (ensure)
   #:use-module (gnu packages file-systems)    ;-> bcacefs-tools
   #:use-module (gnu packages linux)           ;-> brightnessctl,lm-sensors
   #:use-module (gnu packages audio)           ;-> bluez-alsa
   #:use-module (gnu packages xorg)            ;-> egl-wayland
-  #:use-module (gnu packages wm)              ;-> swaylock
+  #:use-module (gnu packages wm)              ;-> swaylock/swaylock-effects
   #:use-module (gnu packages wget)            ;-> wget
   #:use-module (gnu packages curl)            ;-> curl
   #:use-module (gnu packages version-control) ;-> git
   #:use-module (gnu packages compression)     ;-> zip,unzip
-  #:use-module (gnu packages guile)           ;-> guile (ensure)
-  #:use-module (gnu packages guile-xyz)       ;-> guile-colorized (ensure)
-  #:use-module (gnu packages lisp)            ;-> sbcl
-  #:use-module (gnu packages lisp-xyz)        ;-> sbcl-slynk
   #:use-module (gnu services guix)            ;-> guix-home-service-type
   #:use-module (gnu services cups)            ;-> cups-service-type
   #:use-module (gnu services ssh)             ;-> openssh-service-type
@@ -76,10 +74,10 @@
           (comment "Worker Bee")
           (home-directory "/home/loraz")
           (group "users")
-          (supplementary-groups '("wheel"  ;; sudo
-                                  "netdev" ;; network devices
-                                  "tty"
-                                  "input"
+          (supplementary-groups '("wheel"    ;; sudo
+                                  "netdev"   ;; network devices
+                                  "tty"      ;; -
+                                  "input"    ;; -
                                   "lp"       ;; control bluetooth devices
                                   "audio"    ;; control audio devices
                                   "video"))) ;; control video devices
@@ -175,8 +173,6 @@
   ;; Install bare-minimum system packages
   (cons* guile-3.0 ;;(specification->package "guile")
          guile-colorized
-         sbcl
-         sbcl-slynk
          bcachefs-tools
          egl-wayland
          ;;intel-media-driver/nonfree

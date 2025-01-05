@@ -59,7 +59,8 @@
 
 (define %guixos-channels
   (append (list %nonguix-channel
-                %guix-channel)
+                %guix-channel
+                %rde-channel)
           %default-channels))
 
 

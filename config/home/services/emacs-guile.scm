@@ -1,9 +1,9 @@
 (define-module (config home services emacs-guile)
   #:use-module (gnu)                        ; -
-  #:use-module (gnu packages emacs-xyz)     ; -
-  #:use-module (gnu packages guile)         ; -
-  #:use-module (gnu packages guile-xyz)     ; -
-  #:use-module (gnu packages mail)          ; -
+  #:use-module (gnu packages emacs-xyz)     ;-> all emacs-* packages
+  #:use-module (gnu packages guile)         ;-> guile-next
+  #:use-module (gnu packages guile-xyz)     ;-> guile-ares-rs
+  #:use-module (gnu packages mail)          ;-> isync, msmtp, mu
   #:use-module (gnu services configuration) ; -
   #:use-module (gnu home services)          ; -
   #:use-module (guix gexp)                  ; -
