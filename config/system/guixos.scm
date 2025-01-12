@@ -4,6 +4,8 @@
   #:use-module (gnu packages ssh)             ;-> openssh
   #:use-module (gnu packages guile)           ;-> guile (ensure)
   #:use-module (gnu packages guile-xyz)       ;-> guile-colorized (ensure)
+  #:use-module (gnu packages lisp)            ;-> sbcl (& ccl)
+  #:use-module (gnu packages lisp-xyz)        ;-> CL libraries/packages
   #:use-module (gnu packages file-systems)    ;-> bcacefs-tools
   #:use-module (gnu packages linux)           ;-> brightnessctl,lm-sensors
   #:use-module (gnu packages audio)           ;-> bluez-alsa
@@ -173,6 +175,9 @@
   ;; Install bare-minimum system packages
   (cons* guile-3.0 ;;(specification->package "guile")
          guile-colorized
+         sbcl
+         sbcl-slynk
+         sbcl-iterate
          bcachefs-tools
          egl-wayland
          ;;intel-media-driver/nonfree

@@ -11,7 +11,6 @@
   #:use-module (gnu packages gnome)              ; -
   #:use-module (gnu packages gnome-xyz)          ; -
   #:use-module (gnu packages kde-frameworks)     ; -
-  ;; #:use-module (rde packages web-browsers)       ;-> nyxt-next
   #:use-module (gnu packages web-browsers)       ;-> qutebrowsers
   #:use-module (gnu packages gstreamer)          ; -
   #:use-module (gnu packages compression)        ; -
@@ -23,8 +22,6 @@
   #:use-module (gnu packages video)              ; -
   #:use-module (gnu packages qt)                 ; -
   #:use-module (gnu packages package-management) ; -
-  #:use-module (gnu packages lisp)               ;-> sbcl
-  #:use-module (gnu packages lisp-xyz)           ;-> sbcl libraries
   #:use-module (gnu packages password-utils)     ;-> password-store
   #:use-module (gnu packages gnupg)              ;-> gnupg
   #:use-module (gnu packages gnucash)            ;-> gnucash
@@ -101,9 +98,6 @@
         qutebrowser
         qtwayland ;;(specification->package "qtwayland@5")
         (latest-nyxt nyxt)
-        sbcl ;;-> Common Lisp hacking with Nyxt...
-        sbcl-slynk
-        sbcl-trivial-clipboard
 
         ;; Authentication
         gnupg

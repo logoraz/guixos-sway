@@ -52,9 +52,9 @@ This is specifically setup and trailed with my Lenovo ThinkPad X1 Carbon
        |- msmtp/...
        |- nyxt/...                 ;; New!! Ressurrected & simplified! 
        |- qutebrowser/...
-       |- sway/                    ;; Sway Config (WIP => home-sway-service-type)
+       |- sway/                    ;; Sway Config
           |- config
-          |- sway-greetd.conf      ;; Active WIP
+          |- sway-greetd.conf
           |- bin/
              |- swaybar-status.sh
              |- toggle-display.sh  ;; WIP
