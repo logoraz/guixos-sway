@@ -177,7 +177,6 @@
          guile-colorized
          sbcl
          sbcl-slynk
-         sbcl-iterate
          bcachefs-tools
          egl-wayland
          ;;intel-media-driver/nonfree
