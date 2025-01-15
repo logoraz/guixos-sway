@@ -11,6 +11,7 @@
   #:use-module (gnu packages gnome)              ; -
   #:use-module (gnu packages gnome-xyz)          ; -
   #:use-module (gnu packages kde-frameworks)     ; -
+  #:use-module (gnu packages text-editors)       ;-> lem
   #:use-module (gnu packages web-browsers)       ;-> qutebrowsers
   #:use-module (gnu packages gstreamer)          ; -
   #:use-module (gnu packages compression)        ; -
@@ -99,6 +100,9 @@
         qtwayland ;;(specification->package "qtwayland@5")
         (latest-nyxt nyxt)
 
+        ;; Editors/IDE's
+        lem
+        
         ;; Authentication
         gnupg
         pinentry
