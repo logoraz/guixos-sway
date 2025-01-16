@@ -17,13 +17,13 @@
    (source (origin
             (method git-fetch)
             (uri (git-reference
-                  (url "https://codeberg.org/loraz/raz-emacs.git")
-                  (commit "9d805a1e8fb67f42255c3d141ba455afc2a4d3b6")))
+                  (url "https://github.com/logoraz/raz-emacs.git")
+                  (commit "5ef8401ed385edf08181769af7c4d02972786b8e")))
             (hash
              (content-hash
-              "0l4vfkg508ksb56s3vmj5ndv5l0rj80xifsd5fbvsqn6zj4ggk9p"))))
+              "1wr5bl8sivk0dwjbk6kfirlzsb3g1dwbsm1cyzb5f0yms8zr3wla"))))
    (build-system copy-build-system)
-   (home-page "https://codeberg.org/loraz/raz-emacs")
+   (home-page "https://github.com/logoraz/raz-emacs")
    (synopsis "Raz Emacs")
    (description "Raz Emacs")
    (license license:agpl3+)))
