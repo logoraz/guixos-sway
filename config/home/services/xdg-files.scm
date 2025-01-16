@@ -99,36 +99,37 @@
 
     ;; Lem Configuration Files
     ;; TODO convert to package configuration akin to raz-emacs
-    ("lem/init.lisp"
-     ,(home-file "files/lem" "init.lisp"))
 
-    ("lem/lem-config.asd"
-     ,(home-file "files/lem" "lem-config.asd"))
+    ;; ("lem/init.lisp"
+    ;;  ,(home-file "files/lem" "init.lisp"))
 
-    ("lem/source/appearance.lisp"
-     ,(home-file "files/lem/source" "appearance.lisp"))
+    ;; ("lem/lem-config.asd"
+    ;;  ,(home-file "files/lem" "lem-config.asd"))
 
-    ("lem/source/completions.lisp"
-     ,(home-file "files/lem/source" "completions.lisp"))
+    ;; ("lem/source/appearance.lisp"
+    ;;  ,(home-file "files/lem/source" "appearance.lisp"))
 
-    ("lem/source/file-prompt.lisp"
-     ,(home-file "files/lem/source" "file-prompt.lisp"))
+    ;; ("lem/source/completions.lisp"
+    ;;  ,(home-file "files/lem/source" "completions.lisp"))
 
-    ("lem/source/keybindings.lisp"
-     ,(home-file "files/lem/source" "keybindings.lisp"))
+    ;; ("lem/source/file-prompt.lisp"
+    ;;  ,(home-file "files/lem/source" "file-prompt.lisp"))
 
-    ("lem/source/misc.lisp"
-     ,(home-file "files/lem/source" "misc.lisp"))
+    ;; ("lem/source/keybindings.lisp"
+    ;;  ,(home-file "files/lem/source" "keybindings.lisp"))
 
-    ("lem/source/paredit.lisp"
-     ,(home-file "files/lem/source" "paredit.lisp"))
+    ;; ("lem/source/misc.lisp"
+    ;;  ,(home-file "files/lem/source" "misc.lisp"))
 
-    ("lem/source/time-stamp.lisp"
-     ,(home-file "files/lem/source" "time-stamp.lisp"))
+    ;; ("lem/source/paredit.lisp"
+    ;;  ,(home-file "files/lem/source" "paredit.lisp"))
 
-    ("lem/source/utilities.lisp"
-     ,(home-file "files/lem/source" "utilities.lisp"))
-    
+    ;; ("lem/source/time-stamp.lisp"
+    ;;  ,(home-file "files/lem/source" "time-stamp.lisp"))
+
+    ;; ("lem/source/utilities.lisp"
+    ;;  ,(home-file "files/lem/source" "utilities.lisp"))
+
     ;; Qutebrowser Configuration Files
     ("qutebrowser/config.py"
      ,(home-file "files/qutebrowser" "config.py"))
