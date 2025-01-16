@@ -1,24 +1,20 @@
 (define-module (config home services raz-emacs)
-  #:use-module (gnu services)
-  #:use-module (gnu services configuration)
-  #:use-module (gnu home services)
-  #:use-module (gnu home services shepherd)
-  #:use-module (gnu home services utils)
-  #:use-module (gnu packages certs)
-  #:use-module (gnu packages emacs)
-  #:use-module (guix gexp)
-  #:use-module (guix packages)
-  #:use-module (config packages emacs)
-  #:use-module (ice-9 format)
+  #:use-module (ice-9 format)               ; -
+  #:use-module (gnu services)               ; -
+  #:use-module (gnu services configuration) ; -
+  #:use-module (gnu home services)          ; -
+  #:use-module (gnu home services shepherd) ; -
+  #:use-module (gnu home services utils)    ; -
+  #:use-module (gnu packages certs)         ; -
+  #:use-module (gnu packages emacs)         ; -
+  #:use-module (guix gexp)                  ; -
+  #:use-module (guix packages)              ; -
+  #:use-module (config packages raz-emacs)
 
   #:export (home-raz-emacs-service-type
             home-raz-emacs-configuration))
-;;;
-;;; TODO: using until `home-emacs-service-type' makes it upstream in Guix!!
-;;;       or generalize configuration so user can pull their own emacs configuration.
-;;; Ref: https://issues.guix.gnu.org/60753
-;;;
 
+;; Ref: https://systemcrafters.net/live-streams/july-8-2022/
 (define-configuration home-raz-emacs-configuration
   (package
    (package raz-emacs)

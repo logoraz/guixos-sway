@@ -1,8 +1,8 @@
-# Main
+# gitignore
 
-# Emacs
-/files/emacs/etc/
-/files/emacs/var/
+# main
 
-# Nyxt
-#/files/extensions/tbd
+# config
+
+# files
+

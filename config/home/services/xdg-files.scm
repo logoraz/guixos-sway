@@ -1,53 +1,169 @@
 (define-module (config home services xdg-files)
-  #:use-module (ice-9 optargs)
-  #:use-module (gnu home)
-  #:use-module (gnu home services)
-  #:use-module (guix gexp)
-  #:use-module (gnu home services dotfiles)
+  #:use-module (ice-9 optargs)              ; -
+  #:use-module (gnu home)                   ; -
+  #:use-module (gnu home services)          ; -
+  #:use-module (guix gexp)                  ; -
+  #:use-module (gnu home services dotfiles) ; -
+
   #:export (home-xdg-local-files-service-type))
 
-;; TODO - Refactor, rename symbols accordingly!
-(define %home-path "/home/logoraz/.dotfiles/")
+;; Edit setting the Home User
+(define %user-name "loraz")
+
+(define %source (string-append "/home"
+                               "/" %user-name
+                               "/.guixos-sway"))
 
 (define (home-file dir filename)
   "Resolve local config file."
   (local-file (string-append
-               %home-path
+               %source "/"
                dir "/"
-               filename)))
+               filename)
+              #:recursive? #t))
 
-(define (home-xdg-local-files-list-service config)
+(define (home-xdg-local-files-gexp-service config)
   `(;; Guix Configuration Channels
     ("guix/channels.scm"
      ,(home-file "config/system" "channels.scm"))
+
+    ;;TODO: prep for GNU guile next relase to store these in XDG_CONFIG_HOME...
+    ("guile/guile-rc.scm"
+     ,(home-file "files/guile" "guile-rc.scm"))
 
     ;; Sway configuration files
     ("sway/config"
      ,(home-file "files/sway" "config"))
 
-    ("sway/bin/status.sh"
-     ,(home-file "files/sway/bin" "status.sh"))
+    ("sway/bin/swaybar-status.sh"
+     ,(home-file "files/sway/bin" "swaybar-status.sh"))
 
-    ;; ("sway/bin/toggle-display.sh"
-    ;;  ,(home-file "files/sway/bin" "toggle-display.sh"))
+    ("sway/bin/toggle-display.sh"
+     ,(home-file "files/sway/bin" "toggle-display.sh"))
 
-    ;; GTK configuration
+    ;; GTK configuration --> needed for mouse theme on GTK applications
     ("gtk-3.0/settings.ini"
      ,(home-file "files/gtk-3.0" "settings.ini"))
 
-    ;; Terminal configuration
+    ;; Mako configuration
+    ("mako/config"
+     ,(home-file "files/mako" "config"))
+
+    ;; Fuzzel configuration
+    ("fuzzel/fuzzel.ini"
+     ,(home-file "files/fuzzel" "fuzzel.ini"))
+
+    ;; wlogout configuration
+    ("wlogout/layout"
+     ,(home-file "files/wlogout" "layout"))
+
+    ("wlogout/style.css"
+     ,(home-file "files/wlogout" "style.css"))
+
+    ("wlogout/icons/lock.svg"
+     ,(home-file "files/wlogout/icons" "lock.svg"))
+
+    ("wlogout/icons/logout.svg"
+     ,(home-file "files/wlogout/icons" "logout.svg"))
+
+    ("wlogout/icons/reboot.svg"
+     ,(home-file "files/wlogout/icons" "reboot.svg"))
+
+    ("wlogout/icons/shutdown.svg"
+     ,(home-file "files/wlogout/icons" "shutdown.svg"))
+
+    ("wlogout/icons/suspend.svg"
+     ,(home-file "files/wlogout/icons" "suspend.svg"))
+
+    ("wlogout/icons/hibernate.svg"
+     ,(home-file "files/wlogout/icons" "hibernate.svg"))
+
+    ;; GnuPG Configuration
+    ("gnupg/gpg-agent.conf"
+     ,(home-file "files/gnupg" "gpg-agent.conf"))
+
+    ;; mbsync configuration (for mu/mu4e)
+    ("isyncrc"
+     ,(home-file "files/isync" "isyncrc"))
+
+    ;; msmtp configuration (for mu/mu4e)
+    ("msmtp/config"
+     ,(home-file "files/msmtp" "config"))
+
+    ;; Terminal configurations
     ("foot/foot.ini"
      ,(home-file "files/foot" "foot.ini"))
 
-    ;; qutebrowser Configuration Files
+    ("vterm/emacs-vterm-bash.sh"
+     ,(home-file "files/vterm" "emacs-vterm-bash.sh"))
+
+    ;; Lem Configuration Files
+    ;; TODO convert to package configuration akin to raz-emacs
+
+    ;; ("lem/init.lisp"
+    ;;  ,(home-file "files/lem" "init.lisp"))
+
+    ;; ("lem/lem-config.asd"
+    ;;  ,(home-file "files/lem" "lem-config.asd"))
+
+    ;; ("lem/source/appearance.lisp"
+    ;;  ,(home-file "files/lem/source" "appearance.lisp"))
+
+    ;; ("lem/source/completions.lisp"
+    ;;  ,(home-file "files/lem/source" "completions.lisp"))
+
+    ;; ("lem/source/file-prompt.lisp"
+    ;;  ,(home-file "files/lem/source" "file-prompt.lisp"))
+
+    ;; ("lem/source/keybindings.lisp"
+    ;;  ,(home-file "files/lem/source" "keybindings.lisp"))
+
+    ;; ("lem/source/misc.lisp"
+    ;;  ,(home-file "files/lem/source" "misc.lisp"))
+
+    ;; ("lem/source/paredit.lisp"
+    ;;  ,(home-file "files/lem/source" "paredit.lisp"))
+
+    ;; ("lem/source/time-stamp.lisp"
+    ;;  ,(home-file "files/lem/source" "time-stamp.lisp"))
+
+    ;; ("lem/source/utilities.lisp"
+    ;;  ,(home-file "files/lem/source" "utilities.lisp"))
+
+    ;; Qutebrowser Configuration Files
     ("qutebrowser/config.py"
      ,(home-file "files/qutebrowser" "config.py"))
 
     ("qutebrowser/quteconfig.py"
      ,(home-file "files/qutebrowser" "quteconfig.py"))
 
-    ("qutebrowser/qutemacs.py"
-     ,(home-file "files/qutebrowser" "qutemacs.py"))))
+    ("qutebrowser/qute-keepassxc"
+     ,(home-file "files/qutebrowser" "qute-keepassxc"))
+
+    ;; Nyxt browser Configuration fils
+    ("nyxt/config.lisp"
+     ,(home-file "files/nyxt" "config.lisp"))
+
+    ("nyxt/keepassxc-pwi.lisp"
+     ,(home-file "files/nyxt" "keepassxc-pwi.lisp"))
+
+    ("nyxt/keepassxc-3431.lisp"
+     ,(home-file "files/nyxt" "keepassxc-3431.lisp"))
+
+    ;; Nyxt needs this to be a writeable location
+    ;; ("nyxt/bookmarks.lisp"
+    ;;  ,(home-file "files/nyxt" "bookmarks.lisp"))
+
+    ;; A not so good way to lug around extensions too...
+    ("nyxt/extensions/nx-invader-2/nx-invader-2.lisp"
+     ,(home-file "files/nyxt/extensions/nx-invader-2" "nx-invader-2.lisp"))
+
+    ("nyxt/extensions/nx-invader-2/nx-invader-2.asd"
+     ,(home-file "files/nyxt/extensions/nx-invader-2" "nx-invader-2.asd"))
+
+    ;; Zathura Configuration File
+    ("zathura/zathurarc"
+     ,(home-file "files/zathura" "zathurarc"))))
 
 (define home-xdg-local-files-service-type
   (service-type (name 'home-xdg-files)
@@ -55,7 +171,7 @@
                 (extensions
                  (list (service-extension
                         home-xdg-configuration-files-service-type
-                        home-xdg-local-files-list-service)))
+                        home-xdg-local-files-gexp-service)))
                 (default-value #f)))
 
 

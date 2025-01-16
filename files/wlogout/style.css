@@ -1,0 +1,51 @@
+* {
+    background-image: none;
+}
+
+window {
+    background-color: rgba(46, 52, 64, 0.5);
+}
+
+button {
+    background-color: #2e3440;
+    border-style: solid;
+    border-width: 0px;
+    border-radius: 25;
+    margin: 10;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25%;
+    color: #000000;
+    font: 20px Sans;
+}
+
+button:focus, button:active, button:hover {
+    background-color: #81a1c1;
+    color: #000000;
+    outline-style: none;
+    font: 20px Sans;
+}
+
+#lock {
+    background-image: image(url("/home/loraz/.config/wlogout/icons/lock.svg"));
+}
+
+#logout {
+    background-image: image(url("/home/loraz/.config/wlogout/icons/logout.svg"));
+}
+
+#reboot {
+    background-image: image(url("/home/loraz/.config/wlogout/icons/reboot.svg"));
+}
+
+#shutdown {
+    background-image: image(url("/home/loraz/.config/wlogout/icons/shutdown.svg"));
+}
+
+#suspend {
+    background-image: image(url("/home/loraz/.config/wlogout/icons/suspend.svg"));
+}
+
+#hibernate {
+    background-image: image(url("/home/loraz/.config/wlogout/icons/hibernate.svg"));
+}
