@@ -101,7 +101,7 @@ You probably won't have git installed, hence the `guix shell` command.
 ```bash
 
     $ guix shell git # Install git via guix shell...
-    $ git clone https://codeberg.org/loraz/guixos-sway.git ~/.guixos-sway
+    $ git clone https://github.com/logoraz/guixos-sway.git ~/.guixos-sway
     $ cd ~/.guixos-sway
     
     # Edit GuixOS configuration module
