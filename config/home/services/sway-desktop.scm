@@ -102,6 +102,7 @@
 
         ;; Editors/IDE's
         lem
+        sdl2
         
         ;; Authentication
         gnupg
