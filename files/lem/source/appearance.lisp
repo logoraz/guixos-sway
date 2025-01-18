@@ -1,8 +1,9 @@
 ;;;; appearance.lisp
 
-(uiop:define-package :config/appearance
+(defpackage config/appearance
   (:use :cl :lem)
   (:export :set-opacity))
+
 (in-package :config/appearance)
 
 
