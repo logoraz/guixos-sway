@@ -1,4 +1,3 @@
-;;;; paredit.lisp
 ;;; Borrowed from @gavinok (https://github.com/Gavinok/.lem)
 
 (defpackage config/paredit

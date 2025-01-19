@@ -1,5 +1,3 @@
-;;;; keybindings.lisp
-
 (defpackage config/keybindings
   (:use :cl :lem))
 

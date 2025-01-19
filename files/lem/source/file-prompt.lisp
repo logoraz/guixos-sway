@@ -1,5 +1,3 @@
-;;;; file-prompt.lisp
-
 (defpackage config/file-prompt
   (:use :cl :lem))
 

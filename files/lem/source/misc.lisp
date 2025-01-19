@@ -1,5 +1,3 @@
-;;;; misc.lisp
-
 (defpackage config/misc
   (:use :cl :lem))
 

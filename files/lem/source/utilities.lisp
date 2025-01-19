@@ -1,5 +1,3 @@
-;;;; utilities.lisp
-
 (defpackage config/utilities
   (:use :cl :lem))
 

@@ -1,5 +1,3 @@
-;;;; appearance.lisp
-
 (defpackage config/appearance
   (:use :cl :lem)
   (:export :set-opacity))
@@ -24,5 +22,7 @@
     ;; The value 0.8 is not of type SINGLE-FLOAT when binding SB-ALIEN::VALUE
     (set-opacity (if *opaque* 1 0.8))
     (setf *opaque* (not *opaque*)))
+
   ;; Always start off as transparent
   (set-opacity 0.8))
+

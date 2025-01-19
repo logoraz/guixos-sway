@@ -1,4 +1,3 @@
-;;;; completions.lisp
 ;;; ref - @vindarel (https://github.com/vindarel/lem-init)
 
 (defpackage config/completions
