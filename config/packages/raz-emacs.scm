@@ -13,17 +13,17 @@
 (define-public raz-emacs
   (package
    (name "raz-emacs")
-   (version "0.1")
+   (version "0.0.1")
    (source (origin
             (method git-fetch)
             (uri (git-reference
-                  (url "https://github.com/logoraz/raz-emacs.git")
-                  (commit "5ef8401ed385edf08181769af7c4d02972786b8e")))
+                  (url "https://codeberg.org/loraz/raz-emacs.git")
+                  (commit "a13d92fae2388a609daa9989b6c9560b8a483e68")))
             (hash
              (content-hash
               "1wr5bl8sivk0dwjbk6kfirlzsb3g1dwbsm1cyzb5f0yms8zr3wla"))))
    (build-system copy-build-system)
-   (home-page "https://github.com/logoraz/raz-emacs")
+   (home-page "https://codeberg.org/loraz/raz-emacs")
    (synopsis "Raz Emacs")
    (description "Raz Emacs")
    (license license:agpl3+)))
