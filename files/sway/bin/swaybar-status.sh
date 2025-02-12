@@ -57,9 +57,9 @@ audio_is_bluetooth=$(wpctl status | grep -E -o "bluez5")
 # Not sure if sink ID's are mutable... works for now!
 bluetooth_is_muted=$(wpctl get-volume 64 | awk '{print $3}')
 
-if [ $audio_is_muted = "[MUTED]" ] || [ $bluetooth_is_muted = "[MUTED]" ]; then
+if [ "$audio_is_muted" = "[MUTED]" ] || [ "$bluetooth_is_muted" = "[MUTED]" ]; then
     audio_active='🔇'
-elif [ $audio_is_bluetooth = "bluez5" ]; then
+elif [ "$audio_is_bluetooth" = "bluez5" ]; then
     audio_active='🎧'
 elif [ $audio_volume -ge 35 ]; then
     audio_active=''
@@ -78,9 +78,9 @@ media_artist=$(playerctl metadata artist)
 media_track=$(playerctl metadata title)
 media_track_trunk=${media_track:0:24}
 
-if [ $player_status = "Playing" ]; then
+if [ "$player_status" = "Playing" ]; then
     media_status="▶ $media_artist: $media_track_trunk...╏"
-elif [ $player_status = "Paused" ]; then
+elif [ "$player_status" = "Paused" ]; then
     media_status="⏸ $media_artist: $media_track_trunk...╏"
 else
     media_status=""

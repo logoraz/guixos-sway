@@ -21,54 +21,55 @@
 (define %guixos-sway-home
   (home-environment
    (services
-    (list
-     ;; Enable bluetooth connections to be handled properly
-     ;; bluetooth service only currently available at system level.
-     (service home-dbus-service-type)
+    (append (list
+             ;; Enable bluetooth connections to be handled properly
+             ;; bluetooth service only currently available at system level.
+             (service home-dbus-service-type)
 
-     ;; Enable pipewire audio
-     (service home-pipewire-service-type)
+             ;; Enable pipewire audio
+             (service home-pipewire-service-type)
 
-     ;; XDG files configuration
-     (service home-xdg-local-files-service-type)
+             ;; XDG files configuration
+             (service home-xdg-local-files-service-type)
 
-     ;; Set environment variables for every session
-     (service home-env-vars-configuration-service-type)
+             ;; Set environment variables for every session
+             (service home-env-vars-configuration-service-type)
 
-     ;; Monitor battery levels
-     (service home-batsignal-service-type)
+             ;; Monitor battery levels
+             (service home-batsignal-service-type)
 
-     ;; Udiskie for auto-mounting
-     (service home-udiskie-service-type)
+             ;; Udiskie for auto-mounting
+             (service home-udiskie-service-type)
 
-     ;; Raz Emacs Package profile configuration
-     (service home-emacs-config-service-type)
+             ;; Raz Emacs Package profile configuration
+             (service home-emacs-config-service-type)
 
-     ;; Raz Emacs Configuration
-     (service home-raz-emacs-service-type)
+             ;; Raz Emacs Configuration
+             (service home-raz-emacs-service-type)
 
-     ;; Sway Desktop profile configuration
-     (service home-sway-desktop-service-type)
+             ;; Sway Desktop profile configuration
+             (service home-sway-desktop-service-type)
 
-     ;; Streaming profile service
-     (service home-streaming-service-type)
+             ;; Streaming profile service
+             (service home-streaming-service-type)
 
-     ;; Bash configuration
-     (service home-bash-service-type
-              (home-bash-configuration
-               (guix-defaults? #f)
-               (aliases
-                `(("grep" . "grep --color=auto")
-                  ("ls"   . "ls -p --color=auto")
-                  ("ll"   . "ls -l")
-                  ("la"   . "ls -la")
-                  ("gosr" . ,(string-append
-                              "sudo guix system -L ~/.guixos-sway/ "
-                              "reconfigure "
-                              "~/.guixos-sway/config/system/guixos.scm"))))
-               (bashrc
-                (list (local-file "dot-bashrc.sh"
-                                  #:recursive? #t)))
-               (bash-profile
-                (list (local-file "dot-bash_profile.sh"
-                                  #:recursive? #t)))))))))
+             ;; Bash configuration
+             (service home-bash-service-type
+                      (home-bash-configuration
+                       (guix-defaults? #f)
+                       (aliases
+                        `(("grep" . "grep --color=auto")
+                          ("ls"   . "ls -p --color=auto")
+                          ("ll"   . "ls -l")
+                          ("la"   . "ls -la")
+                          ("gosr" . ,(string-append
+                                      "sudo guix system -L ~/.guixos-sway/ "
+                                      "reconfigure "
+                                      "~/.guixos-sway/config/system/guixos.scm"))))
+                       (bashrc
+                        (list (local-file "dot-bashrc.sh"
+                                          #:recursive? #t)))
+                       (bash-profile
+                        (list (local-file "dot-bash_profile.sh"
+                                          #:recursive? #t))))))
+            %base-home-services))))

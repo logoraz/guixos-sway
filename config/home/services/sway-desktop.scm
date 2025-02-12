@@ -12,6 +12,7 @@
   #:use-module (gnu packages gnome-xyz)          ; -
   #:use-module (gnu packages kde-frameworks)     ; -
   #:use-module (gnu packages text-editors)       ;-> lem
+  #:use-module (gnu packages sdl)                ;-> sdl2 (for lem)
   #:use-module (gnu packages web-browsers)       ;-> qutebrowsers
   #:use-module (gnu packages gstreamer)          ; -
   #:use-module (gnu packages compression)        ; -
@@ -102,6 +103,7 @@
 
         ;; Editors/IDE's
         lem
+        sdl2
         
         ;; Authentication
         gnupg

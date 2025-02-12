@@ -97,39 +97,6 @@
     ("vterm/emacs-vterm-bash.sh"
      ,(home-file "files/vterm" "emacs-vterm-bash.sh"))
 
-    ;; Lem Configuration Files
-    ;; TODO convert to package configuration akin to raz-emacs
-
-    ;; ("lem/init.lisp"
-    ;;  ,(home-file "files/lem" "init.lisp"))
-
-    ;; ("lem/lem-config.asd"
-    ;;  ,(home-file "files/lem" "lem-config.asd"))
-
-    ;; ("lem/source/appearance.lisp"
-    ;;  ,(home-file "files/lem/source" "appearance.lisp"))
-
-    ;; ("lem/source/completions.lisp"
-    ;;  ,(home-file "files/lem/source" "completions.lisp"))
-
-    ;; ("lem/source/file-prompt.lisp"
-    ;;  ,(home-file "files/lem/source" "file-prompt.lisp"))
-
-    ;; ("lem/source/keybindings.lisp"
-    ;;  ,(home-file "files/lem/source" "keybindings.lisp"))
-
-    ;; ("lem/source/misc.lisp"
-    ;;  ,(home-file "files/lem/source" "misc.lisp"))
-
-    ;; ("lem/source/paredit.lisp"
-    ;;  ,(home-file "files/lem/source" "paredit.lisp"))
-
-    ;; ("lem/source/time-stamp.lisp"
-    ;;  ,(home-file "files/lem/source" "time-stamp.lisp"))
-
-    ;; ("lem/source/utilities.lisp"
-    ;;  ,(home-file "files/lem/source" "utilities.lisp"))
-
     ;; Qutebrowser Configuration Files
     ("qutebrowser/config.py"
      ,(home-file "files/qutebrowser" "config.py"))
@@ -149,10 +116,6 @@
 
     ("nyxt/keepassxc-3431.lisp"
      ,(home-file "files/nyxt" "keepassxc-3431.lisp"))
-
-    ;; Nyxt needs this to be a writeable location
-    ;; ("nyxt/bookmarks.lisp"
-    ;;  ,(home-file "files/nyxt" "bookmarks.lisp"))
 
     ;; A not so good way to lug around extensions too...
     ("nyxt/extensions/nx-invader-2/nx-invader-2.lisp"
