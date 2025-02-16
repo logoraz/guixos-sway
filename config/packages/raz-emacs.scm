@@ -17,11 +17,11 @@
    (source (origin
             (method git-fetch)
             (uri (git-reference
-                  (url "https://codeberg.org/loraz/raz-emacs.git")
-                  (commit "a13d92fae2388a609daa9989b6c9560b8a483e68")))
+                  (url "https://github.com/logoraz/guixos-stumpwm.git")
+                  (commit "2f5b55cafccbd7b01049e3f87ad601600c17f213")))
             (hash
              (content-hash
-              "1wr5bl8sivk0dwjbk6kfirlzsb3g1dwbsm1cyzb5f0yms8zr3wla"))))
+              "11yqn9rp1k7kywgfh8brygg239qd5i2k8kfd5l00323412cx3ms8"))))
    (build-system copy-build-system)
    (home-page "https://codeberg.org/loraz/raz-emacs")
    (synopsis "Raz Emacs")
