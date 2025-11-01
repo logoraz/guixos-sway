@@ -1,24 +1,31 @@
 (define-module (config home guixos-home)
-  #:use-module (gnu)                       ; -
-  #:use-module (gnu home)                  ;-> home-environment
-  #:use-module (gnu home services)         ; -
-  #:use-module (gnu home services pm)      ; -
-  #:use-module (gnu home services shells)  ; -
-  #:use-module (gnu home services sound)   ;-> home-pipewire-service-type
-  #:use-module (gnu home services desktop) ; -
-  #:use-module (guix gexp)                 ; -
+  #:use-module (gnu)
+  #:use-module (gnu packages guile)
+  #:use-module (gnu packages guile-xyz)
+  #:use-module (gnu packages ssh)
+  #:use-module (gnu home)
+  #:use-module (gnu home services)
+  #:use-module (gnu home services pm)
+  #:use-module (gnu home services ssh)
+  #:use-module (gnu home services shells)
+  #:use-module (gnu home services sound)
+  #:use-module (gnu home services desktop)
+  #:use-module (gnu home services sway)
+  #:use-module (guix gexp)
   #:use-module (config home services environment)
-  #:use-module (config home services xdg-files)
-  #:use-module (config home services sway-desktop)
-  #:use-module (config home services emacs-guile)
-  #:use-module (config home services raz-emacs)
+  #:use-module (config home services config-files)
+  #:use-module (config home services mutable-files)
   #:use-module (config home services streaming)
   #:use-module (config home services udiskie)
+  #:use-module (config home services emacs-profile)
+  #:use-module (config home services desktop-profile)
+  #:use-module (config home services bash)
+  #:use-module (config home services sway)
+  #:export (guixos-home))
 
-  #:export (%guixos-sway-home))
 
 
-(define %guixos-sway-home
+(define guixos-home
   (home-environment
    (services
     (append (list
@@ -29,11 +36,14 @@
              ;; Enable pipewire audio
              (service home-pipewire-service-type)
 
-             ;; XDG files configuration
-             (service home-xdg-local-files-service-type)
+             ;; Setup SSH for home
+             (service home-openssh-service-type
+                      (home-openssh-configuration
+                       (add-keys-to-agent "yes")))
 
-             ;; Set environment variables for every session
-             (service home-env-vars-configuration-service-type)
+             (service home-ssh-agent-service-type
+                      (home-ssh-agent-configuration
+                       (openssh openssh-sans-x)))
 
              ;; Monitor battery levels
              (service home-batsignal-service-type)
@@ -41,35 +51,33 @@
              ;; Udiskie for auto-mounting
              (service home-udiskie-service-type)
 
-             ;; Raz Emacs Package profile configuration
-             (service home-emacs-config-service-type)
-
-             ;; Raz Emacs Configuration
-             (service home-raz-emacs-service-type)
-
-             ;; Sway Desktop profile configuration
-             (service home-sway-desktop-service-type)
-
              ;; Streaming profile service
              (service home-streaming-service-type)
 
+             ;; config files configuration
+             (service home-config-files-service-type)
+
+             ;; Mutable symlinks configuration
+             (service home-mutable-symlinks-service-type)
+
+             ;; Emacs Packages configuration
+             (service home-emacs-packages-profile-service-type)
+
+             ;; Sway Desktop profile configuration
+             (service home-desktop-profile-service-type)
+
+             ;; Set environment variables for every session
+             (service home-env-vars-configuration-service-type)
+
+             ;; Sway Configuration + package profile
+             (service home-sway-service-type
+                      (sway-configuration-extension
+                       %empty-sway-configuration))
+             (service home-sway-configuration-service-type)
+
              ;; Bash configuration
-             (service home-bash-service-type
-                      (home-bash-configuration
-                       (guix-defaults? #f)
-                       (aliases
-                        `(("grep" . "grep --color=auto")
-                          ("ls"   . "ls -p --color=auto")
-                          ("ll"   . "ls -l")
-                          ("la"   . "ls -la")
-                          ("gosr" . ,(string-append
-                                      "sudo guix system -L ~/.guixos-sway/ "
-                                      "reconfigure "
-                                      "~/.guixos-sway/config/system/guixos.scm"))))
-                       (bashrc
-                        (list (local-file "dot-bashrc.sh"
-                                          #:recursive? #t)))
-                       (bash-profile
-                        (list (local-file "dot-bash_profile.sh"
-                                          #:recursive? #t))))))
+             (bash-config->service))
+
             %base-home-services))))
+
+guixos-home

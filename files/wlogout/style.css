@@ -27,25 +27,25 @@ button:focus, button:active, button:hover {
 }
 
 #lock {
-    background-image: image(url("/home/loraz/.config/wlogout/icons/lock.svg"));
+    background-image: image(url("/home/logoraz/.config/wlogout/icons/lock.svg"));
 }
 
 #logout {
-    background-image: image(url("/home/loraz/.config/wlogout/icons/logout.svg"));
+    background-image: image(url("/home/logoraz/.config/wlogout/icons/logout.svg"));
 }
 
 #reboot {
-    background-image: image(url("/home/loraz/.config/wlogout/icons/reboot.svg"));
+    background-image: image(url("/home/logoraz/.config/wlogout/icons/reboot.svg"));
 }
 
 #shutdown {
-    background-image: image(url("/home/loraz/.config/wlogout/icons/shutdown.svg"));
+    background-image: image(url("/home/logoraz/.config/wlogout/icons/shutdown.svg"));
 }
 
 #suspend {
-    background-image: image(url("/home/loraz/.config/wlogout/icons/suspend.svg"));
+    background-image: image(url("/home/logoraz/.config/wlogout/icons/suspend.svg"));
 }
 
 #hibernate {
-    background-image: image(url("/home/loraz/.config/wlogout/icons/hibernate.svg"));
+    background-image: image(url("/home/logoraz/.config/wlogout/icons/hibernate.svg"));
 }

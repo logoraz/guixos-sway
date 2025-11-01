@@ -1,67 +1,83 @@
 (define-module (config system guixos)
-  #:use-module (gnu)                          ;-> grub-efi-bootloader (?)
-  #:use-module (gnu packages cups)            ;-> cups-filters
-  #:use-module (gnu packages ssh)             ;-> openssh
-  #:use-module (gnu packages guile)           ;-> guile (ensure)
-  #:use-module (gnu packages guile-xyz)       ;-> guile-colorized (ensure)
-  #:use-module (gnu packages lisp)            ;-> sbcl (& ccl)
-  #:use-module (gnu packages lisp-xyz)        ;-> CL libraries/packages
-  #:use-module (gnu packages file-systems)    ;-> bcacefs-tools
-  #:use-module (gnu packages linux)           ;-> brightnessctl,lm-sensors
-  #:use-module (gnu packages audio)           ;-> bluez-alsa
-  #:use-module (gnu packages xorg)            ;-> egl-wayland
-  #:use-module (gnu packages wm)              ;-> swaylock/swaylock-effects
-  #:use-module (gnu packages wget)            ;-> wget
-  #:use-module (gnu packages curl)            ;-> curl
-  #:use-module (gnu packages version-control) ;-> git
-  #:use-module (gnu packages compression)     ;-> zip,unzip
-  #:use-module (gnu services guix)            ;-> guix-home-service-type
-  #:use-module (gnu services cups)            ;-> cups-service-type
-  #:use-module (gnu services ssh)             ;-> openssh-service-type
-  #:use-module (gnu services xorg)            ;-> screen-locker-service-type
-  #:use-module (gnu services desktop)         ;-> bluetooth-service-type
-  #:use-module (gnu services networking)      ;-> tor-service-type
-  #:use-module (gnu system nss)               ;-> %mdns-host-lookup-nss
-  #:use-module (gnu system keyboard)          ;-> keyboard-layout
-  #:use-module (nongnu packages linux)        ;-> Modified NF Linux kernel
-  #:use-module (nongnu system linux-initrd)   ;-> Microcode for NF  kernel
-  #:use-module (guix gexp)                    ;-> gexp's local-file
-  #:use-module (guix transformations)         ;-> options->transformation
-  #:use-module (config services substitutes)
-  #:use-module (config system guixos-channels)
-  #:use-module (config home guixos-home))
+  #:use-module (gnu)
+  #:use-module (gnu packages)
+  #:use-module (gnu packages cups)
+  #:use-module (gnu packages ssh)
+  #:use-module (gnu packages guile)
+  #:use-module (gnu packages guile-xyz)
+  #:use-module (gnu packages lisp)
+  #:use-module (gnu packages lisp-xyz)
+  #:use-module (gnu packages base)
+  #:use-module (gnu packages build-tools)
+  #:use-module (gnu packages commencement)
+  #:use-module (gnu packages file-systems)
+  #:use-module (gnu packages polkit)
+  #:use-module (gnu packages fonts)
+  #:use-module (gnu packages linux)
+  #:use-module (gnu packages audio)
+  #:use-module (gnu packages xorg)
+  #:use-module (gnu packages wm)
+  #:use-module (gnu packages wget)
+  #:use-module (gnu packages curl)
+  #:use-module (gnu packages version-control)
+  #:use-module (gnu packages compression)
+  #:use-module (gnu packages gnome-xyz)
+  #:use-module (gnu services guix)
+  #:use-module (gnu services cups)
+  #:use-module (gnu services ssh)
+  #:use-module (gnu services xorg)
+  #:use-module (gnu services desktop)
+  #:use-module (gnu services networking)
+  #:use-module (gnu system nss)
+  #:use-module (gnu system keyboard)
+  #:use-module (nongnu packages firmware)
+  #:use-module (nongnu packages linux)
+  #:use-module (nongnu system linux-initrd)
+  #:use-module (guix gexp)
+  #:use-module (guix transformations)
+  #:use-module (config system core substitutes)
+  #:use-module (config system core guixos-channels)
+  #:use-module (config services firmware)
+  #:use-module (config home guixos-home)
+  #:export (%guixos))
 
 
 ;;; operating-system parameters
 
-(define guixos-user-name "loraz")
+(define guixos-user-name "logoraz")
 
 (define %guixos-keyboard-layout
   (keyboard-layout "us"))
 
 (define %guixos-bootloader
   (bootloader-configuration
-   (bootloader grub-efi-bootloader)
-   (targets '("/boot/efi"))
-   (keyboard-layout %guixos-keyboard-layout)))
+    (bootloader grub-efi-bootloader)
+    (targets '("/boot/efi"))
+    (keyboard-layout %guixos-keyboard-layout)))
 
 (define %guixos-swap-devices
   (list (swap-space
-         (target
-          (uuid "1c3244f3-16d5-4bca-8f33-c6465a6e2f69")))))
+          (target
+           (uuid "c168ecec-65cf-458b-9d86-46bd4ebd25d3")))))
 
 (define %guixos-file-systems
   ;; Use 'blkid' to find unique file system identifiers ("UUIDs").
   (cons* (file-system
-          (mount-point  "/boot/efi")
-          (device (uuid "F8E9-9C22"
-			'fat32))
-          (type "vfat"))
+           (mount-point  "/boot/efi")
+           (device (uuid "7CC3-E9BD"
+			 'fat32))
+           (type "vfat"))
          (file-system
-          (mount-point "/")
-          (device (uuid "90a13ca3-a38d-4b47-a637-d037bc6ac567"
-			'ext4))
-          (type "ext4"))
+           (mount-point "/")
+           (device (uuid "dddb78a8-bd6d-4c6e-99b2-2ff56605c2ad"
+			 'ext4))
+           (type "ext4"))
+         (file-system
+           (mount-point "/home")
+           (device (uuid
+                    "59eef442-44da-4387-8db7-f9e0b2b776f9"
+                    'ext4))
+           (type "ext4"))
 	 %base-file-systems))
 
 (define %guixos-groups
@@ -72,17 +88,18 @@
 
 (define %guixos-users
   (cons* (user-account
-          (name "loraz")
-          (comment "Worker Bee")
-          (home-directory "/home/loraz")
-          (group "users")
-          (supplementary-groups '("wheel"    ;; sudo
-                                  "netdev"   ;; network devices
-                                  "tty"      ;; -
-                                  "input"    ;; -
-                                  "lp"       ;; control bluetooth devices
-                                  "audio"    ;; control audio devices
-                                  "video"))) ;; control video devices
+           (name "logoraz")
+           (comment "Worker Bee")
+           (home-directory (string-append "/home/" guixos-user-name))
+           (group "users")
+           (supplementary-groups '("wheel"    ;; sudo
+                                   "seat"     ;; greetd/wlgreet
+                                   "netdev"   ;; network devices
+                                   "tty"      ;; -
+                                   "input"    ;; -
+                                   "lp"       ;; control bluetooth devices
+                                   "audio"    ;; control audio devices
+                                   "video"))) ;; control video devices
          %base-user-accounts))
 
 ;;; System Services
@@ -90,98 +107,125 @@
 ;; Needed for greetd sway configuration...
 ;; Sneaky step here, need to manually place photo/contents needed
 ;; by sway-greetd.conf in places like /etc/
-(define %greetd-conf (string-append "/home/loraz/.guixos-sway/"
-                                    "files/sway/sway-greetd.conf"))
+(define %greetd-conf (string-append "/home/logoraz/guixos/"
+                                    "files/wlgreet/sway-greetd.conf"))
 
 (define %guixos-base-services
   (cons*
    (service screen-locker-service-type
             (screen-locker-configuration
-             (name "swaylock")
-             (program (file-append swaylock-effects "/bin/swaylock"))
-             (using-pam? #t)
-             (using-setuid? #f)))
+              (name "swaylock")
+              (program (file-append swaylock-effects "/bin/swaylock"))
+              (using-pam? #t)
+              (using-setuid? #f)))
 
    (service bluetooth-service-type
             (bluetooth-configuration
-             (auto-enable? #t)))
+              (auto-enable? #t)))
 
    (service cups-service-type
             (cups-configuration
-             (web-interface? #t)
-             (default-paper-size "Letter")
-             (extensions (list cups-filters hplip-minimal))))
+              (web-interface? #t)
+              (default-paper-size "Letter")
+              (extensions (list cups-filters hplip-minimal))))
 
    ;; ssh user@host -p 2222
    (service openssh-service-type
             (openssh-configuration
-             (openssh openssh-sans-x)
-             (port-number 2222)))
+              (openssh openssh-sans-x)
+              (port-number 2222)))
 
    ;; TODO: New - need to look into & configure!!
    (service tor-service-type)
 
+   ;; TODO: Create (greetd-wlgreet-configuration-service-type)
+   ;; see fwuupd-service-type
    (service greetd-service-type
             (greetd-configuration
-             (greeter-supplementary-groups '("video" "input" "users"))
-             (terminals
-              (list
-               (greetd-terminal-configuration
-                (terminal-vt "1")
-                (terminal-switch #t)
-                (default-session-command
-                  ;; https://guix.gnu.org/manual/en/html_node/Base-Services.html
-                  ;; issues.guix.gnu.org/65769
-                  (greetd-wlgreet-sway-session
-                   (sway-configuration
-                    (local-file %greetd-conf
-                                #:recursive? #t)))))
-               (greetd-terminal-configuration
-                (terminal-vt "2"))
-               (greetd-terminal-configuration
-                (terminal-vt "3"))
-               (greetd-terminal-configuration
-                (terminal-vt "4"))
-               (greetd-terminal-configuration
-                (terminal-vt "5"))
-               (greetd-terminal-configuration
-                (terminal-vt "6"))))))
+              (greeter-supplementary-groups '("video" "input" "seat" "users"))
+              (terminals
+               (list
+                (greetd-terminal-configuration
+                  (terminal-vt "1")
+                  (terminal-switch #t)
+                  (default-session-command
+                    ;; https://guix.gnu.org/manual/en/html_node/Base-Services.html
+                    ;; issues.guix.gnu.org/65769
+                    (greetd-wlgreet-sway-session
+                      (sway sway)
+                      (sway-configuration
+                        (local-file %greetd-conf
+                                    #:recursive? #t)))))
+                (greetd-terminal-configuration
+                  (terminal-vt "2"))
+                (greetd-terminal-configuration
+                  (terminal-vt "3"))
+                (greetd-terminal-configuration
+                  (terminal-vt "4"))
+                (greetd-terminal-configuration
+                  (terminal-vt "5"))
+                (greetd-terminal-configuration
+                  (terminal-vt "6"))
+                (greetd-terminal-configuration
+                  (terminal-vt "7"))))))
+
+   ;; Firmware Updating Service via fwupd
+   (service fwupd-service-type)
 
    ;; Set up home configuration
-   (service guix-home-service-type
-            `((,guixos-user-name ,%guixos-sway-home)))
+   ;; (service guix-home-service-type
+   ;;          `((,guixos-user-name ,guixos-home)))
 
    ;; See: https://guix.gnu.org/manual/en/html_node/Desktop-Services.html
    (modify-services %desktop-services
-                    ;; remove gdm-service-type
-                    (delete gdm-service-type)
-                    ;; greetd-service-type provides "greetd" PAM service
-                    (delete login-service-type)
-                    ;; and can be used in place of mingetty-service-type
-                    (delete mingetty-service-type)
-                    (guix-service-type
-                     config =>
-                     (substitutes->services config
-                                            #:channels %guixos-channels)))))
+     ;; remove gdm-service-type
+     (delete gdm-service-type)
+
+     ;; greetd-service-type provides "greetd" PAM service
+     (delete login-service-type)
+
+     ;; and can be used in place of mingetty-service-type
+     (delete mingetty-service-type)
+
+     (guix-service-type
+      config =>
+      (substitutes->services
+       config
+       #:channels %guixos-channels)))))
 
 ;;; Package Transformations & Packages
 ;; ref: https://guix.gnu.org/manual/en/guix.html#Defining-Package-Variants
 (define latest-guile ;; example of guile-next
   (options->transformation
-   '((with-latest   . "guile"))))
+   '((with-latest . "guile"))))
 
 
+;; Install bare-minimum system packages
 (define %guixos-base-packages
-  ;; Install bare-minimum system packages
-  (cons* guile-3.0 ;;(specification->package "guile")
+  (append
+   (list guile-3.0 ;;(specification->package "guile")
+         (specification->package "guile-json")
          guile-colorized
          sbcl
-         sbcl-slynk
+
+         ;; File system & firmware tools
          bcachefs-tools
+         polkit
+         fwupd-nonfree
+
+         ;; WM & Login Manager
+         ;; needed for greetd/wlgreet configuration?
+         sway
+         swaylock-effects
+         font-hack
+         qogir-icon-theme
+         bibata-cursor-theme
+
+         ;; Desktop Tools/Utilities
+         pipewire
+         wireplumber
          egl-wayland
-         ;;intel-media-driver/nonfree
          bluez
-         bluez-alsa
          brightnessctl
          lm-sensors
          openssh-sans-x
@@ -191,44 +235,48 @@
          wget
          zip
          unzip
-         %base-packages))
+
+         ;; Dev Toolchain
+         gcc-toolchain
+         binutils
+         (specification->package "make")
+         (specification->package "cmake")
+         meson)
+
+   %base-packages))
 
 ;;; Define GuixOS Sway Alkaline Ice
 
-(define %guixos-sway-core
+(define %guixos
   (operating-system
-   ;; (inherit system)
-   (host-name "locutus")
-   (timezone "America/Los_Angeles")
-   (locale "en_US.utf8")
-   (keyboard-layout %guixos-keyboard-layout)
+    ;; (inherit system)
+    (host-name "framework")
+    (timezone "America/Los_Angeles")
+    (locale "en_US.utf8")
+    (keyboard-layout %guixos-keyboard-layout)
 
-   (kernel linux)
+    (kernel linux)
 
-   (firmware (list linux-firmware))
+    (firmware (list linux-firmware))
 
-   ;; Fixes Xorg Lag - https://gitlab.com/nonguix/nonguix/-/issues/212
-   ;; for Lenovo ThinkPad X1 Carbon 4th Gen (Type 20FB) Laptop.
-   (initrd microcode-initrd)
-   (kernel-arguments (cons "i915.enable_psr=0"
-                           %default-kernel-arguments))
+    (initrd microcode-initrd)
 
-   (bootloader %guixos-bootloader)
+    (bootloader %guixos-bootloader)
 
-   (swap-devices %guixos-swap-devices)
+    (swap-devices %guixos-swap-devices)
 
-   (file-systems %guixos-file-systems)
+    (file-systems %guixos-file-systems)
 
-   (groups %guixos-groups)
+    (groups %guixos-groups)
 
-   (users %guixos-users)
+    (users %guixos-users)
 
-   (packages %guixos-base-packages)
+    (packages %guixos-base-packages)
 
-   (services %guixos-base-services)
+    (services %guixos-base-services)
 
-   ;; Allow resolution of '.local' host names with mDNS.
-   (name-service-switch %mdns-host-lookup-nss)))
+    ;; Allow resolution of '.local' host names with mDNS.
+    (name-service-switch %mdns-host-lookup-nss)))
 
 ;;; Instantiate GuixOS
-%guixos-sway-core
+%guixos

@@ -1,16 +1,20 @@
-;;; Borrowed from @gavinok (https://github.com/Gavinok/.lem)
-
-(defpackage config/paredit
-  (:use :cl :lem)
-  (:export))
-
-(in-package :config/paredit)
+(defpackage :lem-config/paredit
+  (:use :cl :lem))
+(in-package :lem-config/paredit)
 
 
+;; Enable paredit-mode in lisp-mode
 (add-hook *find-file-hook*
           (lambda (buffer)
             (when (eq (buffer-major-mode buffer) 'lem-lisp-mode:lisp-mode)
               (change-buffer-mode buffer 'lem-paredit-mode:paredit-mode t))))
+
+;; Enable paredit-mode in scheme-mode
+(add-hook *find-file-hook*
+          (lambda (buffer)
+            (when (eq (buffer-major-mode buffer) 'lem-scheme-mode:scheme-mode)
+              (change-buffer-mode buffer 'lem-paredit-mode:paredit-mode t))))
+
 
 ;; Paredit Mappings
 (define-key lem-paredit-mode:*paredit-mode-keymap* "Shift-Right"

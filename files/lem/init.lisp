@@ -1,20 +1,34 @@
-;;; Erik P Almaraz (aka logoraz)
-;;; Ref: https://github.com/fukamachi/.lem
-;;; Ref: https://codeberg.org/sasanidas/lem-config/
-;;; Ref: https://github.com/garlic0x1/.lem/
-
-(defpackage lem-config
-  (:use :cl :lem))
-
-(in-package :lem-config)
+(defpackage :lem-config-init
+  (:use :cl :lem)
+  (:local-nicknames (:lt :local-time))
+  (:documentation "lem-config System Initialization."))
+(in-package :lem-config-init)
 
 
-;; Load init source files.
-(let ((asdf:*central-registry*
-        (append (list (asdf:system-source-directory :lem)
-                      #P"~/.config/lem/"
-                      #P"~/common-lisp/"
-                      #P"~/.local/share/common-lisp/source/")
-                asdf:*central-registry*)))
-  (asdf:load-system :lem-config))
+(asdf:initialize-source-registry
+ (list :source-registry
+       (list :tree (uiop:xdg-config-home "lem/"))
+       :inherit-configuration))
+
+(defun current-time ()
+  "Emits formated time using local-time"
+  (lt:format-timestring nil (lt:now)
+                        :format '(:year "-" :month "-" :day "-T"
+                                  :hour ":" :min ":" :sec)))
+
+(defun save-log-file (pathspec output)
+  "Save log files for initializing lem-config"
+  (with-open-file (strm (uiop:xdg-config-home pathspec)
+                        :direction :output
+                        :if-exists :append
+                        :if-does-not-exist :create)
+    (format strm "~A - Load lem-config output: ~A~%" (current-time) output)))
+
+(multiple-value-bind (result error-condition)
+    (ignore-errors
+      (sb-ext:without-package-locks
+        (asdf:load-system :lem-config)))
+  (if error-condition
+      (save-log-file "lem/logs/config-error.log" error-condition)
+    (save-log-file "lem/logs/config-startup.log" result)))
 

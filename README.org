@@ -1,0 +1,21 @@
+#+title: GuixOS Alkaline
+#+author: logoraz
+#+date: 2025-08-13
+#+options: toc:nil
+#+startup: overview
+#+startup: inlineimages
+:meta:
+:end:
+
+
+#+caption: GuixOS Alkaline Logo
+#+attr_org: :width 1000px :align center
+#+attr_html: :align center
+[[./files/assets/graphics/guixos-alkaline.svg]]
+
+
+GuixOS Alkaline: A Custom Guix System Distribution configured
+for Sway.
+
+GuixOS Alkaline is currently developed and configured for:
+ - Framework Laptop 13 DIY Edition (AMD Ryzen™ AI 300 Series)

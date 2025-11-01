@@ -1,21 +1,16 @@
 (define-module (config home services environment)
-  #:use-module (gnu home)          ; -
-  #:use-module (gnu home services) ; -
-  #:use-module (guix gexp)         ; -
-
+  #:use-module (gnu home)
+  #:use-module (gnu home services)
+  #:use-module (guix gexp)
   #:export (home-env-vars-configuration-service-type))
 
 
-;; Edit setting the Home User
-(define %user-name "loraz")
+(define %gtk2-rc (string-append "$HOME/.guix-home/profile/share/"
+                                "themes/Adwaita-dark/gtk-2.0/gtkrc"))
 
-(define %gtk2-rc ".guix-home/profile/share/themes/Adwaita-dark/gtk-2.0/gtkrc")
-
-(define (home-path directory)
-  (string-append
-   "/home"
-   "/" %user-name "/"
-   directory))
+(define %xdg-data-dirs (string-append "$HOME/.guix-home/profile/share:"
+                                      "/run/current-system/profile/share:"
+                                      "$XDG_DATA_HOME/flatpak/exports/share:"))
 
 ;; borrowed from https://codeberg.org/daviwil/dotfiles/daviwil/systems/common.scm
 (define (home-env-vars-config-gexp config)
@@ -23,11 +18,11 @@
     ("LC_COLLATE" . "C")
 
     ;; Set Emacs as editor
-    ("EDITOR" . "emacs")
-    ("VISUAL" . "emacs")
+    ("EDITOR" . "emacsclient -c -a emacs")
+    ("VISUAL" . "emacsclient -c -a emacs")
 
     ;; Set quotebrowser as the default
-    ("BROWSER" . "qutebrowser")
+    ("BROWSER" . "Zen Browser")
 
     ;; Set GnuPG Config Dir env
     ("GNUPGHOME" . "$XDG_CONFIG_HOME/gnupg")
@@ -41,18 +36,30 @@
     ("CLUTTER_BACKEND"     . "wayland")
     ("ELM_ENGINE"          . "wayland-egl")
     ("ECORE_EVAS_ENGINE"   . "wayland-egl")
-    ("QT_QPA_PLATFORM"     . "wayland-egl")
 
-    ;; GTK & QT Theme
+    ;; GTK/QT/Cursor Theming
     ("GTK_THEME"            . "Adwaita:dark")
+    ("GTK_ICON_THEME"       . "Qogir-dark")
+    ("GDK_DPI_SCALE"        . "1")
+    ;;TODO use gexp local-file to resolve this file...
+    ("GTK2_RC_FILES"        . ,%gtk2-rc)
+
+
     ("QT_STYLE_OVERRIDE"    . "adwaita")
     ("QT_QPA_PLATFORMTHEME" . "gtk3")
-    ;;TODO use gexp local-file to resolve this file...
-    ("GTK2_RC_FILES"        . ,(home-path %gtk2-rc))
+    ("QT_QPA_PLATFORM"      . "wayland-egl")
+
+    ("XCURSOR_THEME" . "Bibata-Modern-Classic")
+    ("XCURSOR_SIZE"  . "20")
 
     ;; Set XDG environment variables
-    ("XDG_DOWNLOAD_DIR" . ,(home-path "Downloads"))
-    ("XDG_PICTURES_DIR" . ,(home-path "Pictures/Screenshots"))))
+    ("XDG_LOG_HOME"     . "$HOME/.local/log")
+    ("XDG_DOWNLOAD_DIR" . "$HOME/downloads")
+    ("XDG_PICTURES_DIR" . "$HOME/pictures/screenshots")
+
+    ;; Flatpak integration
+    ("XDG_LOCAL_BIN"    . "$HOME/.local/bin")
+    ("XDG_DATA_DIRS"    . ,%xdg-data-dirs)))
 
 
 (define home-env-vars-configuration-service-type
